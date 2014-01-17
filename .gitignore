@@ -2,3 +2,4 @@ components
 vendor
 composer.phar
 composer.lock
+*.*~
