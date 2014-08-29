@@ -1,15 +1,29 @@
 <?php
 
-define('ROOT', dirname(__FILE__));
+define('ROOT_DIR', 	  dirname(__FILE__));
+define('VENDOR_DIR',  ROOT_DIR    . '/vendor');
+define('INCLUDE_DIR', ROOT_DIR    . '/include');
+define('CLASSES_DIR', INCLUDE_DIR . '/classes');
 
 ini_set('magic_quotes_gpc', null);
 
-require_once ROOT. '/src/autoload.php';
+// Autoloader from composer
+require_once VENDOR_DIR. '/autoload.php';
 
-require_once ROOT. '/config.php';
+// Custom autoloader
+spl_autoload_register(function($class_name){
+  $filename = CLASSES_DIR . '/' . $class_name . '.php';
+  if(file_exists($filename)) {
+    require_once($filename);
+  }
+});
 
-if(is_callable($currentConfig['dbinit'])) {
-  call_user_func($currentConfig['dbinit']);
-} else {
-  throw new Exception('No DB Init callback was configured.');
-};
+require_once ROOT_DIR. '/config.php';
+
+session_cache_limiter(false);
+session_start();
+
+R::setup(Config::get('dbconnection'), Config::get('dbuser'), Config::get('dbpassword'));
+R::freeze(Config::get('dbfreeze'));
+R::debug(Config::get('dbdebug'));
+

@@ -1,7 +1,8 @@
 {
     "config": {
 		"vendor-dir": "vendor",
-		"component-dir": "www/libs"
+		"component-dir": "www/libs",
+		"component-baseurl": "/libs"
 	},
 	"repositories": [
 	  {
@@ -61,6 +62,9 @@
 				"type": "git",
 				"reference": "v2.0.3"
 			},
+			"require": {
+			  "robloach/component-installer": "*"
+		    },
 			"extra": {
 				"component": {
 				  "files": [
@@ -69,6 +73,29 @@
 					"bootflat/js/*",
 					"bootflat/img/*",
 					"bootflat/fonts/*"
+				  ]
+				}
+		  }
+        }
+    },
+	{
+		"type": "package",
+		"package": {
+			"name": "components/jquery-slider",
+			"type": "component",
+			"version": "v16.0",
+			"source": {
+                "url": "https://github.com/jssor/jquery-slider.git",
+				"type": "git",
+				"reference": "v16.0"
+			},
+			"require": {
+			  "robloach/component-installer": "*"
+		    },
+			"extra": {
+				"component": {
+				  "files": [
+					"js/*"
 				  ]
 				}
 		  }
@@ -92,7 +119,18 @@
 		"components/tinymce": "4.0.*",
 		"components/tinymce-sv-se": "4.0.*",
         "components/bootflat": "v2.0.3",
-		"redbeanphp": "4.0.*"
+		"redbeanphp": "4.0.*",
+		"google/apiclient": "1.0.4-beta",
+		"facebook/php-sdk": "3.2.3",
+		"components/jquery-slider": "v16.0",
+		"php-instagram-api/php-instagram-api": "dev-master",
+		"j7mbo/twitter-api-php": "dev-master",
+		"egeloen/google-map": "1.4.0",
+		"leafo/scssphp": "0.1.1",
+		"swiftmailer/swiftmailer": "5.2.1",
+		"doctrine/inflector": "1.0",
+		"fzaninotto/faker": "1.4.0",
+		"mobiledetect/mobiledetectlib": "2.8.4"
     },
 	"autoload": {
 	    "files": [

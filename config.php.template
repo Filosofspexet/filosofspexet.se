@@ -1,26 +1,32 @@
 <?php
 
-$config = array(
+$configs = array(
 
-  'mode' 		=> 'development',
-  
-  'defaults' 	=> array(
-    'init' => function() {}
+  'defaults' => array(
+    'dbdebug'  => false,
+	'dbfreeze' => false
   ),
   
   'development' => array(
-    'init' => function() {
-	  R::setup('mysql:host=localhost;dbname=mydatabase','user','password');
-	  R::freeze(false);
-	  R::debug(true);
-	}
+    'dbconnection' 	=> 'mysql:host=localhost;dbname=mydatabase',
+	'dbuser' 		=> 'user',
+	'dbpassword'	=> 'password',
+	'dbdebug' 		=> true,
+	'dbfreeze' 		=> false
   ),
   
-  'production' 	=> array(
-    'init' => function() {
-	   R::setup('mysql:host=localhost;dbname=mydatabase','user','password');
-	  R::freeze(true);
-	  R::debug(false);
-	}
+  'production' => array(
+    'dbconnection' 	=> 'mysql:host=localhost;dbname=mydatabase',
+	'dbuser' 		=> 'user',
+	'dbpassword' 	=> 'password',
+	'dbdebug' 		=> false,
+	'dbfreeze' 		=> true
   )
+  
 );
+
+$currentMode = 'development';
+
+$currentConfig = array_merge($configs['defaults'], $configs[$currentMode]);
+
+Config::setAll($currentConfig);
