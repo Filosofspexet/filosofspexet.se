@@ -1,7 +1,102 @@
 {
-    "require": {
-        "slim/slim": "2.*",
-        "components/jquery": "1.10.*",
-        "components/bootstrap": "dev-master"
-    }
+    "config": {
+		"vendor-dir": "vendor",
+		"component-dir": "www/libs"
+	},
+	"repositories": [
+	  {
+		"type": "composer",
+		"url": "https://packages.zendframework.com"
+	  },
+	  {
+		"type": "package",
+		"package": {
+		  "name": "components/tinymce",
+		  "type": "component",
+		  "version": "4.0.26",
+		  "dist": {
+			"url": "http://download.moxiecode.com/tinymce/tinymce_4.0.26.zip",
+			"type": "zip"
+		  },
+		  "require": {
+			"robloach/component-installer": "*"
+		  },
+		  "extra": {
+		    "component": {
+			  "files": [
+			    "js/tinymce/*.js",
+				"js/tinymce/themes/modern/*.js",
+				"js/tinymce/skins/lightgray/*.css",
+				"js/tinymce/skins/lightgray/fonts/*",
+				"js/tinymce/skins/lightgray/img/*",
+				"js/tinymce/plugins/code/*"
+			  ]
+			}
+		  }
+		}
+	  },
+	  {
+	    "type": "package",
+		"package": {
+		  "name": "components/tinymce-sv-se",
+		  "type": "component",
+		  "version": "4.0.12",
+		  "dist": {
+		    "url": "http://www.tinymce.com/i18n/download.php?download=sv_SE",
+			"type": "zip"
+		  },
+		  "require": {
+		    "robloach/component-installer": "*"
+		  }
+		}
+	  },
+	  {
+		"type": "package",
+		"package": {
+			"name": "components/bootflat",
+			"type": "component",
+			"version": "v2.0.3",
+			"source": {
+                "url": "https://github.com/bootflat/bootflat.github.io.git",
+				"type": "git",
+				"reference": "v2.0.3"
+			},
+			"extra": {
+				"component": {
+				  "files": [
+					"bootflat/css/*", 
+					"bootflat/scss/*",
+					"bootflat/js/*",
+					"bootflat/img/*",
+					"bootflat/fonts/*"
+				  ]
+				}
+		  }
+        }
+    },
+	{
+            "type": "package",
+            "package": {
+                "name": "redbeanphp",
+                "version": "4.0.4",
+                "dist": {
+                    "url": "http://www.redbeanphp.com/downloadredbean.php",
+                    "type": "tar"
+                }
+            }
+        }
+	],
+    "require": {  
+        "slim/slim": "2.4.3",
+        "components/jquery": "2.1.1",
+		"components/tinymce": "4.0.*",
+		"components/tinymce-sv-se": "4.0.*",
+        "components/bootflat": "v2.0.3",
+		"redbeanphp": "4.0.*"
+    },
+	"autoload": {
+	    "files": [
+            "vendor/redbeanphp/rb.php"
+	    ]
+	}
 }

@@ -2,5 +2,7 @@ components
 vendor
 composer.phar
 composer.lock
+config.php
 .htaccess
 *.*~
+www/libs

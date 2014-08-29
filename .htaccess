@@ -1,5 +1,1 @@
 Satisfy any
-RewriteEngine On
-RewriteBase /~patrik/filosofspexet/filosofspexet.se/
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^ index.php [QSA,L]

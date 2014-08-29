@@ -1,0 +1,26 @@
+<?php
+
+$config = array(
+
+  'mode' 		=> 'development',
+  
+  'defaults' 	=> array(
+    'init' => function() {}
+  ),
+  
+  'development' => array(
+    'init' => function() {
+	  R::setup('mysql:host=localhost;dbname=mydatabase','user','password');
+	  R::freeze(false);
+	  R::debug(true);
+	}
+  ),
+  
+  'production' 	=> array(
+    'init' => function() {
+	   R::setup('mysql:host=localhost;dbname=mydatabase','user','password');
+	  R::freeze(true);
+	  R::debug(false);
+	}
+  )
+);
