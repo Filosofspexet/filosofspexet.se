@@ -11,10 +11,12 @@ ini_set('magic_quotes_gpc', null);
 require_once VENDOR_DIR. '/autoload.php';
 
 // Custom autoloader
-spl_autoload_register(function($class_name){
-  $filename = CLASSES_DIR . '/' . $class_name . '.php';
-  if(file_exists($filename)) {
-    require_once($filename);
+spl_autoload_register(function($class_name) {
+  foreach(array('.', 'controllers', 'models') as $sub_directory) {
+	$filename = sprintf('%s/%s/%s.php', CLASSES_DIR, $sub_directory, $class_name);
+    if(file_exists($filename)) {
+      require_once($filename);
+    }
   }
 });
 
