@@ -2,32 +2,76 @@
 
 class PagesController extends Controller {
 
+  protected function setupRoutes() {
   
+    // View start page
+    $this->s->get('/', function() {
+      $this->addStandardAssets();
+      $page = R::findOne('page', '`key` = ?', array('start'));
+      if($page == null) {
+        throw new Exception(__('Startsidan kunde inte hittas.'));
+      }
+      $this->render('pages.view.php', $page->export());
+	  });
+	  
+	  // View other page
+	  $this->s->get('/:slug', function($slug) {
+      $this->addStandardAssets();
+      $page = R::findOne('page', 'slug = ?', array($slug));
+      if($page == null) {
+        $this->throw404();
+      } else {
+        $this->render('pages.view.php', $page->export());
+      }
+	  });  
 
-  protected function setup() {
-
-    $this->s->get('/pages/view/:slug', function($slug) {
-      $this->viewPage($slug);
-	});  
-  
-	$this->s->get('/pages/:slug', function($slug) {
-      $this->viewPage($slug);
-	});
+    $this->s->group('/pages', function() {
+		  
+      $this->addAdminAssets();      
+            
+      $this->s->get('/create', function() {
+        $this->requireAction('pages.create', '/', __('Du har inte rätt att skapa sidor.'));
+        $this->render('pages.create.php');
+      });
+      
+      $this->s->post('/create', function() {
+        $this->requireAction('pages.create', '/', __('Du har inte rätt att skapa sidor.'));
+        $page = R::dispense('page');
+        $page->import($_POST);
+        R::store($page);
+        $this->s->flash(__('Sidan har skapats.'));		
+        $this->render('pages.edit.php', $page->export());
+      });
+        
+      $this->s->get('/edit/:id', function($id) {
+        $this->requireAction('pages.edit', '/', __('Du har inte rätt att editera sidor.'));
+        $this->render('pages.edit.php', $page->export());
+      });
+      
+      $this->s->post('/edit/:id', function($id) {
+        $this->requireAction('pages.edit', '/', __('Du har inte rätt att editera sidor.'));
+        $page = R::dispense($id);
+        $page->import($_POST);
+        R::store($page);
+        $this->s->flash(__('Sidan har sparats.'));		
+        $this->render('pages.edit.php', $page->export());
+      });
+      
+      $this->s->get('/delete/:id', function($id) {
+        $this->requireAction('pages.delete', '/', __('Du har inte rätt att ta bort sidor.'));
+        $page = R::load('page', $id);
+        if($page == null) {
+          $this->s->flash(__('Sidan du försöker ta bort finns inte.'));		  
+        } else {
+          $this->s->flash(__('Sidan har tagits bort.'));		
+        }
+        $this->s->redirect('/');
+      });
+	   
+    });
+    
 	
   }
-  
-  private function viewPage($slug) {
-    $id = intval($slug);
-	$page = R::load('page', $id);
-	if($page == null) {
-	  $this->throw404();
-	} else {
-	  $this->s->render('page.php', array(
-		'header' 		=> $page->header,
-		'lead_text' 	=> $page->lead_text,
-		'text' 			=> $page->text
-	  ));
-	}
-  }
+
   
 }

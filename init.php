@@ -1,12 +1,17 @@
 <?php
 
-define('ROOT_DIR', 	  dirname(__FILE__));
-define('VENDOR_DIR',  ROOT_DIR    . '/vendor');
-define('INCLUDE_DIR', ROOT_DIR    . '/include');
-define('CLASSES_DIR', INCLUDE_DIR . '/classes');
-define('TEMPLATES_DIR', ROOT_DIR  . '/templates');
+define('ROOT_DIR', 	    dirname(__FILE__));
+define('VENDOR_DIR',    ROOT_DIR    . '/vendor');
+define('INCLUDE_DIR',   ROOT_DIR    . '/include');
+define('CLASSES_DIR',   INCLUDE_DIR . '/classes');
+define('TEMPLATES_DIR', ROOT_DIR    . '/templates');
+define('PUBLIC_DIR', 	  ROOT_DIR    . '/www');
+define('COMPILED_DIR', 	PUBLIC_DIR  . '/compiled');
+define('REDBEAN_MODEL_PREFIX', '');
 
 ini_set('magic_quotes_gpc', null);
+
+require_once(INCLUDE_DIR . '/functions.php');
 
 // Autoloader from composer
 require_once VENDOR_DIR. '/autoload.php';
