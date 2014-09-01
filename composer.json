@@ -1,4 +1,4 @@
-{
+  {
     "config": {
 		"vendor-dir": "vendor",
 		"component-dir": "www/libs",
@@ -6,77 +6,75 @@
 	},
 	"repositories": [
 	  {
-		"type": "composer",
-		"url": "https://packages.zendframework.com"
+      "type": "composer",
+      "url": "https://packages.zendframework.com"
 	  },
 	  {
-		"type": "package",
-		"package": {
-		  "name": "components/tinymce",
-		  "type": "component",
-		  "version": "4.0.26",
-		  "dist": {
-			"url": "http://download.moxiecode.com/tinymce/tinymce_4.0.26.zip",
-			"type": "zip"
-		  },
-		  "require": {
-			"robloach/component-installer": "*"
-		  },
-		  "extra": {
-		    "component": {
-			  "files": [
-			    "js/tinymce/*.js",
-				"js/tinymce/themes/modern/*.js",
-				"js/tinymce/skins/lightgray/*.css",
-				"js/tinymce/skins/lightgray/fonts/*",
-				"js/tinymce/skins/lightgray/img/*",
-				"js/tinymce/plugins/code/*"
-			  ]
-			}
-		  }
+      "type": "package",
+      "package": {
+        "name": "components/tinymce",
+        "type": "component",
+        "version": "4.0.26",
+        "dist": {
+        "url": "http://download.moxiecode.com/tinymce/tinymce_4.0.26.zip",
+        "type": "zip"
+      },
+      "require": {
+        "robloach/component-installer": "*"
+      },
+      "extra": {
+        "component": {
+          "files": [
+            "js/tinymce/*.js",
+            "js/tinymce/themes/modern/*.js",
+            "js/tinymce/skins/lightgray/*.css",
+            "js/tinymce/skins/lightgray/fonts/*",
+            "js/tinymce/skins/lightgray/img/*",
+            "js/tinymce/plugins/code/*"
+          ]
+        }
+      }
 		}
 	  },
 	  {
 	    "type": "package",
-		"package": {
-		  "name": "components/tinymce-sv-se",
-		  "type": "component",
-		  "version": "4.0.12",
-		  "dist": {
-		    "url": "http://www.tinymce.com/i18n/download.php?download=sv_SE",
-			"type": "zip"
-		  },
-		  "require": {
-		    "robloach/component-installer": "*"
-		  }
-		}
+      "package": {
+        "name": "components/tinymce-sv-se",
+        "type": "component",
+        "version": "4.0.12",
+        "dist": {
+          "url": "http://www.tinymce.com/i18n/download.php?download=sv_SE",
+          "type": "zip"
+        },
+        "require": {
+          "robloach/component-installer": "*"
+        }
+      }
 	  },
 	  {
-		"type": "package",
-		"package": {
-			"name": "components/bootflat",
-			"type": "component",
-			"version": "v2.0.3",
-			"source": {
-                "url": "https://github.com/bootflat/bootflat.github.io.git",
-				"type": "git",
-				"reference": "v2.0.3"
-			},
-			"require": {
-			  "robloach/component-installer": "*"
+      "type": "package",
+      "package": {
+        "name": "components/strap",
+        "type": "component",
+        "version": "3.2.0",
+        "source": {
+          "url": "https://github.com/twbs/bootstrap.git",
+          "type": "git",
+          "reference": "v3.2.0"
+        },
+        "require": {
+          "robloach/component-installer": "*"
 		    },
-			"extra": {
-				"component": {
-				  "files": [
-					"bootflat/css/*", 
-					"bootflat/scss/*",
-					"bootflat/js/*",
-					"bootflat/img/*",
-					"bootflat/fonts/*"
-				  ]
-				}
-		  }
+        "extra": {
+          "component": {
+            "files": [
+              "dist/css/*",
+              "dist/fonts/*",
+              "dist/js/*"
+            ]
+          }
         }
+      }
     },
 	{
 		"type": "package",
@@ -85,40 +83,66 @@
 			"type": "component",
 			"version": "v16.0",
 			"source": {
-                "url": "https://github.com/jssor/jquery-slider.git",
+        "url": "https://github.com/jssor/jquery-slider.git",
 				"type": "git",
 				"reference": "v16.0"
 			},
 			"require": {
 			  "robloach/component-installer": "*"
-		    },
+		  },
 			"extra": {
 				"component": {
 				  "files": [
-					"js/*"
+					  "js/*"
 				  ]
 				}
 		  }
-        }
-    },
+    }
+  },
+  {
+		"type": "package",
+		"package": {
+			"name": "components/bootstrap-social",
+			"type": "component",
+			"version": "4.7.0",
+			"source": {
+        "url": "https://github.com/lipis/bootstrap-social.git",
+				"type": "git",
+				"reference": "4.7.0"
+			},
+			"require": {
+			  "robloach/component-installer": "*"
+		  },
+			"extra": {
+				"component": {
+				  "files": [
+					  "bootstrap-social.css",
+            "assets/*"
+				  ]
+				}
+		  }
+    }
+  },
 	{
-            "type": "package",
-            "package": {
-                "name": "redbeanphp",
-                "version": "4.0.4",
-                "dist": {
-                    "url": "http://www.redbeanphp.com/downloadredbean.php",
-                    "type": "tar"
-                }
-            }
-        }
+    "type": "package",
+    "package": {
+      "name": "redbeanphp",
+      "version": "4.0.4",
+      "dist": {
+        "url": "http://www.redbeanphp.com/downloadredbean.php",
+        "type": "tar"
+      }
+    }
+  }
 	],
-    "require": {  
-        "slim/slim": "2.4.3",
-        "components/jquery": "2.1.1",
+  "require": {  
+    "slim/slim": "2.4.3",
+    "components/jquery": "2.1.1",
 		"components/tinymce": "4.0.*",
 		"components/tinymce-sv-se": "4.0.*",
-        "components/bootflat": "v2.0.3",
+    "components/normalize.css": "2.1.2",
+    "components/bootstrap": "3.2.0",
+    "components/bootstrap-social": "4.7.0",
 		"redbeanphp": "4.0.*",
 		"google/apiclient": "1.0.4-beta",
 		"facebook/php-sdk": "3.2.3",
@@ -131,7 +155,7 @@
 		"doctrine/inflector": "1.0",
 		"fzaninotto/faker": "1.4.0",
 		"mobiledetect/mobiledetectlib": "2.8.4"
-    },
+  },
 	"autoload": {
 	    "files": [
             "vendor/redbeanphp/rb.php"

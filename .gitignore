@@ -6,3 +6,4 @@ config.php
 .htaccess
 *.*~
 www/libs
+www/scss/scss_cache

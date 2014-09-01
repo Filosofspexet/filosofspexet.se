@@ -7,11 +7,13 @@ class PagesController extends Controller {
     // View start page
     $this->s->get('/', function() {
       $this->addStandardAssets();
-      $page = R::findOne('page', '`key` = ?', array('start'));
+      $page = R::findOne('page', 'slug = ?', array('start'));
       if($page == null) {
         throw new Exception(__('Startsidan kunde inte hittas.'));
+      } else {
+        $this->slider_images = $page->ownSliderimageList;
+        $this->render('pages.view.php', $page->export());
       }
-      $this->render('pages.view.php', $page->export());
 	  });
 	  
 	  // View other page
@@ -21,6 +23,7 @@ class PagesController extends Controller {
       if($page == null) {
         $this->throw404();
       } else {
+        $this->slider_images = $page->ownSliderimageList;
         $this->render('pages.view.php', $page->export());
       }
 	  });  
@@ -50,7 +53,7 @@ class PagesController extends Controller {
       
       $this->s->post('/edit/:id', function($id) {
         $this->requireAction('pages.edit', '/', __('Du har inte rätt att editera sidor.'));
-        $page = R::dispense($id);
+        $page = R::dispense('page');
         $page->import($_POST);
         R::store($page);
         $this->s->flash(__('Sidan har sparats.'));		
@@ -65,7 +68,11 @@ class PagesController extends Controller {
         } else {
           $this->s->flash(__('Sidan har tagits bort.'));		
         }
-        $this->s->redirect('/');
+        if($this->user != null) {
+          $this->s->redirect(Uri::create('/pages'));
+        } else {
+          $this->s->redirect(Uri::create('/'));
+        }     
       });
 	   
     });
