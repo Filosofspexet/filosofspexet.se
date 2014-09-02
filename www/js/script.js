@@ -1,4 +1,4 @@
-// TODO: Use requireJS to make this file so small as possible.
+// TODO: Use requireJS?
 
 (function($){
 
@@ -34,10 +34,37 @@
     document.getElementById('fb-root').appendChild(e);
   };
   
+  var openExternalLinksInNewWindows = function(){
+    $('a').each(function() {
+     var a = new RegExp('/' + window.location.host + '/');
+     if(!a.test(this.href)) {
+         $(this).click(function(event) {
+             event.preventDefault();
+             event.stopPropagation();
+             window.open(this.href, '_blank');
+         });
+     }
+    });
+  };
+  
+  var createJQuerySlider = function() {
+    $('.main-slider').bxSlider({
+      mode: 'fade',
+      captions: true
+    });
+  };
+ 
   /**/
   $().ready(function(){
     if(Filosofspexet.Config.get('facebook.app.id') && $('#fb-root').length > 0) {
       facebookInit();
+    }
+    openExternalLinksInNewWindows();
+    if($('.main-slider').length > 0) {
+      createJQuerySlider();
+    }
+    if ($("[rel=tooltip]").length) {
+     $("[rel=tooltip]").tooltip();
     }
   });
   

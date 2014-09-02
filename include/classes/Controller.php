@@ -10,8 +10,10 @@ abstract class Controller extends Singleton {
   protected $css_classes;
   protected $menu;
   protected $slider_images;
+  protected $widgets;
   
   protected final function throw404() {
+    $this->seo->canonical_url = Uri::create('/404');
     $page = R::findOne('page', 'slug = ?', array('404'));
     if($page == null) {
       throw new Exception(__('Sidan kunde inte hittas.'));
@@ -26,7 +28,8 @@ abstract class Controller extends Singleton {
       'seo'           => $this->seo,
       'css_classes'   => $this->css_classes,
       'menu'          => $this->menu,
-      'slider_images' => $this->slider_images
+      'slider_images' => $this->slider_images,
+      'widgets'       => $this->widgets
     );
     
     
@@ -37,7 +40,19 @@ abstract class Controller extends Singleton {
     }
     
   }
-
+  
+  private function getFacebookFeeds() {
+    return Cache::get('facebook_posts_on_frontpage', function() {
+      $facebook = new Facebook(array(
+        'appId'  => Config::get('facebook.app.id'),
+        'secret' => Config::get('facebook.app.secret'),
+        'fileUpload' => false
+      ));
+      $feeds = $facebook->api('filosofspexet/posts?fields=story,message,picture,link,icon&limit=5&locale=sv_SE');
+      return $feeds['data'];
+    });
+  }
+  
   protected function __construct() {
       
     $this->s = new Slim();
@@ -45,15 +60,33 @@ abstract class Controller extends Singleton {
     $this->css_classes = array(
       strtolower(substr(get_class($this), 0, -strlen('Controller')))
     );
-    $this->menu = array();
-    $this->slider_images = array();
+    
+    // Will eventually contain the actual menu-data
+    $this->menu           = array('temp');
+    
+    // Will eventually contain the actual slider_image data
+    $this->slider_images  = array('temp');
+       
+    $this->widgets        = array(
+      (object)array(
+        'name' => 'facebook-page',
+        'data' => array(
+          'feeds' => $this->getFacebookFeeds()
+        )
+      ),
+      (object)array(
+        'name' => 'login',
+        'data' => array()
+      )       
+    );
     
     // Might be replaced by real class sometime.
     $this->seo = (object)array(
-      'title'       =>  __('Filosofspexet'),
-      'keywords'    =>  array(),
-      'description' =>  __('Beskrivning av filosofspexet'),
-      'favicon'     =>  'favicon.ico'
+      'title'         =>  __('Filosofspexet'),
+      'keywords'      =>  array(),
+      'description'   =>  __('Beskrivning av filosofspexet'),
+      'favicon'       =>  'favicon.ico',
+      'canonical_url' => null
     );
     
     $this->s->config(array(
@@ -113,10 +146,13 @@ abstract class Controller extends Singleton {
     Asset::css('libs/normalize-css/normalize.css');
     Asset::css('libs/bootstrap/css/bootstrap.min.css');
     Asset::css('libs/bootstrap/css/bootstrap-theme.min.css');
+    Asset::css('libs/font-awesome/css/font-awesome.min.css');
+    Asset::css('libs/bootstrap-social/bootstrap-social.css');
+    Asset::css('libs/bxslider-4/jquery.bxslider.css');
     Asset::scss('style.scss');
     Asset::js('libs/jquery/jquery.min.js');
     Asset::js('libs/bootstrap/js/bootstrap.min.js');
-    Asset::js('libs/jquery-slider/js/jssor.slider.mini.js');
+    Asset::js('libs/bxslider-4/jquery.bxslider.min.js');
     Asset::js('libs/tinymce/js/tinymce/tinymce.min.js');
     Asset::js('js/Filosofspexet.js');
     Asset::js('js/script.js');

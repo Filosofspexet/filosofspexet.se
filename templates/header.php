@@ -1,32 +1,19 @@
-<div class="navbar-wrapper">
-  <div class="container">
-    <div class="navbar navbar-inverse navbar-static-top">   
-      <div class="navbar-header">
-        <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
+  <div class="container-fluid header">
+    <div class="row">
+      <div class="col-md-1">
+        <img src="<?php echo Uri::createFile('img/gardist-klar.gif'); ?>" alt="Filosofspexet" height="50" />      
+      </div>
+      <div class="col-md-2 site-title">
+        <a href="<?php echo Uri::create('/'); ?>">
+          <?php echo __('Filosofspexet'); ?>          
         </a>
-        <a class="navbar-brand" href="#">Bootstrap 3</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="http://www.bootply.com" target="ext">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
+      </div>
+      <div class="col-md-4 site-sub-title">
+        <?php echo __('Filosofiska lätta knästående spexargardet'); ?>
+      </div>
+      <div class="col-md-5 social">
+        <a class="btn btn-social-icon btn-facebook" href="https://www.facebook.com/filosofspexet" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="<?php echo __('Besök oss på Facebook!'); ?>"><i class="fa fa-facebook"></i></a>
+        <a class="btn btn-social-icon btn-instagram" href="http://instagram.com/filosofspexet" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="<?php echo __('Följ oss på Instagram!'); ?>"><i class="fa fa-instagram"></i></a>
+      </div>       
     </div>
   </div>
-</div>

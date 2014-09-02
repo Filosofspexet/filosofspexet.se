@@ -1,0 +1,202 @@
+$winered: #5D0032;
+$whitebg: #f0f0f0;
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin spex-gradient {
+  background: rgb(93,0,50); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(93,0,50,1) 0%, rgba(0,0,0,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(93,0,50,1)), color-stop(100%,rgba(0,0,0,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(93,0,50,1) 0%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(93,0,50,1) 0%,rgba(0,0,0,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(93,0,50,1) 0%,rgba(0,0,0,1) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(93,0,50,1) 0%,rgba(0,0,0,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5d0032', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+}
+
+.panel-heading {
+  .btn {
+    margin-right: 10px;
+  }
+}
+
+i.fa {
+  color: white;
+}
+
+fieldset.login {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+form.login {
+  label {
+    display: block;
+  }
+  input {
+    display: block;
+  }
+  input[type="submit"] {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+}
+
+body {
+  background-color: black;
+  
+  a {
+    color: white;
+  }
+  
+  .header {  
+    color: white;
+    @include spex-gradient;
+    
+    .site-title {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+    
+    .site-sub-title {
+      margin-top: 15px;
+    }
+    
+    .social {     
+      > a {              
+        margin-top: 5px;
+        margin-left: 5px;
+      }
+    }
+    
+  }
+  .bx-wrapper .bx-viewport {
+    border: none;
+    background-color: black;
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+  }
+  .main-slider {   
+    .bx-caption {
+      background: rgba(60, 60, 60, 0.5);
+    }
+    img {
+      max-height: 200px;
+    }
+  }
+  
+  .menu {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: rgba(100,100,100,0.5);
+    @include border-radius(8px);
+  }
+  
+  #main {
+    background-color: $whitebg;
+    @include border-radius(8px);
+    
+    a {
+      color: black;
+      text-decoration: underline;
+    }
+    
+    .btn-social {
+      color: white;
+      text-decoration: none;
+    }
+    
+    h1 {
+      border-bottom: 1px solid #c0c0c0;
+    }
+    
+    .page-main {
+      border-right: 1px solid #c0c0c0;
+    }
+    
+    .page-right {
+      .widget {
+        margin-top: 10px;
+      }
+      .widget.facebook-page {
+        .post {
+          font-size: 12px;
+          margin-top: 2px;
+          margin-bottom: 2px;
+          padding: 2px;
+          
+          .read-more {
+            display: block;
+            font-weight: bold;
+            text-align: left;
+          }
+          
+        }
+      }
+    }
+    
+  }
+  
+  .footer {  
+    color: white;
+    @include spex-gradient;
+    margin-top: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    
+    .social {     
+      > a {              
+        margin-top: 5px;
+        margin-left: 5px;
+      }
+    }
+    
+  }
+  
+}
+
+@media (min-width: 992px) {
+  body {
+    .header {
+      .social {
+        padding-right: 50px;
+        > a {
+          float: right;
+        }
+      }
+    }
+    #main {
+
+    }
+    .footer {
+      .social {
+        padding-right: 50px;
+        > a {
+          float: right;
+        }
+      }
+    }
+  }  
+}  
+
+@media (min-width: 768px) {
+  .navbar-brand {
+    display: none;  
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .navbar-nav {
+    font-size: 10.5px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}

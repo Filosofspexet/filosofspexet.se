@@ -5,5 +5,7 @@ composer.lock
 config.php
 .htaccess
 *.*~
+tmp
+bin/mock.php
 www/libs
 www/scss/scss_cache

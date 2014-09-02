@@ -1,6 +1,7 @@
 <?php
 
 define('ROOT_DIR', 	    dirname(__FILE__));
+define('TMP_DIR',       ROOT_DIR    . '/tmp');
 define('VENDOR_DIR',    ROOT_DIR    . '/vendor');
 define('INCLUDE_DIR',   ROOT_DIR    . '/include');
 define('CLASSES_DIR',   INCLUDE_DIR . '/classes');

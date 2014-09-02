@@ -1,5 +1,3 @@
-<fieldset class="login">
-  <legend><?php echo __('Inloggning'); ?></legend>
   <form action="<?php echo Uri::create('/users/login/form', compact('redirectUrl')); ?>" method="post" class="login">
     <label for="username">
       <?php echo __('Användarnamn'); ?>
@@ -13,4 +11,3 @@
   </form>
   <a href="<?php echo Uri::create('/users/register'); ?>"><?php echo __('Registrering'); ?></a> |
   <a href="<?php echo Uri::create('/users/forgot_password'); ?>"><?php echo __('Glömt lösenord'); ?></a>
-</fieldset>

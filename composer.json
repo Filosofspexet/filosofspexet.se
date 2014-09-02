@@ -79,13 +79,13 @@
 	{
 		"type": "package",
 		"package": {
-			"name": "components/jquery-slider",
+			"name": "components/bxslider-4",
 			"type": "component",
-			"version": "v16.0",
+			"version": "4.1.2",
 			"source": {
-        "url": "https://github.com/jssor/jquery-slider.git",
+        "url": "https://github.com/stevenwanderski/bxslider-4.git",
 				"type": "git",
-				"reference": "v16.0"
+				"reference": "4.1.2"
 			},
 			"require": {
 			  "robloach/component-installer": "*"
@@ -93,7 +93,9 @@
 			"extra": {
 				"component": {
 				  "files": [
-					  "js/*"
+					  "jquery.bxslider.min.js",
+            "jquery.bxslider.css",
+            "images/*"
 				  ]
 				}
 		  }
@@ -123,6 +125,30 @@
 		  }
     }
   },
+  {
+		"type": "package",
+		"package": {
+			"name": "components/font-awesome",
+			"type": "component",
+			"version": "v4.2.0",
+			"source": {
+        "url": "https://github.com/FortAwesome/Font-Awesome.git",
+				"type": "git",
+				"reference": "v4.2.0"
+			},
+			"require": {
+			  "robloach/component-installer": "*"
+		  },
+			"extra": {
+				"component": {
+				  "files": [
+					  "css/*",
+            "fonts/*"
+				  ]
+				}
+		  }
+    }
+  },
 	{
     "type": "package",
     "package": {
@@ -146,15 +172,16 @@
 		"redbeanphp": "4.0.*",
 		"google/apiclient": "1.0.4-beta",
 		"facebook/php-sdk": "3.2.3",
-		"components/jquery-slider": "v16.0",
+		"components/bxslider-4": "4.1.2",
 		"php-instagram-api/php-instagram-api": "dev-master",
 		"j7mbo/twitter-api-php": "dev-master",
 		"egeloen/google-map": "1.4.0",
-		"leafo/scssphp": "0.1.1",
+    "leafo/scssphp": "0.1.1",
 		"swiftmailer/swiftmailer": "5.2.1",
 		"doctrine/inflector": "1.0",
 		"fzaninotto/faker": "1.4.0",
-		"mobiledetect/mobiledetectlib": "2.8.4"
+		"mobiledetect/mobiledetectlib": "2.8.4",
+    "components/font-awesome": "v4.2.0"
   },
 	"autoload": {
 	    "files": [

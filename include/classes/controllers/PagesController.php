@@ -12,7 +12,7 @@ class PagesController extends Controller {
         throw new Exception(__('Startsidan kunde inte hittas.'));
       } else {
         $this->slider_images = $page->ownSliderimageList;
-        $this->render('pages.view.php', $page->export());
+        $this->render('start.view.php', $page->export());
       }
 	  });
 	  
@@ -23,8 +23,15 @@ class PagesController extends Controller {
       if($page == null) {
         $this->throw404();
       } else {
+        if(sizeof($page->sharedActionList) > 0) {
+          $action_names = array();
+          foreach($page->sharedActionList as $required_action) {
+            $action_names[] = $required_action->name;
+          }
+          $this->requireAllActions($action_names);
+        }
         $this->slider_images = $page->ownSliderimageList;
-        $this->render('pages.view.php', $page->export());
+        $this->render($page->template, $page->export());
       }
 	  });  
 
