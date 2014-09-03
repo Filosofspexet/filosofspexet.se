@@ -34,10 +34,10 @@ class Asset {
   
   public static function getHeaderHtml() {
     $result = '';
-    foreach(self::$css_files as $css_file) {
+    foreach(array_unique(self::$css_files) as $css_file) {
       $result .= sprintf('<link rel="stylesheet" type="text/css" href="%s%s" />'."\n", Config::get('base.url'), $css_file);
     } 
-    foreach(self::$js_files as $js_file) {
+    foreach(array_unique(self::$js_files) as $js_file) {
       $result .= sprintf('<script type="text/javascript" src="%s%s"></script>'."\n", Config::get('base.url'), $js_file);
     }
     return $result;

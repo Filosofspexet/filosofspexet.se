@@ -62,6 +62,17 @@
       }
     })
   }
+  
+  var addFlashAnimations = function() {
+    $('.alert').each(function(){
+      var $this = $(this);
+      $this.slideDown('slow', function() {
+        setTimeout(function(){
+          $this.slideUp('slow');
+        }, 10000);
+      })
+    });
+  };
  
   /**/
   $().ready(function(){
@@ -76,6 +87,7 @@
      $("[rel=tooltip]").tooltip();
     }
     addActiveClassesToLinks();
+    addFlashAnimations();
   });
   
 })(jQuery, Filosofspexet);

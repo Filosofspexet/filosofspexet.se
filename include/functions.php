@@ -22,3 +22,9 @@ function generatePassword($length = 10) {
   }
   return implode($pass);
 }
+
+function moveKeyFirstInArray($key, &$arr) {
+  $tmp = array($key => $arr[$key]);
+  unset($arr[$key]);
+  $arr = $tmp + $arr;
+}

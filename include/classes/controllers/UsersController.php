@@ -51,6 +51,16 @@ class UsersController extends Controller {
         }
       });
       
+      $this->s->get('/logout', function() {
+        Session::_unset('user_id');
+        $this->s->flash('success', __('Du har nu loggats ut.'));
+        if(isset($_GET['redirectUrl'])) {
+          $this->s->redirect($_GET['redirectUrl']);
+        } else {
+          $this->s->redirect(Uri::create('/'));
+        }
+      });
+      
     });
 	     
 	}

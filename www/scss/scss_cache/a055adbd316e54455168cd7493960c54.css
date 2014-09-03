@@ -1,4 +1,7 @@
-/* compiled by scssphp v0.1.1 on Wed, 03 Sep 2014 08:31:50 +0200 (0.9746s) */
+/* compiled by scssphp v0.1.1 on Wed, 03 Sep 2014 10:44:04 +0200 (0.8762s) */
+
+.alert {
+  display: none; }
 
 .panel-heading .btn {
   margin-right: 10px; }
@@ -167,6 +170,12 @@ body {
     margin-top: 10px; }
 
 @media (min-width: 992px) {
+  body.logged-in .widget.login .panel-body {
+    text-align: center; }
+    body.logged-in .widget.login .panel-body .logout {
+      text-align: left;
+      padding-left: 35px; }
+
   body .header .social {
     padding-right: 50px; }
     body .header .social > a {

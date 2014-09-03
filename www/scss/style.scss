@@ -19,6 +19,10 @@ $whitebg: #f0f0f0;
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5d0032', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
 }
 
+.alert {
+  display: none;
+}
+
 .panel-heading {
   .btn {
     margin-right: 10px;
@@ -254,6 +258,19 @@ body {
 }
 
 @media (min-width: 992px) {
+ 
+  body.logged-in {
+    .widget.login {
+      .panel-body {
+        text-align: center;
+        .logout {
+          text-align: left;
+          padding-left: 35px;
+        }
+      }
+    }
+  }
+
   body {
     .header {
       .social {

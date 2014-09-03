@@ -28,6 +28,7 @@ spl_autoload_register(function($class_name) {
 });
 
 require_once ROOT_DIR . '/config.php';
+require_once ROOT_DIR . '/routes.php';
 
 session_cache_limiter(false);
 session_start();

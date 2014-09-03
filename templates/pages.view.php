@@ -28,9 +28,6 @@
           <?php echo $this->render(sprintf('%s.widget.php', $widget), $data); ?>
         </div>
       <?php endforeach; ?>   
-      <?php #echo $this->render('google.calendar.widget.php'); ?>
-      <?php #echo $this->render('facebook.widget.php'); ?>
-      <?php #echo $this->render('instagram.widget.php'); ?>
     </div>
   </div>
 </div>

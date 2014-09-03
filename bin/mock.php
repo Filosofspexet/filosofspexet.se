@@ -9,6 +9,20 @@ $faker = Faker\Factory::create();
 echo "Clearing database.\n";
 R::nuke();
 
+echo "Creating actions.\n";
+// Actions -------------------
+$names = array(
+  'pages.create',
+  'pages.edit',
+  'pages.delete'
+);
+$action_ids = array();
+foreach($names as $name) {
+  $action = R::dispense('action');
+  $action->name = $name;
+  $action_ids[] = R::store($action);
+}
+
 // Pages -------------------
 
 echo "Creating pages.\n";
@@ -173,25 +187,12 @@ $page = R::dispense('page');
 $page->slug = 'login';
 R::store($page);
 
-echo "Creating actions.\n";
-// Actions -------------------
-$names = array(
-  'pages.create',
-  'pages.edit',
-  'pages.delete'
-);
-$action_ids = array();
-foreach($names as $name) {
-  $action = R::dispense('action');
-  $action->name = $name;
-  $action_ids[] = R::store($action);
-}
-
 echo "Creating users.\n";
 // Users -------------------
 $user = R::dispense('user');
 $dynamic_salt = generatePassword(40);
 $user->username = 'test';
+$user->email = 'patrik.weibull@gmail.com';
 $user->salt = $dynamic_salt;
 $user->hash = md5(sprintf('%s%s%s', Config::get('static.salt'), 'test', $dynamic_salt));
 $user->sharedActionList = R::loadAll('action', $action_ids);

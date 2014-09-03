@@ -34,7 +34,6 @@ abstract class Controller extends Singleton {
       'widgets'       => $this->widgets
     );
     
-    
     if($status != null) {
       $this->s->render($template, array_merge($standard, $data), $status);
     } else {
@@ -59,9 +58,7 @@ abstract class Controller extends Singleton {
       
     $this->s = new Slim();
     $this->user = null;
-    if(Session::get('user_id')) {
-      $this->user = R::load('user', Session::get('user_id'));
-    }
+    
     $this->css_classes = array(
       strtolower(substr(get_class($this), 0, -strlen('Controller')))
     );
@@ -77,7 +74,15 @@ abstract class Controller extends Singleton {
         'feeds' => $this->getFacebookFeeds()
       ),
       'login' => array()
-    );       
+    );   
+
+    if(Session::get('user_id')) {
+      $this->user = R::load('user', Session::get('user_id'));
+      moveKeyFirstInArray('login', $this->widgets);
+      $this->css_classes[] = 'logged-in';
+    } else {
+      $this->css_classes[] = 'not-logged-in';
+    }
     
     // Might be replaced by real class sometime.
     $this->seo = (object)array(
@@ -158,6 +163,20 @@ abstract class Controller extends Singleton {
     Asset::js('js/script.js');
   }
   
-  protected final function addAdminAssets() {}
+  protected final function addAdminAssets() {
+    Asset::css('libs/normalize-css/normalize.css');
+    Asset::css('libs/bootstrap/css/bootstrap.min.css');
+    Asset::css('libs/bootstrap/css/bootstrap-theme.min.css');
+    Asset::css('libs/font-awesome/css/font-awesome.min.css');
+    Asset::css('libs/bootstrap-social/bootstrap-social.css');
+    Asset::css('libs/bxslider-4/jquery.bxslider.css');
+    Asset::scss('style.scss');
+    Asset::js('libs/jquery/jquery.min.js');
+    Asset::js('libs/bootstrap/js/bootstrap.min.js');
+    Asset::js('libs/bxslider-4/jquery.bxslider.min.js');
+    Asset::js('libs/tinymce/js/tinymce/tinymce.min.js');
+    Asset::js('js/Filosofspexet.js');
+    Asset::js('js/script.js');
+  }
   
 }
