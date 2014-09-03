@@ -5,7 +5,6 @@
     </a>
     På Facebook
   </div>
-    <?php $feeds = $widgets[0]->data['feeds']; // Fix so we get this from render() ?>
      <ul class="list-group">
       <?php foreach($feeds as $feed): ?>
         <li class="list-group-item post">

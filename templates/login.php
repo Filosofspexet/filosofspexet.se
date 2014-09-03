@@ -10,8 +10,12 @@
 <div class="container" id="main">
   <div class="row">
     <div class="col-md-12">
-      <?php echo $this->render('login.form.php'); ?>
-      <?php echo $this->render('login.social.php'); ?>
+      <?php if(!$user) : ?>
+        <?php echo $this->render('login.form.php'); ?>
+        <?php echo $this->render('login.social.php'); ?>
+      <?php else: ?>
+        <?php echo sprintf(__('Du är inloggad som %s'), $user->username); ?>
+      <?php endif; ?>
     </div>
   </div>
 </div>

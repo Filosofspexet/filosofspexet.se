@@ -39,15 +39,15 @@ class UsersController extends Controller {
             } else {
               $this->s->flash('danger', __('Felaktigt användarnamn eller lösenord.'));
               Session::_unset('user_id');
-            }
-            if(isset($_GET['redirectUrl'])) {
-              $this->s->redirect($_GET['redirectUrl']);
-            } else {
-              $this->s->redirect(Uri::create('/'));
-            }
+            }        
           }
         } else {
-          $this->flash(__('Du måste logga ut först'));
+          $this->s->flash('warning', __('Du måste logga ut först'));
+        }
+        if(isset($_GET['redirectUrl'])) {
+          $this->s->redirect($_GET['redirectUrl']);
+        } else {
+          $this->s->redirect(Uri::create('/'));
         }
       });
       

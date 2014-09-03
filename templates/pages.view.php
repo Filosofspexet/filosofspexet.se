@@ -23,9 +23,9 @@
       </div>        
     </div>
     <div class="col-md-3 page-right">
-      <?php foreach($widgets as $widget) : ?>
-        <div class="widget <?php echo $widget->name; ?>">
-          <?php echo $this->render(sprintf('%s.widget.php', $widget->name), $widget->data); ?>
+      <?php foreach($widgets as $widget => $data) : ?>
+        <div class="widget <?php echo $widget; ?>">
+          <?php echo $this->render(sprintf('%s.widget.php', $widget), $data); ?>
         </div>
       <?php endforeach; ?>   
       <?php #echo $this->render('google.calendar.widget.php'); ?>

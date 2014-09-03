@@ -73,17 +73,11 @@ abstract class Controller extends Singleton {
     $this->slider_images  = array('temp');
        
     $this->widgets        = array(
-      (object)array(
-        'name' => 'facebook-page',
-        'data' => array(
-          'feeds' => $this->getFacebookFeeds()
-        )
+      'facebook-page' => array(
+        'feeds' => $this->getFacebookFeeds()
       ),
-      (object)array(
-        'name' => 'login',
-        'data' => array()
-      )       
-    );
+      'login' => array()
+    );       
     
     // Might be replaced by real class sometime.
     $this->seo = (object)array(
