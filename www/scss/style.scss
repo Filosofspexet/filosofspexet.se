@@ -82,7 +82,12 @@ body {
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
   }
-  .main-slider {   
+  
+  .bx-pager-link.active {
+    background-color: white !important;
+  }
+  
+  .main-slider {      
     .bx-caption {
       background: rgba(60, 60, 60, 0.5);
     }
@@ -93,14 +98,14 @@ body {
   
   .menu {
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
     background-color: rgba(100,100,100,0.5);
     @include border-radius(8px);
   }
   
   #main {
-    background-color: $whitebg;
-    @include border-radius(8px);
+  
+    margin-bottom: 20px;
     
     a {
       color: black;
@@ -117,19 +122,41 @@ body {
     }
     
     .page-main {
-      border-right: 1px solid #c0c0c0;
+      background-color: $whitebg;
+      @include border-radius(4px);
+      padding-top: 2px !important;
+      padding-bottom: 20px;
+      
+      .body-text {
+        .fb-like {
+          float: right;
+        }
+      }
+      
     }
     
-    .page-right {
+    .page-news {
+      @include border-radius(4px);
+      margin-top: 20px;    
+      padding-right: 0px;
+      padding-left: 0px;      
+    }
+    
+    .page-right {   
       .widget {
-        margin-top: 10px;
+        margin-top: 0px;     
+      }
+      .widget.login {
+        .social {
+          margin-top: 10px;
+        }
       }
       .widget.facebook-page {
         .post {
           font-size: 12px;
           margin-top: 2px;
           margin-bottom: 2px;
-          padding: 2px;
+          padding: 5px;
           
           .read-more {
             display: block;
@@ -144,19 +171,58 @@ body {
   }
   
   .footer {  
+
     color: white;
     @include spex-gradient;
     margin-top: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
     
-    .social {     
-      > a {              
-        margin-top: 5px;
-        margin-left: 5px;
+    .footer0 {
+      font-size: 11px;
+      
+      .title {
+        font-size: 18px;
       }
+      .cookies {
+        margin-top: 55px;
+      }
+      
+      .partner-title {
+        text-decoration: none;
+        font-size: 14px;
+      }
+          
     }
     
+    .footer1 {
+      .site-title {
+        font-size: 20px;
+        margin-top: 10px;
+      }
+      
+      .partner {
+        margin-left: 10px;
+      }
+      
+      .social { 
+        padding-left: 0px; 
+        
+        > a {              
+          margin-top: 5px;
+          margin-left: 5px;
+        }
+      }  
+    }
+    .footer2 {
+      margin-top: 10px;    
+    }
+    
+  }
+  
+  .copyright {
+    text-align: center;
+    margin-top: 10px;
   }
   
 }
@@ -175,7 +241,7 @@ body {
 
     }
     .footer {
-      .social {
+      .social {      
         padding-right: 50px;
         > a {
           float: right;
@@ -191,10 +257,62 @@ body {
   }
 }
 
+@media (max-width: 991px) {
+  body {
+    .page-main {   
+      margin-bottom: 20px;
+      .body-text {
+        padding-bottom: 20px; /* Due to facebook like buttons */     
+        .fb-like {
+        }
+      }
+    }
+    .page-news {
+      padding-right: 0px;
+      padding-left: 0px;
+    }
+    .page-right {
+      padding-right: 0px;
+      padding-left: 0px;
+    } 
+    .footer {  
+      .title {
+        margin-top: 10px;
+      }
+      .partner {
+        margin-top: 10px;
+      }
+      .logo {
+        display: none;
+      }    
+      .footer0 {
+        font-size: 11px;
+        .cookies {
+          margin-top: 10px;
+        }              
+      }
+      .footer1 {
+        .social {
+          margin-top: 10px;
+          padding-left: 20px;
+        }
+      }
+    }
+  }
+  
+}
+
 @media (min-width: 768px) and (max-width: 991px) {
   .navbar-nav {
-    font-size: 10.5px;
+    font-size: 13px;
   }
+  .nav {
+    >li {
+      >a {
+        padding-left: 8px; padding-right: 8px;
+      }
+    }
+  } 
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {

@@ -1,0 +1,1 @@
+<div class="fb-like-box" data-href="https://www.facebook.com/filosofspexet" data-colorscheme="dark" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>

@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	  <meta name="keywords" content="<?php echo implode(', ', $seo->keywords); ?>">
 	  <meta name="description" content="<?php echo $seo->description; ?>">
+    <?php if($seo->noindex) : ?>
+      <meta name="robots" content="noindex">
+    <?php endif; ?>
     <?php if($seo->canonical_url) : ?>
       <link rel="canonical" href="<?php echo $seo->canonical_url; ?>" />
     <?php endif; ?>

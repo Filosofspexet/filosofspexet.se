@@ -31,7 +31,8 @@ class PagesController extends Controller {
           $this->requireAllActions($action_names);
         }
         $this->slider_images = $page->ownSliderimageList;
-        $this->render($page->template, $page->export());
+        $template = $page->template ? basename($page->template) : 'pages.view.php';
+        $this->render(basename($template), $page->export());
       }
 	  });  
 

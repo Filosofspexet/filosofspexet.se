@@ -13,12 +13,14 @@ abstract class Controller extends Singleton {
   protected $widgets;
   
   protected final function throw404() {
-    $this->seo->canonical_url = Uri::create('/404');
+    $this->slider_images = array();
+    $this->seo->noindex = true;
+    $this->css_classes[] = '404';
     $page = R::findOne('page', 'slug = ?', array('404'));
     if($page == null) {
       throw new Exception(__('Sidan kunde inte hittas.'));
     }
-    $this->render('pages.view.php', $page->export());
+    $this->render('404.php', $page->export());
   }
   
   protected final function render($template, array $data = array(), $status = null) {
@@ -86,7 +88,8 @@ abstract class Controller extends Singleton {
       'keywords'      =>  array(),
       'description'   =>  __('Beskrivning av filosofspexet'),
       'favicon'       =>  'favicon.ico',
-      'canonical_url' => null
+      'canonical_url' => null,
+      'noindex'       => false
     );
     
     $this->s->config(array(

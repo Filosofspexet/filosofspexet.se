@@ -5,7 +5,6 @@
     </a>
     På Facebook
   </div>
-  <div class="panel-body">
     <?php $feeds = $widgets[0]->data['feeds']; // Fix so we get this from render() ?>
      <ul class="list-group">
       <?php foreach($feeds as $feed): ?>
@@ -30,5 +29,4 @@
         </li>
       <?php endforeach; ?>
     </ul>
-  </div>
 </div>

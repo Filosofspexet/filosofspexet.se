@@ -1,4 +1,4 @@
-/* compiled by scssphp v0.1.1 on Tue, 02 Sep 2014 22:47:49 +0200 (0.5822s) */
+/* compiled by scssphp v0.1.1 on Wed, 03 Sep 2014 04:05:41 +0200 (0.8788s) */
 
 .panel-heading .btn {
   margin-right: 10px; }
@@ -54,24 +54,22 @@ body {
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important; }
+  body .bx-pager-link.active {
+    background-color: white !important; }
   body .main-slider .bx-caption {
     background: rgba(60, 60, 60, 0.5); }
     body .main-slider img {
       max-height: 200px; }
   body .menu {
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
     background-color: rgba(100, 100, 100, 0.5);
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     -ms-border-radius: 8px;
     border-radius: 8px; }
   body #main {
-    background-color: #f0f0f0;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    -ms-border-radius: 8px;
-    border-radius: 8px; }
+    margin-bottom: 20px; }
     body #main a {
       color: black;
       text-decoration: underline; }
@@ -81,14 +79,32 @@ body {
     body #main h1 {
       border-bottom: 1px solid #c0c0c0; }
     body #main .page-main {
-      border-right: 1px solid #c0c0c0; }
+      background-color: #f0f0f0;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      -ms-border-radius: 4px;
+      border-radius: 4px;
+      padding-top: 2px !important;
+      padding-bottom: 20px; }
+      body #main .page-main .body-text .fb-like {
+        float: right; }
+    body #main .page-news {
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      -ms-border-radius: 4px;
+      border-radius: 4px;
+      margin-top: 20px;
+      padding-right: 0px;
+      padding-left: 0px; }
     body #main .page-right .widget {
-      margin-top: 10px; }
+      margin-top: 0px; }
+      body #main .page-right .widget.login .social {
+        margin-top: 10px; }
       body #main .page-right .widget.facebook-page .post {
         font-size: 12px;
         margin-top: 2px;
         margin-bottom: 2px;
-        padding: 2px; }
+        padding: 5px; }
         body #main .page-right .widget.facebook-page .post .read-more {
           display: block;
           font-weight: bold;
@@ -114,9 +130,30 @@ body {
     margin-top: 10px;
     padding-top: 5px;
     padding-bottom: 5px; }
-    body .footer .social > a {
-      margin-top: 5px;
-      margin-left: 5px; }
+    body .footer .footer0 {
+      font-size: 11px; }
+      body .footer .footer0 .title {
+        font-size: 18px; }
+      body .footer .footer0 .cookies {
+        margin-top: 55px; }
+      body .footer .footer0 .partner-title {
+        text-decoration: none;
+        font-size: 14px; }
+    body .footer .footer1 .site-title {
+      font-size: 20px;
+      margin-top: 10px; }
+      body .footer .footer1 .partner {
+        margin-left: 10px; }
+      body .footer .footer1 .social {
+        padding-left: 0px; }
+        body .footer .footer1 .social > a {
+          margin-top: 5px;
+          margin-left: 5px; }
+    body .footer .footer2 {
+      margin-top: 10px; }
+  body .copyright {
+    text-align: center;
+    margin-top: 10px; }
 
 @media (min-width: 992px) {
   body .header .social {
@@ -132,6 +169,36 @@ body {
   .navbar-brand {
     display: none; } }
 
+@media (max-width: 991px) {
+  body .page-main {
+    margin-bottom: 20px; }
+    body .page-main .body-text {
+      padding-bottom: 20px;
+      /* Due to facebook like buttons */ }
+      body .page-news {
+        padding-right: 0px;
+        padding-left: 0px; }
+    body .page-right {
+      padding-right: 0px;
+      padding-left: 0px; }
+    body .footer .title {
+      margin-top: 10px; }
+    body .footer .partner {
+      margin-top: 10px; }
+    body .footer .logo {
+      display: none; }
+    body .footer .footer0 {
+      font-size: 11px; }
+      body .footer .footer0 .cookies {
+        margin-top: 10px; }
+    body .footer .footer1 .social {
+      margin-top: 10px;
+      padding-left: 20px; } }
+
 @media (min-width: 768px) and (max-width: 991px) {
   .navbar-nav {
-    font-size: 10.5px; } }
+    font-size: 13px; }
+
+  .nav > li > a {
+    padding-left: 8px;
+    padding-right: 8px; } }
