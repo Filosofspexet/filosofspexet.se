@@ -12,9 +12,51 @@ R::nuke();
 echo "Creating actions.\n";
 // Actions -------------------
 $names = array(
+  'pages.list',
   'pages.create',
   'pages.edit',
-  'pages.delete'
+  'pages.delete', 
+  'spex.list',
+  'spex.create',
+  'spex.edit',
+  'spex.delete'
+  'users.list',
+  'users.create',
+  'users.edit',
+  'users.delete',
+  'events.list',
+  'events.create',
+  'events.edit',
+  'events.delete',
+  'news.list',
+  'news.create',
+  'news.edit',
+  'news.delete',
+  'actions.list',
+  'actions.create',
+  'actions.edit',
+  'actions.delete', 
+  'tickets.list',
+  'tickets.create',
+  'tickets.edit',
+  'tickets.delete',
+  'contacts.list',
+  'contacts.create',
+  'contacts.edit',
+  'contacts.delete'
+  'images.list',
+  'images.create',
+  'images.edit',
+  'images.delete',
+  'music.list',
+  'music.create',
+  'music.edit',
+  'music.delete',
+  'gyckel.list',
+  'gyckel.create',
+  'gyckel.edit',
+  'gyckel.delete'
+  images
 );
 $action_ids = array();
 foreach($names as $name) {
