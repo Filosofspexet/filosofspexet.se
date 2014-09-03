@@ -1,4 +1,4 @@
-/* compiled by scssphp v0.1.1 on Wed, 03 Sep 2014 10:44:04 +0200 (0.8762s) */
+/* compiled by scssphp v0.1.1 on Wed, 03 Sep 2014 12:04:55 +0200 (1.0391s) */
 
 .alert {
   display: none; }
@@ -20,6 +20,11 @@ form.login label {
   form.login input[type="submit"] {
     margin-top: 5px;
     margin-bottom: 5px; }
+
+body.login .header {
+  margin-bottom: 10px; }
+  body.login #main .page-main {
+    margin-top: 0px; }
 
 body.cookies #main .page-main ul {
   margin-top: 10px; }
@@ -153,9 +158,12 @@ body {
         padding: 0px; }
         body .footer .footer0 .quick-links ul li {
           list-style: none; }
-    body .footer .footer1 .site-title {
-      font-size: 20px;
+    body .footer .footer1 {
+      border-top: 2px solid rgba(40, 40, 40, 0.5);
       margin-top: 10px; }
+      body .footer .footer1 .site-title {
+        font-size: 20px;
+        margin-top: 10px; }
       body .footer .footer1 .partner {
         margin-left: 10px; }
       body .footer .footer1 .social {
@@ -170,6 +178,9 @@ body {
     margin-top: 10px; }
 
 @media (min-width: 992px) {
+  body.login .flash {
+    padding-right: 0px; }
+
   body.logged-in .widget.login .panel-body {
     text-align: center; }
     body.logged-in .widget.login .panel-body .logout {
@@ -180,30 +191,40 @@ body {
     padding-right: 50px; }
     body .header .social > a {
       float: right; }
+    body .footer .footer1 {
+      padding-top: 15px; }
     body .footer .social {
-      text-align: center; } }
+      text-align: center; }
+    body .copyright {
+      margin-top: 30px; } }
 
 @media (min-width: 768px) {
   .navbar-brand {
     display: none; } }
 
 @media (max-width: 991px) {
+  body.login .flash {
+    margin-top: 20px; }
+
   body .header .site-sub-title {
     margin-top: 15px;
     text-align: left; }
     body .flash {
       padding-right: 0px; }
-    body .page-main {
-      margin-bottom: 20px; }
-      body .page-main .body-text {
-        padding-bottom: 20px;
-        /* Due to facebook like buttons */ }
-        body .page-news {
-          padding-right: 0px;
-          padding-left: 0px; }
-    body .page-right {
-      padding-right: 0px;
-      padding-left: 0px; }
+    body #main {
+      margin-bottom: -10px; }
+      body #main .page-main {
+        margin-bottom: 20px; }
+        body #main .page-main .body-text {
+          padding-bottom: 20px;
+          /* Due to facebook like buttons */ }
+          body #main .page-news {
+            padding-right: 0px;
+            padding-left: 0px;
+            margin-top: 0px; }
+      body #main .page-right {
+        padding-right: 0px;
+        padding-left: 0px; }
     body .footer .title {
       margin-top: 10px; }
       body .footer .partner {

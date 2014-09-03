@@ -27,7 +27,7 @@
             <p>
               Adress:<br />
               Filosofiska lätta knästående spexargardet<br />
-              C/o FFS<br />
+              C/O FFS<br />
               Götabergsgatan 17 <br />
               411 34  Göteborg
             </p>

@@ -31,7 +31,7 @@ $page = R::dispense('page');
 $page->slug = 'start';
 $page->title = 'Filosofspexet';
 $page->template = 'start.view.php';
-$page->leadtext = 'Varm välkommen till Filosofiska Lätta Knästående SpexarGardet (i kortform Filosofspexet)!';
+$page->leadtext = 'Varmt välkommen till Filosofiska Lätta Knästående SpexarGardet (i kortform Filosofspexet)!';
 $page->bodytext = '<b>Vilka är vi då?</b> Jo, vi är Göta studentkårs spex.<br /><br />
 <b>Men vad är ett spex?</b> Jo en spexförening blandar teater, dans, sång, komik, musik, fester och kalabalik! Vi sätter årligen upp en stor spexproduktion samt en höstrevy. Mellan föreställningarna ägnar vi oss åt stämsång, teaterövningar, kakätning, kramar och annat minst lika spexikalt.<br />';
 R::store($page);
@@ -80,6 +80,69 @@ $page->leadtext = 'Denna websida använder sig av Cookies. Enligt lagen om elekt
 <li>Vad dessa cookies används till</li>
 <li>Hur cookies kan undvikas</li></ul>';
 $page->bodytext = '<p>På <a href="http://www.filosofspexet.se">www.filosofspexet.se</a> används en sessionscookie för att identifiera inloggade användare. Denna försvinner när du stänger din webläsare. Utan cookies kommer inloggningsfunktionen på sidan inte att fungera. Cookies kan undvikas genom att du ställer in din webläsare så att den automatiskt nekar cookies, alternativt ger dig information om när cookies används och låter dig göra aktiva val från gång till gång.</p>';
+R::store($page);
+
+// Create musik page
+$page = R::dispense('page');
+$page->slug = 'musik';
+$page->title = 'Musik';
+$page->template = 'pages.view.php';
+$page->leadtext = 'Nedan finns sånger från några av våra framträdanden som mp3-filer. Klicka och lyssna!';
+$page->bodytext = '<h2>Allmänna spexsånger</h2>
+<p><ul><li><a href="'.Uri::createFile('/old/musik/Paradmarsch.mp3').'">Filosofspexets Paradmarsch</A>, 
+framförd på Mölndals Sjukhus ögonkliniks personalfest på Valands 
+festvåning i mars 2002.
+<li><a href="'.Uri::createFile('/old/musik/Anengangdaran.mp3').'">Än en gång däran</A>, den klassiska
+dryckesvisan, i Filosofspexets tappning. Inspelat vid samma tillfälle som 
+ovan.
+<li><a href="'.Uri::createFile('/old/musik/Punschragg.mp3').'">Punschragg.</a> Dr&uuml;ckesvisan
+fr&aring;n 1995 &aring;rs spex, Earl Greys Testamente. Sången
+framf&ouml;rs här inte av spexet, utan av en kvintett som tidigare
+terroriserat G&ouml;teborgs k&ouml;rer med sina alster. Melodi: 
+Alexander\'s Ragtime Band</ul>
+<h2>Ur Rödvit från 1966</h2>
+<p>En EP spelades in i samband med premiären 1987 av dokumentationsskäl.
+<ul><li><a href="'.Uri::createFile('/old/musik/Rodvit/Terzetten.mp3').'">Terzetten.</a> Askungen och Prinsen kommer fint
+överens, medan Per Svinaherde känner sig brädad och grymtar i bakgrunden. Mel: Così fan tutte, Terzetto: La mia Dorabella capace non é.
+<li><a href="'.Uri::createFile('/old/musik/Rodvit/Draksnaps.mp3').'">Drakens snapsvisa.</a> Egentligen dricker ju inte detta tvåhövdade monster annat än rödsprit, men vem kan stå emot omgivningens tryck? Mel: Woody Guthrie, This Land is Your land.
+<li><a href="'.Uri::createFile('/old/musik/Rodvit/Draken.mp').'3">Drakens entrésång.</a> Denna säregna blandning av tvåhövdat sagodjur och svensk flygmaskin J-35 presenterar sig och ger glimtar ur sitt liv. Mel: Beethoven, Für Elise.
+<li><a href="'.Uri::createFile('/old/musik/Rodvit/Drottning-Prins.mp3').'">Duett Drottningen-Prinsen.</a> Drottningen lockar prinsen med strålande framtidsutsikter och får slutligen gensvar. Mel: Flotow, Martha: Lyonels aria och Porterlied.
+<li><a href="'.Uri::createFile('/old/musik/Rodvit/Drottningen.mp3').'">Drottningen</a> sjunger om hur hon sov på en ärt och därefter charmerade kejsaren.
+<li><a href="'.Uri::createFile('/old/musik/Rodvit/Rodvit.mp3').'">Rödvits visa.</a> Prinsessan ser slutet på sin långa tid på glasberget, då hon presenteras för draken. Mel: Ferlin, På Arendorffs tid.
+<li><a href="'.Uri::createFile('/old/musik/Rodvit/Kejsaren.mp3').'">Kejsarens entrésång.</a> Kejsarhusets familjepolitik
+skildras av dess något släpphänta men understundom klarsynta överhuvud. Mel: Zeller,
+Fågelhandlaren: Farfarssången (Wie mein Ahnl Zwanzig Jahr).
+<li><a href="'.Uri::createFile('/old/musik/Rodvit/Prins-Drake.mp3').'">Trio Prinsen-Draken.</a> Under kampen om Rödvit händer det sig, att Prinsen hotar Draken, vilken dock inte blir svaret skyldig. Mel: Mozart, Don Giovanni: Deh vieni alla finestra. </ul>
+<h2>Ur van Tomen från 1964</h2>
+<p>EP:n spelades in till 10-årsjubileet för att vara bilaga i programhäftet.
+<p>Genomgående, beledsagande Steinwayflygel: Bodil
+<ul><li><a href="'.Uri::createFile('/old/musik/vanTomen/vanTomen.mp3').'">van Tomens entrésång.</a> 
+Sven (barit.). Jaan van Tomen gör entré i sina stiliga helylletrikåer. Mel: Var jag går i skogar berg och dalar, psalm 251.
+<li><a href="'.Uri::createFile('/old/musik/vanTomen/Diana.mp3').'">Dianas klagan.</a> Limpus (ten. - 
+barit.). Diana är missnöjd med sin lott som åsidosatt hustru åt van Tomen. 
+Hon längtar hem till sta\'n. Flotow, Martha: M\'appari tutt\' amor.
+<li><a href="'.Uri::createFile('/old/musik/vanTomen/Maharadja.mp3').'">Maharadjasången.</a> 
+Tommie (croon.), Limpus (häst). Haremsvakten presenterar sin härskares liv 
+och lustar. Mel: Gamle svarten<li><a href="'.Uri::createFile('/old/musik/vanTomen/Fruktfat.mp3').'">Fruktfat - duetten.</a> Limpus
+(ten.), Anso Gherza (barit.). Den vältalige Marahadjan vill utöka sin
+samling. Diana ser en möjlighet att lämna djunglen, och spelar svårfångad. 
+Mel: Mozart, Don Giovanni: Là ci darem la mano.
+<li><a href="'.Uri::createFile('/old/musik/vanTomen/Kom.mp3').'">Kom, kom.</a>
+Filosofspexets sångkör. Dryckesvisan för året, som fortfarande sjungs på 
+Filosofspexets fester då och då. Notera det tidstypiska politiska 
+inlägget. Mel: Emanuel Jonasson, Gökvalsen
+<li><a href="'.Uri::createFile('/old/musik/vanTomen/Duett.mp3').'">Jättegott - duetten.</a> Storebjörn
+(disör, ten.), Sven (barit.). Fru Palm, Dianas mor, blir knäsvag vid åsynen av van Tomens vältränade fysionomi. Tyvärr något kapat stycke (sången alltså!). Mel: Benatzky, Vita hästen: Det måste vara underbart.
+<li><a href="'.Uri::createFile('/old/musik/vanTomen/Humoresk.mp3').'">Förförelse - humoresk.</a>
+Limpus (med höga C), Anso Gherza (mezzo - barit.). Diana har kommit till
+insikt om Marahadjans låga avsikter. Mel: Dvorak, humoresk.
+<li><a href="'.Uri::createFile('/old/musik/vanTomen/SpexKom.mp3').'">Kom.</a> Extranummer. Snapsvisa
+för dagligt bruk.
+<li><a href="'.Uri::createFile('/old/musik/vanTomen/Finalfinal.mp3').'">Finalfinal</a>. Glassbomben har 
+detonerat och ensemblen gått hädan. De är inte ledsna för det. Inspelad 
+<b>live</b> på Kåren 1966, och endast nyligen överförd till digitalt format! Melodi: Wagner, 
+Tannhäuser: Dir, Göttin der Liebe (Venus lov).
+</ul>';
 R::store($page);
 
 // Create verksamhet page

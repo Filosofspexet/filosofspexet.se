@@ -51,6 +51,17 @@ form.login {
   }
 }
 
+body.login {
+  .header {
+    margin-bottom: 10px;
+  }
+  #main {
+    .page-main {
+      margin-top: 0px;
+    }
+  }
+}
+
 body.cookies {
   #main {
     .page-main {
@@ -226,6 +237,9 @@ body {
     }
     
     .footer1 {
+      border-top: 2px solid rgba(40,40,40,0.5);
+      margin-top: 10px;
+        
       .site-title {
         font-size: 20px;
         margin-top: 10px;
@@ -258,7 +272,13 @@ body {
 }
 
 @media (min-width: 992px) {
- 
+
+  body.login {
+    .flash {
+      padding-right: 0px;
+    }
+  }
+
   body.logged-in {
     .widget.login {
       .panel-body {
@@ -284,12 +304,18 @@ body {
 
     }
     .footer {
+      .footer1 {
+        padding-top: 15px;
+      }   
       .social {      
         text-align: center;
         > a {
           
         }
       }
+    }
+    .copyright {
+      margin-top: 30px;
     }
   }  
 }  
@@ -301,6 +327,11 @@ body {
 }
 
 @media (max-width: 991px) {
+  body.login {
+    .flash {
+      margin-top: 20px;
+    }
+  }
   body {  
     .header { 
       .site-sub-title {
@@ -311,22 +342,26 @@ body {
     .flash {
       padding-right: 0px;
     }
-    .page-main {   
-      margin-bottom: 20px;
-      .body-text {
-        padding-bottom: 20px; /* Due to facebook like buttons */     
-        .fb-like {
+    #main {
+      margin-bottom: -10px;
+      .page-main {
+        margin-bottom: 20px;
+        .body-text {
+          padding-bottom: 20px; /* Due to facebook like buttons */     
+          .fb-like {
+          }
         }
       }
+      .page-news {
+        padding-right: 0px;
+        padding-left: 0px;
+        margin-top: 0px;
+      }
+      .page-right {
+        padding-right: 0px;
+        padding-left: 0px;
+      } 
     }
-    .page-news {
-      padding-right: 0px;
-      padding-left: 0px;
-    }
-    .page-right {
-      padding-right: 0px;
-      padding-left: 0px;
-    } 
     .footer {  
       .title {
         margin-top: 10px;

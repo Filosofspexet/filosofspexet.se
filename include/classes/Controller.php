@@ -13,9 +13,9 @@ abstract class Controller extends Singleton {
   protected $widgets;
   
   protected final function throw404() {
-    $this->slider_images = array();
-    $this->seo->noindex = true;
-    $this->css_classes[] = '404';
+    $this->slider_images  = array();
+    $this->seo->noindex   = true;
+    $this->css_classes[]  = '404';
     $page = R::findOne('page', 'slug = ?', array('404'));
     if($page == null) {
       throw new Exception(__('Sidan kunde inte hittas.'));
@@ -107,9 +107,9 @@ abstract class Controller extends Singleton {
   
   protected final function requireLogin($flash_override = null, $redirect_override = null) {
     if($this->user == null) {
-      $redirect = $redirect_override ? $redirect_override : $_SERVER['PATH_INFO'];
+      $redirect = $redirect_override ? $redirect_override : Uri::create($_SERVER['PATH_INFO']);
       $flash = $flash_override ? $flash_override : __('Du måste logga in för att se innehållet.');
-      $this->s->flash('error', $flash);
+      $this->s->flash('danger', $flash);
       $this->s->redirect(Uri::create('/users/login', array('redirectUrl' => urlencode($redirect))));
     }
   }
@@ -117,7 +117,7 @@ abstract class Controller extends Singleton {
   protected final function requireAction($action, $redirect, $flash) {
     $this->requireLogin();
     if(!$this->user->hasAction($action)) {
-      $this->s->flash('error', $flash);
+      $this->s->flash('danger', $flash);
       $this->s->redirect($redirect);
     }
   }
@@ -136,7 +136,7 @@ abstract class Controller extends Singleton {
         return;		  
       }
 	  }
-    $this->s->flash('error', $flash);
+    $this->s->flash('danger', $flash);
     $this->s->redirect($redirect);
   }
   

@@ -7,4 +7,5 @@ config.php
 *.*~
 tmp
 www/libs
+www/old
 www/scss/scss_cache

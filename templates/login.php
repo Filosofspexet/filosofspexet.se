@@ -3,13 +3,10 @@
 <?php if(sizeof($menu)) : ?>
   <?php $this->render('menu.php', $menu); ?>
 <?php endif; ?>
-<?php if(sizeof($slider_images)) : ?>
-  <?php $this->render('images.slider.php', $slider_images); ?>
-<?php endif; ?>
-
+<?php echo $this->render('flash.status.php'); ?>
 <div class="container" id="main">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 page-main">
       <?php if(!$user) : ?>
         <?php echo $this->render('login.form.php'); ?>
         <?php echo $this->render('login.social.php'); ?>
