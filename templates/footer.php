@@ -22,7 +22,15 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            Du når oss på epost: <a href="mailto:spexstaben@gmail.com">spexstaben@gmail.com</a>
+            <p>Epost:<br />
+            <a href="mailto:spexstaben@gmail.com">spexstaben@gmail.com</a></p>
+            <p>
+              Adress:<br />
+              Filosofiska lätta knästående spexargardet<br />
+              C/o FFS<br />
+              Götabergsgatan 17 <br />
+              411 34  Göteborg
+            </p>
           </div>
         </div>                  
       </div>  
@@ -33,8 +41,12 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-12">
-            Länkar
+          <div class="col-md-12 quick-links">
+            <ul>
+              <li>
+                <a href="<?php echo Uri::create('/spex'); ?>"><?php echo __('Årets spex'); ?></a>
+              </li>
+            </ul>
           </div>
         </div>                
       </div>   
@@ -46,7 +58,7 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            Webbredaktör: Patrik Weibull
+            Webbredaktör: <a href="mailto:patrik.weibull@gmail.com">Patrik Weibull</a>
           </div>
         </div>   
         <div class="row cookies">
@@ -56,16 +68,13 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            Den här sajten använder cookies. Läs mer om <a href="<?php Uri::create('/cookies'); ?>">hur och varför</a>.
+            Den här sajten använder cookies. Läs mer om <a href="<?php echo Uri::create('/cookies'); ?>">hur och varför</a>.
           </div>
         </div>            
       </div>   
     </div>
-    <div class="row footer1"> 
-      <div class="col-md-1">
-        <img class="logo" src="<?php echo Uri::createFile('img/gardist-klar.gif'); ?>" alt="Filosofspexet" height="50" />      
-      </div>  
-      <div class="col-md-2 site-title">
+    <div class="row footer1">      
+      <div class="col-md-2 col-md-offset-1 site-title">
         <a href="<?php echo Uri::create('/'); ?>">
           <?php echo __('Filosofspexet'); ?>          
         </a>

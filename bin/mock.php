@@ -22,8 +22,53 @@ $page->bodytext = '<b>Vilka är vi då?</b> Jo, vi är Göta studentkårs spex.<
 <b>Men vad är ett spex?</b> Jo en spexförening blandar teater, dans, sång, komik, musik, fester och kalabalik! Vi sätter årligen upp en stor spexproduktion samt en höstrevy. Mellan föreställningarna ägnar vi oss åt stämsång, teaterövningar, kakätning, kramar och annat minst lika spexikalt.<br />';
 R::store($page);
 
+// Create gückel page// Create start page
+$page = R::dispense('page');
+$page->slug = 'gyckel';
+$page->title = 'Gyckel';
+$page->template = 'pages.view.php';
+$page->leadtext = 'Filosofiska Lätta Knästående Spexargardet är till uthyrning. Dess Stora Gücklarorden kommer gärna och underhåller er vid det tillfälle ni önskar.';
+$page->bodytext = '<p> Vi gücklar på allt från företagets personaldag till fotbollsklubbens
+20-årsjubiléum. Dagtid, kvällstid, på middag eller konferens, när som
+helst kan vi anlitas för att sprida litet glädje och spexglans över
+tillställningen.
+<p>Vår repertoar består av sketcher, körsånger, solosånger m.m. Om ni hör
+av er tillräcklig långt i förväg kan vi om ni vill även skriva sketcher
+eller sånger just för er.
+<p>Kontakta vår <a href="gucklemaestra@filosofspexet.se">gücklemaestra</a>
+om du är intresserad av att boka oss, eller bara vill ha mer information.</p>
+<p>Här är några exempel på tillfällen då vi uppträtt den senaste 
+tiden:</p>
+<ul>
+<li> Kulturnatta (okt 2010)
+<li> Samfaks finalsittning (sep 2010)
+<li> Student10, Trädgårn (sep 2010)
+<li> SLUG:s examensmiddag (jan 2010)
+<li> Kulturnatta (okt 2009)
+<li> Akademiska Rodden (sep 2009)
+<li> Student 09, Trädgårn (sep 2009)
+<li> Övningssittningar reko och MN6 (aug 2009)
+<li> SLUG:s examensmiddag (jun 2009)
+<li> Valborgsfirande Trädgårdsföreningen (apr 2009)
+<li> FFSex 25-årsjubileum (apr 2009)
+<li> Disputation på arkeologen (mar 2009)
+</ul>';
+R::store($page);
+
+// Create cookies page
+$page = R::dispense('page');
+$page->slug = 'cookies';
+$page->title = 'Cookies';
+$page->template = 'pages.view.php';
+$page->leadtext = 'Denna websida använder sig av Cookies. Enligt lagen om elektronisk kommunikation måste vi informera om
+<ul>
+<li>Att webplatsen innehåller cookies</li>
+<li>Vad dessa cookies används till</li>
+<li>Hur cookies kan undvikas</li></ul>';
+$page->bodytext = '<p>På <a href="http://www.filosofspexet.se">www.filosofspexet.se</a> används en sessionscookie för att identifiera inloggade användare. Denna försvinner när du stänger din webläsare. Utan cookies kommer inloggningsfunktionen på sidan inte att fungera. Cookies kan undvikas genom att du ställer in din webläsare så att den automatiskt nekar cookies, alternativt ger dig information om när cookies används och låter dig göra aktiva val från gång till gång.</p>';
+R::store($page);
+
 // Create verksamhet page
-// Create start page
 $page = R::dispense('page');
 $page->slug = 'verksamhet';
 $page->title = 'Vaddå spex?';

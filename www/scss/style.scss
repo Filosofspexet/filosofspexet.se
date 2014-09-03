@@ -47,6 +47,16 @@ form.login {
   }
 }
 
+body.cookies {
+  #main {
+    .page-main {
+      ul {
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
 body {
   background-color: black;
   
@@ -69,6 +79,7 @@ body {
     
     .site-sub-title {
       margin-top: 15px;
+      text-align: center;
     }
     
     .social {     
@@ -196,6 +207,17 @@ body {
         text-decoration: none;
         font-size: 14px;
       }
+      
+      .quick-links {
+        ul {
+          margin: 0px;
+          padding: 0px;
+          
+          li {
+            list-style: none;
+          }
+        }
+      }
           
     }
     
@@ -246,9 +268,9 @@ body {
     }
     .footer {
       .social {      
-        padding-right: 50px;
+        text-align: center;
         > a {
-          float: right;
+          
         }
       }
     }
@@ -262,7 +284,13 @@ body {
 }
 
 @media (max-width: 991px) {
-  body {    
+  body {  
+    .header { 
+      .site-sub-title {
+        margin-top: 15px;
+        text-align: left;
+      }
+    }  
     .flash {
       padding-right: 0px;
     }

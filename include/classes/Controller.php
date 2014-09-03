@@ -59,6 +59,9 @@ abstract class Controller extends Singleton {
       
     $this->s = new Slim();
     $this->user = null;
+    if(Session::get('user_id')) {
+      $this->user = R::load('user', Session::get('user_id'));
+    }
     $this->css_classes = array(
       strtolower(substr(get_class($this), 0, -strlen('Controller')))
     );

@@ -1,4 +1,4 @@
-/* compiled by scssphp v0.1.1 on Wed, 03 Sep 2014 06:35:40 +0200 (0.8606s) */
+/* compiled by scssphp v0.1.1 on Wed, 03 Sep 2014 08:31:50 +0200 (0.9746s) */
 
 .panel-heading .btn {
   margin-right: 10px; }
@@ -17,6 +17,9 @@ form.login label {
   form.login input[type="submit"] {
     margin-top: 5px;
     margin-bottom: 5px; }
+
+body.cookies #main .page-main ul {
+  margin-top: 10px; }
 
 body {
   background-color: black; }
@@ -46,7 +49,8 @@ body {
       font-size: 20px;
       margin-top: 10px; }
     body .header .site-sub-title {
-      margin-top: 15px; }
+      margin-top: 15px;
+      text-align: center; }
     body .header .social > a {
       margin-top: 5px;
       margin-left: 5px; }
@@ -141,6 +145,11 @@ body {
       body .footer .footer0 .partner-title {
         text-decoration: none;
         font-size: 14px; }
+      body .footer .footer0 .quick-links ul {
+        margin: 0px;
+        padding: 0px; }
+        body .footer .footer0 .quick-links ul li {
+          list-style: none; }
     body .footer .footer1 .site-title {
       font-size: 20px;
       margin-top: 10px; }
@@ -163,17 +172,18 @@ body {
     body .header .social > a {
       float: right; }
     body .footer .social {
-      padding-right: 50px; }
-    body .footer .social > a {
-      float: right; } }
+      text-align: center; } }
 
 @media (min-width: 768px) {
   .navbar-brand {
     display: none; } }
 
 @media (max-width: 991px) {
-  body .flash {
-    padding-right: 0px; }
+  body .header .site-sub-title {
+    margin-top: 15px;
+    text-align: left; }
+    body .flash {
+      padding-right: 0px; }
     body .page-main {
       margin-bottom: 20px; }
       body .page-main .body-text {

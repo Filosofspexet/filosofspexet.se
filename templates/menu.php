@@ -37,7 +37,7 @@
       <li><a href="<?php echo Uri::create('/kontakt'); ?>">Kontakt</a></li>   
       <li><a href="<?php echo Uri::create('/bilder'); ?>">Bilder</a></li>  
       <li><a href="<?php echo Uri::create('/musik'); ?>">Musik</a></li>  
-      <li><a href="<?php echo Uri::create('/guckel'); ?>">Gückel</a></li>        
+      <li><a href="<?php echo Uri::create('/gyckel'); ?>">Gückel</a></li>        
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="<?php echo Uri::create('/internt'); ?>">Internt</a></li>

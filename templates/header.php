@@ -8,10 +8,10 @@
           <?php echo __('Filosofspexet'); ?>          
         </a>
       </div>
-      <div class="col-md-4 site-sub-title">
+      <div class="col-md-4 col-md-offset-1 site-sub-title">
         <?php echo __('Filosofiska lätta knästående spexargardet'); ?>
       </div>
-      <div class="col-md-5 social">
+      <div class="col-md-4 social">
         <a class="btn btn-social-icon btn-facebook" href="https://www.facebook.com/filosofspexet" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="<?php echo __('Besök oss på Facebook!'); ?>"><i class="fa fa-facebook"></i></a>
         <a class="btn btn-social-icon btn-instagram" href="http://instagram.com/filosofspexet" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="<?php echo __('Följ oss på Instagram!'); ?>"><i class="fa fa-instagram"></i></a>
       </div>       

@@ -33,5 +33,8 @@
         ?>);
       })();
     </script>
+    <?php if(Config::get('use.google.analytics')) : ?>
+      <?php echo $this->render('google.analytics.php'); ?>
+    <?php endif; ?>
   </head>
   <body class="<?php echo implode(' ', $css_classes); ?>">

@@ -53,6 +53,15 @@
       captions: true
     });
   };
+  
+  var addActiveClassesToLinks = function() {
+    $('.nav a').each(function(){
+      var $this = $(this);
+      if($this.attr('href') == location.pathname){
+        $this.parent().addClass('active');
+      }
+    })
+  }
  
   /**/
   $().ready(function(){
@@ -66,6 +75,7 @@
     if ($("[rel=tooltip]").length) {
      $("[rel=tooltip]").tooltip();
     }
+    addActiveClassesToLinks();
   });
   
 })(jQuery, Filosofspexet);

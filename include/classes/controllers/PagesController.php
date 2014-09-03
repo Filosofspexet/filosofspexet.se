@@ -5,24 +5,26 @@ class PagesController extends Controller {
   protected function setupRoutes() {
   
     // View start page
-    $this->s->get('/', function() {
+    $this->s->get('/', function() {     
       $this->addStandardAssets();
       $page = R::findOne('page', 'slug = ?', array('start'));
       if($page == null) {
         throw new Exception(__('Startsidan kunde inte hittas.'));
       } else {
+        $this->css_classes[] = 'start';
         $this->slider_images = $page->ownSliderimageList;
         $this->render('start.view.php', $page->export());
       }
 	  });
 	  
 	  // View other page
-	  $this->s->get('/:slug', function($slug) {
+	  $this->s->get('/:slug', function($slug) {    
       $this->addStandardAssets();
       $page = R::findOne('page', 'slug = ?', array($slug));
       if($page == null) {
         $this->throw404();
       } else {
+        $this->css_classes[] = $slug;
         if(sizeof($page->sharedActionList) > 0) {
           $action_names = array();
           foreach($page->sharedActionList as $required_action) {
