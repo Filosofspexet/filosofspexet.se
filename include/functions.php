@@ -12,10 +12,6 @@ function ellipsis($string, $length=100, $ellipsis = '...') {
   return $string;
 }
 
-function doHash($str) {
-  return md5($str);
-}
-
 function generatePassword($length = 10) {
   $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
   $pass = array(); 

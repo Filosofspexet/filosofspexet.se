@@ -3,6 +3,7 @@
 <?php if(sizeof($menu)) : ?>
   <?php echo $this->render('menu.php'); ?>
 <?php endif; ?>
+<?php echo $this->render('flash.status.php'); ?>
 <div class="container" id="main">
   <div class="row">  
     <div class="col-md-9">   

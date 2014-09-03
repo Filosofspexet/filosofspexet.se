@@ -7,7 +7,8 @@ class Uri {
 		if ($index_file && Config::get('index.file')) {
 			$url .= Config::get('index.file').'/';
 		}
-		$url = $url.ltrim(is_null($uri) ? $_SERVER['PATH_INFO'] : $uri, '/');
+    $path_info = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '/';
+		$url = $url.ltrim(is_null($uri) ? $path_info : $uri, '/');
 		if (!empty($get_variables)) {
 			$char = strpos($url, '?') === false ? '?' : '&';
 			foreach ($get_variables as $key => $val) {

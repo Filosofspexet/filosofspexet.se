@@ -28,9 +28,22 @@ class UsersController extends Controller {
       $this->s->post('/login/form', function() {
         $this->css_classes[] = 'login';
         if(!$this->user) {
-          if(isset($_POST['username'],$_POST['password'])) {   
+          if(isset($_POST['username'],$_POST['password'])) {          
+              $user = R::findOne('user', sprintf('username = ? AND hash = MD5(CONCAT(?, salt))'), array(
+              $_POST['username'],
+              Config::get('static.salt').$_POST['password']
+            ));
+            if($user != null) {         
+              Session::set('user_id', $user->id);
+              $this->s->flash('success', __('Du är nu inloggad.'));
+            } else {
+              $this->s->flash('danger', __('Felaktigt användarnamn eller lösenord.'));
+              Session::_unset('user_id');
+            }
             if(isset($_GET['redirectUrl'])) {
               $this->s->redirect($_GET['redirectUrl']);
+            } else {
+              $this->s->redirect(Uri::create('/'));
             }
           }
         } else {

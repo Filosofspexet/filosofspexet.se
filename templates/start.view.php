@@ -6,6 +6,7 @@
 <?php if(true || sizeof($slider_images)) : ?>
   <?php echo $this->render('images.slider.php'); ?>
 <?php endif; ?>
+<?php echo $this->render('flash.status.php'); ?>
 <div class="container" id="main">
   <div class="row">  
     <div class="col-md-9">   
@@ -19,6 +20,7 @@
           </div>
           <div class="body-text">
             <?php echo $bodytext; ?>
+            <div class="fb-like" data-href="<?php echo Uri::create(); ?>" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
           </div>
         </div>
       </div>    

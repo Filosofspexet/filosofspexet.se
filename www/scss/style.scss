@@ -50,6 +50,10 @@ form.login {
 body {
   background-color: black;
   
+  .flash {
+    padding-left: 0px;
+  }
+  
   a {
     color: white;
   }
@@ -258,7 +262,10 @@ body {
 }
 
 @media (max-width: 991px) {
-  body {
+  body {    
+    .flash {
+      padding-right: 0px;
+    }
     .page-main {   
       margin-bottom: 20px;
       .body-text {
@@ -292,6 +299,9 @@ body {
         }              
       }
       .footer1 {
+        >div {
+          text-align: center;
+        }
         .social {
           margin-top: 10px;
           padding-left: 20px;
@@ -302,19 +312,27 @@ body {
   
 }
 
-@media (min-width: 768px) and (max-width: 991px) {
-  .navbar-nav {
-    font-size: 13px;
-  }
-  .nav {
-    >li {
-      >a {
-        padding-left: 8px; padding-right: 8px;
+@media (min-width: 768px) and (max-width: 991px) { 
+  body {
+    .navbar-nav {
+      font-size: 13px;
+    }
+    .nav {
+      >li {
+        >a {
+          padding-left: 8px; padding-right: 8px;
+        }
+      }
+    } 
+    .footer { 
+      .footer1 {
+        >div {
+          text-align: left;
+        }
       }
     }
-  } 
+  }
 }
 
-@media (min-width: 992px) and (max-width: 1199px) {
-
+@media (min-width: 992px) and (max-width: 1199px) { 
 }

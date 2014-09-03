@@ -18,8 +18,8 @@ $page->slug = 'start';
 $page->title = 'Filosofspexet';
 $page->template = 'start.view.php';
 $page->leadtext = 'Varm välkommen till Filosofiska Lätta Knästående SpexarGardet (i kortform Filosofspexet)!';
-$page->bodytext = '<b>Vilka är vi då?</b> Jo, vi är Göta studentkårs spex.<br />
-<b>Men vad är ett spex?</b> Jo en spexförening blandar teater, dans, sång, komik, musik, fester och kalabalik! Vi sätter årligen upp en stor spexproduktion samt en höstrevy. Mellan föreställningarna ägnar vi oss åt stämsång, teaterövningar, kakätning, kramar och annat minst lika spexikalt.';
+$page->bodytext = '<b>Vilka är vi då?</b> Jo, vi är Göta studentkårs spex.<br /><br />
+<b>Men vad är ett spex?</b> Jo en spexförening blandar teater, dans, sång, komik, musik, fester och kalabalik! Vi sätter årligen upp en stor spexproduktion samt en höstrevy. Mellan föreställningarna ägnar vi oss åt stämsång, teaterövningar, kakätning, kramar och annat minst lika spexikalt.<br />';
 R::store($page);
 
 // Create verksamhet page
@@ -147,7 +147,8 @@ echo "Creating users.\n";
 $user = R::dispense('user');
 $dynamic_salt = generatePassword(40);
 $user->username = 'test';
-$user->hash = doHash(sprintf('%s%s%s', Config::get('static.salt'), 'test', $dynamic_salt));
+$user->salt = $dynamic_salt;
+$user->hash = md5(sprintf('%s%s%s', Config::get('static.salt'), 'test', $dynamic_salt));
 $user->sharedActionList = R::loadAll('action', $action_ids);
 R::store($user);
 

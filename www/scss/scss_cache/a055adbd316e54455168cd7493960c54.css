@@ -1,4 +1,4 @@
-/* compiled by scssphp v0.1.1 on Wed, 03 Sep 2014 04:05:41 +0200 (0.8788s) */
+/* compiled by scssphp v0.1.1 on Wed, 03 Sep 2014 06:35:40 +0200 (0.8606s) */
 
 .panel-heading .btn {
   margin-right: 10px; }
@@ -20,6 +20,8 @@ form.login label {
 
 body {
   background-color: black; }
+  body .flash {
+    padding-left: 0px; }
   body a {
     color: white; }
   body .header {
@@ -170,35 +172,40 @@ body {
     display: none; } }
 
 @media (max-width: 991px) {
-  body .page-main {
-    margin-bottom: 20px; }
-    body .page-main .body-text {
-      padding-bottom: 20px;
-      /* Due to facebook like buttons */ }
-      body .page-news {
-        padding-right: 0px;
-        padding-left: 0px; }
+  body .flash {
+    padding-right: 0px; }
+    body .page-main {
+      margin-bottom: 20px; }
+      body .page-main .body-text {
+        padding-bottom: 20px;
+        /* Due to facebook like buttons */ }
+        body .page-news {
+          padding-right: 0px;
+          padding-left: 0px; }
     body .page-right {
       padding-right: 0px;
       padding-left: 0px; }
     body .footer .title {
       margin-top: 10px; }
-    body .footer .partner {
-      margin-top: 10px; }
-    body .footer .logo {
-      display: none; }
-    body .footer .footer0 {
-      font-size: 11px; }
-      body .footer .footer0 .cookies {
+      body .footer .partner {
         margin-top: 10px; }
-    body .footer .footer1 .social {
-      margin-top: 10px;
-      padding-left: 20px; } }
+      body .footer .logo {
+        display: none; }
+      body .footer .footer0 {
+        font-size: 11px; }
+        body .footer .footer0 .cookies {
+          margin-top: 10px; }
+      body .footer .footer1 > div {
+        text-align: center; }
+        body .footer .footer1 .social {
+          margin-top: 10px;
+          padding-left: 20px; } }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  .navbar-nav {
+  body .navbar-nav {
     font-size: 13px; }
-
-  .nav > li > a {
-    padding-left: 8px;
-    padding-right: 8px; } }
+    body .nav > li > a {
+      padding-left: 8px;
+      padding-right: 8px; }
+    body .footer .footer1 > div {
+      text-align: left; } }
