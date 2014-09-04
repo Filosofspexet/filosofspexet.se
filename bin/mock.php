@@ -345,3 +345,54 @@ for($i = 0; $i < 10; $i++) {
   R::store($news);
 }
 
+echo "Creating events\n";
+$urpremier = R::dispense('event');
+$urpremier->title = 'Urpremier';
+$urpremier->description = 'Urpremier för Kejsarens Elixir';
+$urpremier->start = strtotime('2014-02-07 19:00');
+$urpremier->end = strtotime('2014-02-07 21:30');
+
+$galapremier = R::dispense('event');
+$galapremier->title = 'Galapremier';
+$galapremier->description = 'Galapremier för Kejsarens Elixir';
+$galapremier->start = strtotime('2014-02-08 18:00');
+$galapremier->end = strtotime('2014-02-08 20:30');
+
+$foreningsforestallning = R::dispense('event');
+$foreningsforestallning->title = 'Föreningsföreställning';
+$foreningsforestallning->description = 'Föreningsföreställning för Kejsarens Elixir';
+$foreningsforestallning->start = strtotime('2014-02-14 19:00');
+$foreningsforestallning->end = strtotime('2014-02-14 21:30');
+
+$spexforestallning1 = R::dispense('event');
+$spexforestallning1->title = 'Spexföreställning';
+$spexforestallning1->description = 'Spexföreställning för Kejsarens Elixir';
+$spexforestallning1->start = strtotime('2014-02-21 19:00');
+$spexforestallning1->end = strtotime('2014-02-21 21:30');
+
+$spexforestallning2 = R::dispense('event');
+$spexforestallning2->title = 'Spexföreställning';
+$spexforestallning2->description = 'Spexföreställning för Kejsarens Elixir';
+$spexforestallning2->start = strtotime('2014-02-22 18:00');
+$spexforestallning2->end = strtotime('2014-02-22 20:30');
+
+$draegforestallning = R::dispense('event');
+$draegforestallning->title = 'Draegföreställning';
+$draegforestallning->description = 'Draegföreställning för Kejsarens Elixir';
+$draegforestallning->start = strtotime('2014-03-01 18:00');
+$draegforestallning->end = strtotime('2014-03-01 20:30');
+
+echo "Creating spex.\n";
+$spex = R::dispense('spex');
+$spex->created = time();
+$spex->changed = time();
+$spex->slug = $slugify->slugify('Kejsarens Elixir');
+$spex->user = $user;
+$spex->visible = true;
+$spex->title = 'Kejsarens Elixir';
+$spex->alttitle = 'Med Sven Hedin öfver land till Mugholistan';
+$spex->theme = 'Ett spex om kärlek, kol och kameler';
+$spex->ticketprice = '100';
+$spex->teaser = 'Sven Hedin och hans vän Gustaf Adolf, kronprins av Sverige måste genomsöka mystiska ruiner i Taklamakan efter receptet på kejsar Shi Huangdis livselixir, innan den walesiska exploatörskan Diana Jones spränger allt i luften för att öppna världens största kolgruva. Föga anar man vad som lurar där ute mellan Tianshans och Kunluns snötäckta toppar. Vad är det för förbannelse som det pratas om?';
+$spex->ownEventList = array($urpremier,$galapremier,$foreningsforestallning,$spexforestallning1,$spexforestallning2,$draegforestallning);
+R::store($spex);

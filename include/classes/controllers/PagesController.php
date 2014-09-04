@@ -45,11 +45,11 @@ class PagesController extends Controller {
 
     $this->s->group('/sidor', function() {
 
-      $this->s->get('/', function() {
+      $this->s->get('/admin', function() {
         $this->requireAction('pages.list', '/', __('Du har inte rätt att lista sidor.'));
         $this->setAdmin(true);     
         $pagination = $this->paginate('page', array('id','title','slug','template','priority','user_id','created','changed'), 10);      
-        $this->render('pages.list.php', $pagination);
+        $this->render('pages.admin.list.php', $pagination);
       });
 
       $this->s->get('/skapa', function() {
@@ -113,7 +113,7 @@ class PagesController extends Controller {
           $this->s->flash('success', __('Sidan har tagits bort.'));
         }
         if($this->user != null) {
-          $this->s->redirect(Uri::create('/sidor/'));
+          $this->s->redirect(Uri::create('/sidor/admin'));
         } else {
           $this->s->redirect(Uri::create('/'));
         }

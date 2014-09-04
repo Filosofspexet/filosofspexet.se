@@ -1,12 +1,30 @@
 <?php
 
+use Cocur\Slugify\Slugify;
+
 class Spex extends RedBean_SimpleModel {
 
   public function open() {}
   
   public function dispense() {}
   
-  public function update() {}
+  public function update() {
+  
+    // Slugify
+    $slugify = new Slugify();
+    if(!$this->bean->slug) {
+      $this->bean->slug = $this->bean->title;
+    }
+    $this->bean->slug = $slugify->slugify($this->bean->slug);
+    
+    // Sanitize TinyMCE
+    $this->bean->teaser = Htmlawed::filter($this->bean->teaser);  
+    
+    if(!isset($this->bean->visible)) {
+      $this->bean->visible = false;
+    }
+   
+  }
   
   public function after_update() {}
   

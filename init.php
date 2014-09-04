@@ -8,6 +8,7 @@ define('CLASSES_DIR',   INCLUDE_DIR . '/classes');
 define('TEMPLATES_DIR', ROOT_DIR    . '/templates');
 define('PUBLIC_DIR', 	  ROOT_DIR    . '/www');
 define('COMPILED_DIR', 	PUBLIC_DIR  . '/compiled');
+define('IMAGES_DIR',    PUBLIC_DIR  . '/img');
 define('REDBEAN_MODEL_PREFIX', '');
 
 ini_set('magic_quotes_gpc', null);

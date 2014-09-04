@@ -13,7 +13,7 @@
         <?php echo __('Ny sida'); ?>
       </a>
       <h1><?php echo __('Sidor'); ?></h1>
-      <?php echo paginator('/sidor/?page=%d', $current_page, $num_pages); ?>  
+      <?php echo paginator('/sidor/admin?page=%d', $current_page, $num_pages); ?>  
       <table class="table table-striped">
         <thead>
           <?php echo tableHeader('/sidor/', array(

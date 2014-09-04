@@ -339,16 +339,35 @@ body.logged-in.admin {
   .footer {
     @include spex-admin-gradient;
   }
+  .flash {
+    padding-right: 0px;
+  }
   #main {
     table {
       thead {
-        th {
-          a {
-            color: black;
-            text-decoration: none;          
-            i {
+        tr {
+          th {
+            a {
               color: black;
-              text-decoration: none;
+              text-decoration: none;          
+              i {
+                color: black;
+                text-decoration: none;
+              }
+            }
+          }
+        }
+      }
+      tbody {
+        tr {
+          td {
+            span.yes {
+              color: green;
+              font-weight: bold;
+            }
+            span.no {
+              color: red;
+              font-weight: bold;
             }
           }
         }
@@ -364,6 +383,10 @@ body.logged-in.admin {
       label {
         display: block;
         margin-top: 10px;
+      }
+      input[type="text"] {
+        width: 100%;
+        max-width: 800px;
       }
       input[type="submit"] {
         display: inline;

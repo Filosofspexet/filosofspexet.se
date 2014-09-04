@@ -29,7 +29,7 @@
               Filosofiska lätta knästående spexargardet<br />
               C/O FFS<br />
               Götabergsgatan 17 <br />
-              411 34  Göteborg
+              411 34  Göteborg<br /><br />
             </p>
           </div>
         </div>                  

@@ -6,6 +6,7 @@ config.php
 .htaccess
 *.*~
 tmp
+www/img/spex
 www/libs
 www/old
 www/scss/scss_cache
