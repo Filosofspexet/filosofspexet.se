@@ -180,7 +180,6 @@ abstract class Controller extends Singleton {
   
   protected final function addStandardAssets() {
     Asset::clear();
-    Asset::css('libs/normalize-css/normalize.css');
     Asset::css('libs/bootstrap/css/bootstrap.min.css');
     Asset::css('libs/bootstrap/css/bootstrap-theme.min.css');
     Asset::css('libs/font-awesome/css/font-awesome.min.css');
@@ -197,7 +196,6 @@ abstract class Controller extends Singleton {
   
   protected final function addAdminAssets() {
     Asset::clear();
-    Asset::css('libs/normalize-css/normalize.css');
     Asset::css('libs/bootstrap/css/bootstrap.min.css');
     Asset::css('libs/bootstrap/css/bootstrap-theme.min.css');
     Asset::css('libs/font-awesome/css/font-awesome.min.css');

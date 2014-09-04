@@ -6,8 +6,8 @@ use Cocur\Slugify\Slugify;
 
 R::debug(true);
 
-$slugify = new Slugify();
-$faker = Faker\Factory::create();
+$slugify  = new Slugify();
+$faker    = Faker\Factory::create();
 
 echo "Clearing database.\n";
 R::nuke();
@@ -70,25 +70,25 @@ $names = array(
 );
 $action_ids = array();
 foreach($names as $name) {
-  $action = R::dispense('action');
+  $action       = R::dispense('action');
   $action->name = $name;
   $action_ids[] = R::store($action);
 }
 
 echo "Creating roles\n";
-$role = R::dispense('role');
-$role->name = 'Superadmin';
+$role                   = R::dispense('role');
+$role->name             = 'Superadmin';
 $role->sharedActionList = R::loadAll('action', $action_ids);
 R::store($role);
 
 echo "Creating users.\n";
 // Users -------------------
-$user = R::dispense('user');
-$dynamic_salt = generatePassword(40);
-$user->username = 'test';
-$user->email = 'patrik.weibull@gmail.com';
-$user->salt = $dynamic_salt;
-$user->hash = md5(sprintf('%s%s%s', Config::get('static.salt'), 'test', $dynamic_salt));
+$user                 = R::dispense('user');
+$dynamic_salt         = generatePassword(40);
+$user->username       = 'test';
+$user->email          = 'patrik.weibull@gmail.com';
+$user->salt           = $dynamic_salt;
+$user->hash           = md5(sprintf('%s%s%s', Config::get('static.salt'), 'test', $dynamic_salt));
 $user->sharedRoleList = array($role);
 R::store($user);
 
@@ -96,25 +96,25 @@ R::store($user);
 
 echo "Creating pages.\n";
 // Create start page
-$page = R::dispense('page');
-$page->user = $user;
-$page->slug = 'start';
+$page               = R::dispense('page');
+$page->user         = $user;
+$page->slug         = 'start';
 $page->timesupdated = 1;
-$page->created = time();
-$page->changed = time();
-$page->priority = 1;
-$page->title = 'Filosofspexet';
-$page->template = 'start.view.php';
-$page->leadtext = 'Varmt välkommen till Filosofiska Lätta Knästående SpexarGardet (i kortform Filosofspexet)!';
-$page->bodytext = '<b>Vilka är vi då?</b> Jo, vi är Göta studentkårs spex.<br /><br />
+$page->created      = time();
+$page->changed      = time();
+$page->priority     = 1;
+$page->title        = 'Filosofspexet';
+$page->template     = 'start.view.php';
+$page->leadtext     = 'Varmt välkommen till Filosofiska Lätta Knästående SpexarGardet (i kortform Filosofspexet)!';
+$page->bodytext     = '<b>Vilka är vi då?</b> Jo, vi är Göta studentkårs spex.<br /><br />
 <b>Men vad är ett spex?</b> Jo en spexförening blandar teater, dans, sång, komik, musik, fester och kalabalik! Vi sätter årligen upp en stor spexproduktion samt en höstrevy. Mellan föreställningarna ägnar vi oss åt stämsång, teaterövningar, kakätning, kramar och annat minst lika spexikalt.<br />';
 R::store($page);
 
 // Create gückel page// Create start page
 $page = R::dispense('page');
-$page->user = $user;
-$page->slug = 'gyckel';
-$page->title = 'Gyckel';
+$page->user     = $user;
+$page->slug     = 'gyckel';
+$page->title    = 'Gyckel';
 $page->template = 'pages.view.php';
 $page->leadtext = 'Filosofiska Lätta Knästående Spexargardet är till uthyrning. Dess Stora Gücklarorden kommer gärna och underhåller er vid det tillfälle ni önskar.';
 $page->bodytext = '<p> Vi gücklar på allt från företagets personaldag till fotbollsklubbens
@@ -146,9 +146,9 @@ R::store($page);
 
 // Create cookies page
 $page = R::dispense('page');
-$page->user = $user;
-$page->slug = 'cookies';
-$page->title = 'Cookies';
+$page->user     = $user;
+$page->slug     = 'cookies';
+$page->title    = 'Cookies';
 $page->template = 'pages.view.php';
 $page->leadtext = 'Denna websida använder sig av Cookies. Enligt lagen om elektronisk kommunikation måste vi informera om
 <ul>
@@ -160,9 +160,9 @@ R::store($page);
 
 // Create musik page
 $page = R::dispense('page');
-$page->user = $user;
-$page->slug = 'musik';
-$page->title = 'Musik';
+$page->user     = $user;
+$page->slug     = 'musik';
+$page->title    = 'Musik';
 $page->template = 'pages.view.php';
 $page->leadtext = 'Nedan finns sånger från några av våra framträdanden som mp3-filer. Klicka och lyssna!';
 $page->bodytext = '<h2>Allmänna spexsånger</h2>
@@ -224,9 +224,9 @@ R::store($page);
 
 // Create verksamhet page
 $page = R::dispense('page');
-$page->user = $user;
-$page->slug = 'verksamhet';
-$page->title = 'Vaddå spex?';
+$page->user     = $user;
+$page->slug     = 'verksamhet';
+$page->title    = 'Vaddå spex?';
 $page->template = 'pages.view.php';
 $page->leadtext = 'Spex är ett svenskt, akademiskt, parodierande teaterstycke med anakronismer och "röd tråd", skapat av amatörer för att roa och oftast framfört bara under en mycket kort tid. Denna definition är på inga sätt allomfattande; vill du veta vad ett spex är, gå och se ett!';
 $page->bodytext = '<p>Filosofiska L&auml;tta Kn&auml;st&aring;ende SpexarGardet (i kortform Filosofspexet) &auml;r en k&aring;rf&ouml;rening under <a href="http://www.gota.gu.se" title="G&ouml;ta studentk&aring;r">G&ouml;ta studentk&aring;r</a> som utan h&auml;nsyn till &ouml;vriga k&aring;rf&ouml;reningar blandar teater, dans, s&aring;ng, musik, fester, komik, och kalabalik. Vi tr&auml;ffas varje tisdag fr&aring;n cirkus klockan 18 och fram&aring;t i
@@ -239,9 +239,9 @@ R::store($page);
 
 // Create historia page
 $page = R::dispense('page');
-$page->user = $user;
-$page->slug = 'historia';
-$page->title = 'Filosofspexets historia i sammandrag';
+$page->user     = $user;
+$page->slug     = 'historia';
+$page->title    = 'Filosofspexets historia i sammandrag';
 $page->template = 'pages.view.php';
 $page->leadtext = '';
 $page->bodytext = '<p>Filosofspexets historia b&ouml;rjar 1914, d&aring; stadens f&ouml;rsta
@@ -317,16 +317,16 @@ f&aring;r se.</p>
 R::store($page);
 
 // Create 404 page
-$page = R::dispense('page');
-$page->user = $user;
-$page->slug = '404';
-$page->title = '404 - Sidan kunde ej hittas';
+$page           = R::dispense('page');
+$page->user     = $user;
+$page->slug     = '404';
+$page->title    = '404 - Sidan kunde ej hittas';
 $page->leadtext = 'Det var väl synd.';
 $page->bodytext = 'Om du kom hit via en intern länk på hemsidan så har vår webbredaktör automatiskt underrättats om detta.';
 R::store($page);
 
 // Create login page
-$page = R::dispense('page');
+$page       = R::dispense('page');
 $page->user = $user;
 $page->slug = 'login';
 R::store($page);
@@ -334,65 +334,68 @@ R::store($page);
 echo "Creating news.\n";
 
 for($i = 0; $i < 10; $i++) {
-  $news = R::dispense('news');
+  $news           = R::dispense('news');
   $news->headline = $faker->sentence;
-  $news->slug = $slugify->slugify($news->headline);
+  $news->slug     = $slugify->slugify($news->headline);
   $news->bodytext = $faker->paragraph;
-  $t = $faker->unixTime;
-  $news->created = $t;
-  $news->changed = $t;
-  $news->user = $user;
+  $t              = $faker->unixTime;
+  $news->created  = $t;
+  $news->changed  = $t;
+  $news->user     = $user;
   R::store($news);
 }
 
 echo "Creating events\n";
-$urpremier = R::dispense('event');
-$urpremier->title = 'Urpremier';
-$urpremier->description = 'Urpremier för Kejsarens Elixir';
-$urpremier->start = strtotime('2014-02-07 19:00');
-$urpremier->end = strtotime('2014-02-07 21:30');
+$urpremier                = R::dispense('event');
+$urpremier->title         = 'Urpremier';
+$urpremier->description   = 'Urpremier för Kejsarens Elixir';
+$urpremier->start         = strtotime('2014-02-07 19:00');
+$urpremier->end           = strtotime('2014-02-07 21:30');
 
-$galapremier = R::dispense('event');
-$galapremier->title = 'Galapremier';
+$galapremier              = R::dispense('event');
+$galapremier->title       = 'Galapremier';
 $galapremier->description = 'Galapremier för Kejsarens Elixir';
-$galapremier->start = strtotime('2014-02-08 18:00');
-$galapremier->end = strtotime('2014-02-08 20:30');
+$galapremier->start       = strtotime('2014-02-08 18:00');
+$galapremier->end         = strtotime('2014-02-08 20:30');
 
-$foreningsforestallning = R::dispense('event');
-$foreningsforestallning->title = 'Föreningsföreställning';
-$foreningsforestallning->description = 'Föreningsföreställning för Kejsarens Elixir';
-$foreningsforestallning->start = strtotime('2014-02-14 19:00');
-$foreningsforestallning->end = strtotime('2014-02-14 21:30');
+$foreningsforestallning               = R::dispense('event');
+$foreningsforestallning->title        = 'Föreningsföreställning';
+$foreningsforestallning->description  = 'Föreningsföreställning för Kejsarens Elixir';
+$foreningsforestallning->start        = strtotime('2014-02-14 19:00');
+$foreningsforestallning->end          = strtotime('2014-02-14 21:30');
 
-$spexforestallning1 = R::dispense('event');
-$spexforestallning1->title = 'Spexföreställning';
-$spexforestallning1->description = 'Spexföreställning för Kejsarens Elixir';
-$spexforestallning1->start = strtotime('2014-02-21 19:00');
-$spexforestallning1->end = strtotime('2014-02-21 21:30');
+$spexforestallning1               = R::dispense('event');
+$spexforestallning1->title        = 'Spexföreställning';
+$spexforestallning1->description  = 'Spexföreställning för Kejsarens Elixir';
+$spexforestallning1->start        = strtotime('2014-02-21 19:00');
+$spexforestallning1->end          = strtotime('2014-02-21 21:30');
 
-$spexforestallning2 = R::dispense('event');
-$spexforestallning2->title = 'Spexföreställning';
-$spexforestallning2->description = 'Spexföreställning för Kejsarens Elixir';
-$spexforestallning2->start = strtotime('2014-02-22 18:00');
-$spexforestallning2->end = strtotime('2014-02-22 20:30');
+$spexforestallning2               = R::dispense('event');
+$spexforestallning2->title        = 'Spexföreställning';
+$spexforestallning2->description  = 'Spexföreställning för Kejsarens Elixir';
+$spexforestallning2->start        = strtotime('2014-02-22 18:00');
+$spexforestallning2->end          = strtotime('2014-02-22 20:30');
 
-$draegforestallning = R::dispense('event');
-$draegforestallning->title = 'Draegföreställning';
-$draegforestallning->description = 'Draegföreställning för Kejsarens Elixir';
-$draegforestallning->start = strtotime('2014-03-01 18:00');
-$draegforestallning->end = strtotime('2014-03-01 20:30');
+$draegforestallning               = R::dispense('event');
+$draegforestallning->title        = 'Draegföreställning';
+$draegforestallning->description  = 'Draegföreställning för Kejsarens Elixir';
+$draegforestallning->start        = strtotime('2014-03-01 18:00');
+$draegforestallning->end          = strtotime('2014-03-01 20:30');
 
 echo "Creating spex.\n";
-$spex = R::dispense('spex');
-$spex->created = time();
-$spex->changed = time();
-$spex->slug = $slugify->slugify('Kejsarens Elixir');
-$spex->user = $user;
-$spex->visible = true;
-$spex->title = 'Kejsarens Elixir';
-$spex->alttitle = 'Med Sven Hedin öfver land till Mugholistan';
-$spex->theme = 'Ett spex om kärlek, kol och kameler';
-$spex->ticketprice = '100';
-$spex->teaser = 'Sven Hedin och hans vän Gustaf Adolf, kronprins av Sverige måste genomsöka mystiska ruiner i Taklamakan efter receptet på kejsar Shi Huangdis livselixir, innan den walesiska exploatörskan Diana Jones spränger allt i luften för att öppna världens största kolgruva. Föga anar man vad som lurar där ute mellan Tianshans och Kunluns snötäckta toppar. Vad är det för förbannelse som det pratas om?';
-$spex->ownEventList = array($urpremier,$galapremier,$foreningsforestallning,$spexforestallning1,$spexforestallning2,$draegforestallning);
+$spex                 = R::dispense('spex');
+$spex->created        = time();
+$spex->changed        = time();
+$spex->slug           = $slugify->slugify('Kejsarens Elixir');
+$spex->user           = $user;
+$spex->visible        = true;
+$spex->title          = 'Kejsarens Elixir';
+$spex->alttitle       = 'Med Sven Hedin öfver land till Mugholistan';
+$spex->theme          = 'Ett spex om kärlek, kol och kameler';
+$spex->ticketprice    = '100';
+$spex->discountprice  = '70';
+$spex->image          = 'kejsarens.jpg';
+$spex->posterauthor   = 'Hampus Lybeck';
+$spex->teaser         = 'Sven Hedin och hans vän Gustaf Adolf, kronprins av Sverige måste genomsöka mystiska ruiner i Taklamakan efter receptet på kejsar Shi Huangdis livselixir, innan den walesiska exploatörskan Diana Jones spränger allt i luften för att öppna världens största kolgruva. Föga anar man vad som lurar där ute mellan Tianshans och Kunluns snötäckta toppar. Vad är det för förbannelse som det pratas om?';
+$spex->ownEventList   = array($urpremier,$galapremier,$foreningsforestallning,$spexforestallning1,$spexforestallning2,$draegforestallning);
 R::store($spex);

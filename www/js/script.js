@@ -48,6 +48,7 @@
   };
   
   var createJQuerySlider = function() {
+    $('.main-slider').css('visibility','visible');
     $('.main-slider').bxSlider({
       mode: 'fade',
       captions: true
@@ -99,7 +100,7 @@
       });
     }
   }
- 
+  
   /**/
   $().ready(function(){
     if(Filosofspexet.Config.get('facebook.app.id') && $('#fb-root').length > 0) {

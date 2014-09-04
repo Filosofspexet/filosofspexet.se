@@ -16,7 +16,7 @@
       <?php echo paginator('/sidor/admin?page=%d', $current_page, $num_pages); ?>  
       <table class="table table-striped">
         <thead>
-          <?php echo tableHeader('/sidor/', array(
+          <?php echo tableHeader('/sidor/admin', array(
             'id'        => __('Id'),
             'title'     => __('Titel'),
             'slug'      => __('Slug'),

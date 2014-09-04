@@ -34,6 +34,14 @@ $whitebg: #f0f0f0;
   /* display: none; */
 }
 
+.panel-primary {
+  border: none;
+  
+  >.panel-heading {
+    @include spex-gradient;
+  }
+}
+
 .panel-heading {
   i.fa {
     margin-right: 10px;
@@ -141,7 +149,9 @@ body {
     background-color: white !important;
   }
   
-  .main-slider {      
+  .main-slider {     
+    visibility: hidden; /* Becomes visible through js on DOMReady */
+  
     .bx-caption {
       background: rgba(60, 60, 60, 0.5);
     }
@@ -192,11 +202,60 @@ body {
       padding-bottom: 20px;
       
       .body-text {
-        .fb-like {
-          float: right;
+        
+      }
+      
+      .fb-like {
+        float: right;
+      }
+      
+      .alternative-title {
+        font-weight: bold;
+        padding: 10px;
+      }
+      
+      .theme {
+        font-weight: bold;
+        padding: 10px;
+      }
+      
+      .events {
+        margin-top: 10px;
+        
+        .dates-title {
+          font-weight: bold;
+          padding: 10px;
         }
       }
       
+      .spex-image {
+        width: 100%;
+        max-width: 200px;
+        float: right;
+      }
+      
+      .spex-alternative-image-container {
+          display: none;
+       }    
+    }
+    
+    .spex-actions {
+      margin-top: 20px;
+      >div:nth-child(1) {
+        padding-left: 0px;
+        padding-right: 10px;
+      }
+      >div:nth-child(2) {
+        padding-right: 10px;
+      }
+      >div:nth-child(3) {
+        padding-right: 0px;
+      }
+      >div {      
+        .panel {
+          margin-left: 0px;
+        }
+      }
     }
     
     .page-news {
@@ -501,7 +560,26 @@ body.logged-in.admin {
       .page-right {
         padding-right: 0px;
         padding-left: 0px;
-      } 
+      }
+      .spex-actions {
+        margin-top: 0px;
+        >div:nth-child(1) {
+          padding-left: 0px;
+          padding-right: 10px;
+        }
+        >div:nth-child(2) {
+          padding-right: 0px;
+        }
+        >div:nth-child(3) {
+          padding-left: 0px;
+          padding-right: 0px;
+        }
+        >div {      
+          .panel {
+            margin-left: 0px;
+          }
+        }
+      }
     }
     .footer {  
       .title {
@@ -539,6 +617,53 @@ body.logged-in.admin {
       .page-calendar {
         padding-left: 0px;
         
+      }
+      .spex-actions {
+        margin-top: 0px;
+        >div:nth-child(1) {
+          padding-left: 0px;
+          padding-right: 0px;
+        }
+        >div:nth-child(2) {
+          padding-right: 0px;
+          padding-left: 0px;
+        }
+        >div:nth-child(3) {
+          padding-left: 0px;
+          padding-right: 0px;
+        }
+        >div {      
+          .panel {
+            margin-left: 0px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  body {
+    #main {
+      .page-main {
+        .fb-like {
+          margin-top: 10px;
+        }
+        .spex-content-container {
+          width: 100%;
+        }
+        .spex-image-container {
+          display: none;
+        }
+        .spex-alternative-image-container {
+          display: block;
+          text-align: center;
+          
+          .spex-image {
+            margin-top: 10px;
+            float: none;
+          }
+        }       
       }
     }
   }

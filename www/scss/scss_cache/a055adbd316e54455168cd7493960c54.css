@@ -1,7 +1,27 @@
-/* compiled by scssphp v0.1.1 on Thu, 04 Sep 2014 10:45:06 +0200 (1.4321s) */
+/* compiled by scssphp v0.1.1 on Fri, 05 Sep 2014 00:08:47 +0200 (1.6009s) */
 
 .alert {
   /* display: none; */ }
+
+.panel-primary {
+  border: none; }
+  .panel-primary > .panel-heading {
+    background: #5d0032;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #5d0032 0%, #000 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #5d0032), color-stop(100%, #000));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #5d0032 0%, #000 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #5d0032 0%, #000 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #5d0032 0%, #000 100%);
+    /* IE10+ */
+    background: linear-gradient(to bottom, #5d0032 0%, #000 100%);
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5d0032', endColorstr='#000000',GradientType=0);
+    /* IE6-9 */ }
 
 .panel-heading i.fa {
   margin-right: 10px; }
@@ -77,8 +97,11 @@ body {
     box-shadow: none !important; }
   body .bx-pager-link.active {
     background-color: white !important; }
-  body .main-slider .bx-caption {
-    background: rgba(60, 60, 60, 0.5); }
+  body .main-slider {
+    visibility: hidden;
+    /* Becomes visible through js on DOMReady */ }
+    body .main-slider .bx-caption {
+      background: rgba(60, 60, 60, 0.5); }
     body .main-slider img {
       max-height: 200px; }
   body .menu {
@@ -113,8 +136,36 @@ body {
       border-radius: 4px;
       padding-top: 2px !important;
       padding-bottom: 20px; }
-      body #main .page-main .body-text .fb-like {
+      body #main .page-main .fb-like {
         float: right; }
+      body #main .page-main .alternative-title {
+        font-weight: bold;
+        padding: 10px; }
+      body #main .page-main .theme {
+        font-weight: bold;
+        padding: 10px; }
+      body #main .page-main .events {
+        margin-top: 10px; }
+        body #main .page-main .events .dates-title {
+          font-weight: bold;
+          padding: 10px; }
+      body #main .page-main .spex-image {
+        width: 100%;
+        max-width: 200px;
+        float: right; }
+      body #main .page-main .spex-alternative-image-container {
+        display: none; }
+    body #main .spex-actions {
+      margin-top: 20px; }
+      body #main .spex-actions > div:nth-child(1) {
+        padding-left: 0px;
+        padding-right: 10px; }
+      body #main .spex-actions > div:nth-child(2) {
+        padding-right: 10px; }
+      body #main .spex-actions > div:nth-child(3) {
+        padding-right: 0px; }
+      body #main .spex-actions > div .panel {
+        margin-left: 0px; }
     body #main .page-news {
       -webkit-border-radius: 4px;
       -moz-border-radius: 4px;
@@ -328,6 +379,18 @@ body.logged-in.admin .header {
       body #main .page-right {
         padding-right: 0px;
         padding-left: 0px; }
+      body #main .spex-actions {
+        margin-top: 0px; }
+        body #main .spex-actions > div:nth-child(1) {
+          padding-left: 0px;
+          padding-right: 10px; }
+        body #main .spex-actions > div:nth-child(2) {
+          padding-right: 0px; }
+        body #main .spex-actions > div:nth-child(3) {
+          padding-left: 0px;
+          padding-right: 0px; }
+        body #main .spex-actions > div .panel {
+          margin-left: 0px; }
     body .footer .title {
       margin-top: 10px; }
       body .footer .partner {
@@ -346,7 +409,34 @@ body.logged-in.admin .header {
 
 @media (max-width: 768px) {
   body #main .page-calendar {
-    padding-left: 0px; } }
+    padding-left: 0px; }
+    body #main .spex-actions {
+      margin-top: 0px; }
+      body #main .spex-actions > div:nth-child(1) {
+        padding-left: 0px;
+        padding-right: 0px; }
+      body #main .spex-actions > div:nth-child(2) {
+        padding-right: 0px;
+        padding-left: 0px; }
+      body #main .spex-actions > div:nth-child(3) {
+        padding-left: 0px;
+        padding-right: 0px; }
+      body #main .spex-actions > div .panel {
+        margin-left: 0px; } }
+
+@media (max-width: 500px) {
+  body #main .page-main .fb-like {
+    margin-top: 10px; }
+    body #main .page-main .spex-content-container {
+      width: 100%; }
+    body #main .page-main .spex-image-container {
+      display: none; }
+    body #main .page-main .spex-alternative-image-container {
+      display: block;
+      text-align: center; }
+      body #main .page-main .spex-alternative-image-container .spex-image {
+        margin-top: 10px;
+        float: none; } }
 
 @media (min-width: 768px) and (max-width: 991px) {
   body .navbar-nav {

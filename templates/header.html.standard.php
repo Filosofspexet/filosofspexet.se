@@ -1,39 +1,27 @@
 <!DOCTYPE html>
 <html lang="sv">
   <head>
-    <meta charset="utf-8">
-    <title><?php echo $seo->title; ?></title>
+    <meta charset="utf-8">   
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="sv">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	  <meta name="keywords" content="<?php echo implode(', ', $seo->keywords); ?>">
 	  <meta name="description" content="<?php echo $seo->description; ?>"> 
     <?php if($seo->noindex) : ?>
       <meta name="robots" content="noindex">
     <?php endif; ?>
-    <meta property="fb:page_id" content="<?php echo Config::get('facebook.page.id'); ?>" />
+    <title><?php echo $seo->title; ?></title>
     <?php if($seo->canonical_url) : ?>
       <link rel="canonical" href="<?php echo $seo->canonical_url; ?>" />
     <?php endif; ?>
     <link rel="shortcut icon" href="<?php echo $seo->favicon; ?>"/>
     <link rel="bookmark" href="<?php echo $seo->favicon; ?>"/>
+    <meta property="fb:page_id" content="<?php echo Config::get('facebook.page.id'); ?>" />
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
       <script src="js/respond.min.js"></script>
     <![endif]-->  
-    <?php echo Asset::getHeaderHtml(); ?>
-    <script type="text/javascript">
-      (function(){
-        Filosofspexet.Config.setAll(<?php 
-          echo json_encode(array(        
-            'db.debug' 			  => Config::get('db.debug'),
-            'db.freeze' 		  => Config::get('db.freeze'),
-            'slim.debug'		  => Config::get('slim.debug'),	
-            'base.url'        => Config::get('base.url'),
-            'index.file'      => Config::get('index.file'),
-            'facebook.app.id' => Config::get('facebook.app.id'),
-          ));
-        ?>);
-      })();
-    </script>
+    <?php echo Asset::getHeaderHtml(); ?>   
     <?php if(Config::get('use.google.analytics')) : ?>
       <?php echo $this->render('google.analytics.php'); ?>
     <?php endif; ?>

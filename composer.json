@@ -173,7 +173,6 @@
     "components/jquery": "2.1.1",
 		"components/tinymce": "4.0.*",
 		"components/tinymce-sv-se": "4.0.*",
-    "components/normalize.css": "2.1.2",
     "components/bootstrap": "3.2.0",
     "components/bootstrap-social": "4.7.0",
 		"redbeanphp": "4.0.*",
@@ -193,8 +192,8 @@
     "vanilla/htmlawed": "1.2.0"
   },
 	"autoload": {
-	    "files": [
-            "vendor/redbeanphp/rb.php"
-	    ]
+	  "files": [
+      "vendor/redbeanphp/rb.php"
+	  ]
 	}
 }

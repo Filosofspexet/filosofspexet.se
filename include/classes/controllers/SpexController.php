@@ -86,12 +86,13 @@ class PagesController extends Controller {
       });
     
       $this->s->get('/:slug', function($slug) {
+        $this->addStandardAssets();
         $spex = R::findOne('spex', 'slug = ?', array($slug));
         if(!$spex->id) {
           $this->s->flash('danger', __('Spexet finns inte'));
           $this->s->redirect(Uri::create('/spex/'));
         }
-        $this->render('spex.view.php', $spex);
+        $this->render('spex.view.php', compact('spex'));
       });
   
     });
