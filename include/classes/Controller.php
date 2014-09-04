@@ -49,12 +49,7 @@ abstract class Controller extends Singleton {
     $current_page = isset($_GET['page']) ? intval($_GET['page']) : 1;
     $orderby = isset($_GET['orderby']) && in_array($_GET['orderby'], $sortable_columns) ? $_GET['orderby'] : 'id';
     $sortdir = isset($_GET['sortdir']) && in_array($_GET['sortdir'], array('asc','desc')) ? $_GET['sortdir'] : 'ASC';
-    $items = R::findAll($type, '1=1 ORDER BY ? ? LIMIT ?, ?', array(
-      $orderby, 
-      $sortdir, 
-      ($current_page-1) * $items_per_page, 
-      $items_per_page
-    ));
+    $items = R::findAll($type, sprintf('1=1 ORDER BY `%s` %s LIMIT %d, %d', escape($orderby), $sortdir, ($current_page-1) * $items_per_page, $items_per_page));
     $num_pages = ceil(R::count('page') / $items_per_page) ;
     return compact('items', 'current_page', 'num_pages', 'sortby', 'sortdir');
   }

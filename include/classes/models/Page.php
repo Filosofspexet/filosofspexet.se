@@ -21,6 +21,9 @@ class Page extends RedBean_SimpleModel {
     $this->bean->leadtext = Htmlawed::filter($this->bean->leadtext);  
     $this->bean->bodytext = Htmlawed::filter($this->bean->bodytext);  
     
+    // Sanitize template
+    $this->bean->template = basename($this->bean->template);
+    
   }
   
   public function after_update() {}

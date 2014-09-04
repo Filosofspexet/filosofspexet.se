@@ -21,7 +21,7 @@
             'slug'      => __('Slug'),
             'template'  => __('Mall'),
             'priority'  => __('Prioritet'),
-            'user'      => __('Användare'),
+            'user_id'   => __('Användare'),
             'created'   => __('Skapad'),
             'changed'   => __('Ändrad'),
           )); ?>
@@ -58,8 +58,14 @@
             <td><?php echo date(Config::get('date.format'), $page->created); ?></td>
             <td><?php echo date(Config::get('date.format'), $page->changed); ?></td>  
             <td>
-              <a href="<?php echo Uri::create(sprintf('/sidor/andra/%d',  $page->id)); ?>" class="btn btn-primary">Ändra</a>
-              <a href="<?php echo Uri::create(sprintf('/sidor/tabort/%d', $page->id)); ?>" class="btn btn-danger delete">Ta bort</a>
+              <a href="<?php echo Uri::create(sprintf('/sidor/andra/%d',  $page->id)); ?>" class="btn btn-primary">
+                <i class="fa fa-edit"></i>
+                Ändra
+              </a>
+              <a href="<?php echo Uri::create(sprintf('/sidor/tabort/%d', $page->id)); ?>" class="btn btn-danger delete">
+                <i class="fa fa-remove"></i>
+                Ta bort
+              </a>
             </td>
           </tr>
         <?php endforeach; ?>

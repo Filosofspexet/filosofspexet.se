@@ -48,7 +48,7 @@ class PagesController extends Controller {
       $this->s->get('/', function() {
         $this->requireAction('pages.list', '/', __('Du har inte rätt att lista sidor.'));
         $this->setAdmin(true);     
-        $pagination = $this->paginate('page', array('id','slug','template','priority','user','created','changed'), 2);   
+        $pagination = $this->paginate('page', array('id','title','slug','template','priority','user_id','created','changed'), 5);      
         $this->render('pages.list.php', $pagination);
       });
 

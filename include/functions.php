@@ -84,6 +84,20 @@ function tableHeader($url, $columns) {
   return $result;
 }
 
+function escape($value) {
+  $return = '';
+  for($i = 0; $i < strlen($value); ++$i) {
+    $char = $value[$i];
+    $ord = ord($char);
+    if($char !== "'" && $char !== "\"" && $char !== '\\' && $ord >= 32 && $ord <= 126) {
+      $return .= $char;
+    } else {
+      $return .= '\\x' . dechex($ord);
+    }
+  }
+    return $return;
+}
+
 function any_in_array(array $keys, &$arr) {
   foreach($keys as $key) {
     if(in_array($key, $arr)) {
