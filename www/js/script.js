@@ -114,7 +114,7 @@
     }
     addActiveClassesToLinks();
     addActiveClassesForAdmin();
-    addFlashAnimations();
+    //addFlashAnimations();
     addTinyMCE();
     addWarningsWhenDeleting();
   });

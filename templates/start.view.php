@@ -13,13 +13,13 @@
       <div class="row">
         <div class="col-md-12 page-main">
           <h1>
-          <?php echo $title; ?>
+          <?php echo $page->title; ?>
           </h1>
           <div class="lead">
-            <?php echo $leadtext; ?>
+            <?php echo $page->leadtext; ?>
           </div>
           <div class="body-text">
-            <?php echo $bodytext; ?>
+            <?php echo $page->bodytext; ?>
             <div class="fb-like" data-href="<?php echo Uri::create(); ?>" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
           </div>
         </div>

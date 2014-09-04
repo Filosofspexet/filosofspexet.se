@@ -15,7 +15,7 @@ class PagesController extends Controller {
         $this->slider_images = $page->ownSliderimageList;
         $this->seo->canonical_url = Uri::create('/');
         $news = R::findAll('news', '1=1 ORDER BY created DESC LIMIT 5');
-        $this->render('start.view.php', array_merge(array('news' => $news), $page->export()));
+        $this->render('start.view.php', array_merge(array('news' => $news), compact('page')));
       }
 	  });
 
@@ -39,7 +39,7 @@ class PagesController extends Controller {
         }
         $this->slider_images = $page->ownSliderimageList;
         $template = $page->template ? basename($page->template) : 'pages.view.php';
-        $this->render(basename($template), $page->export());
+        $this->render(basename($template), compact('page'));
       }
 	  });
 
@@ -48,7 +48,7 @@ class PagesController extends Controller {
       $this->s->get('/', function() {
         $this->requireAction('pages.list', '/', __('Du har inte rätt att lista sidor.'));
         $this->setAdmin(true);     
-        $pagination = $this->paginate('page', array('id','title','slug','template','priority','user_id','created','changed'), 5);      
+        $pagination = $this->paginate('page', array('id','title','slug','template','priority','user_id','created','changed'), 10);      
         $this->render('pages.list.php', $pagination);
       });
 
@@ -63,10 +63,15 @@ class PagesController extends Controller {
         $this->setAdmin(true);
         $page = R::dispense('page');
         $page->import($_POST);
-        $page->user = $this->user;
-        R::store($page);
+        $page->user = $this->user;   
+        try {
+          R::store($page);
+        } catch(Exception $ex) {
+          $this->s->flash('danger', __($ex->getMessage()));
+          $this->s->redirect(Uri::create('/sidor/'));
+        }
         $this->s->flash('success', __('Sidan har skapats.'));
-        $this->render('pages.edit.php', $page->export());
+        $this->render('pages.edit.php', compact('page'));
       });
 
       $this->s->get('/andra/:id', function($id) {
@@ -75,9 +80,9 @@ class PagesController extends Controller {
         $page = R::load('page', $id);
         if(!$page->id) {
           $this->s->flash('danger', __('Sidan du försöker ändra finns inte!'));
-          $this->s->redirect('/sidor/');
+          $this->s->redirect(Uri::create('/sidor/'));
         }
-        $this->render('pages.edit.php', $page->export());
+        $this->render('pages.edit.php', compact('page'));
       });
 
       $this->s->post('/andra/:id', function($id) {
@@ -87,9 +92,14 @@ class PagesController extends Controller {
         $page->id = $id;
         $page->import($_POST);  
         $page->user = $this->user;        
-        R::store($page);
+        try {
+          R::store($page);
+        } catch(Exception $ex) {
+          $this->s->flash('danger', __($ex->getMessage()));
+          $this->s->redirect(Uri::create('/sidor/'));
+        }
         $this->s->flash('success', __('Sidan har sparats.'));
-        $this->render('pages.edit.php', $page->export());
+        $this->render('pages.edit.php', compact('page'));
       });
 
       $this->s->get('/tabort/:id', function($id) {

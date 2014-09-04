@@ -1,7 +1,7 @@
-/* compiled by scssphp v0.1.1 on Thu, 04 Sep 2014 07:31:21 +0200 (1.3865s) */
+/* compiled by scssphp v0.1.1 on Thu, 04 Sep 2014 09:04:23 +0200 (1.5787s) */
 
 .alert {
-  display: none; }
+  /* display: none; */ }
 
 .panel-heading i.fa {
   margin-right: 10px; }
@@ -34,7 +34,7 @@ body.cookies #main .page-main ul {
 body {
   background-color: black; }
   body .paginator {
-    text-align: center; }
+    text-align: left; }
     body .paginator ul li {
       display: inline-block;
       padding: 20px; }

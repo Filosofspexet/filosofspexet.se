@@ -13,7 +13,7 @@
         <?php echo __('Lista alla sidor'); ?>
       </a>
       <h1><?php echo __('Ändra sida'); ?></h1>
-      <form method="post" action="<?php echo Uri::create(sprintf('/sidor/andra/%d', $id)); ?>">
+      <form method="post" action="<?php echo Uri::create(sprintf('/sidor/andra/%d', $page->id)); ?>">
         <?php echo $this->render('pages.form.php'); ?>
       </form>
     </div>  

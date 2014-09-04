@@ -46,7 +46,7 @@ function paginator($format_string, $current_page, $num_pages) {
     }
     $pages .= sprintf("  <li><a class=\"btn btn-default%s\" href=\"%s\">%d</a></li>\n", $additional_class, Uri::create(sprintf($format_string, $i), $get_variables), $i); 
   }
-  return sprintf("<div class=\"paginator\"><ul>\n%s</ul></div>", $pages);
+  return sprintf("<div class=\"paginator\"><ul>Gå till sida:\n%s</ul></div>", $pages);
 }
 
 function tableHeader($url, $columns) {
@@ -96,6 +96,10 @@ function escape($value) {
     }
   }
     return $return;
+}
+
+function getTemplates() {
+  return glob(TEMPLATES_DIR . '/*.php');
 }
 
 function any_in_array(array $keys, &$arr) {

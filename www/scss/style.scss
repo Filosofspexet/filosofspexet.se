@@ -31,7 +31,7 @@ $whitebg: #f0f0f0;
 }
 
 .alert {
-  display: none;
+  /* display: none; */
 }
 
 .panel-heading {
@@ -90,7 +90,7 @@ body {
   background-color: black;
   
   .paginator {
-    text-align: center;
+    text-align: left;
     ul {
       li {
         display: inline-block;
