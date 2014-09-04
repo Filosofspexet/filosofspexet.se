@@ -433,6 +433,13 @@ body.logged-in.admin {
 }
 
 @media (max-width: 991px) {
+  body.logged-in.admin {
+    #main {
+      table {
+        margin-left: -13px;
+      }
+    }
+  }
   body.login {
     .flash {
       margin-top: 20px;

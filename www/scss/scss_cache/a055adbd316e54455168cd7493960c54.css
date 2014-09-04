@@ -1,4 +1,4 @@
-/* compiled by scssphp v0.1.1 on Thu, 04 Sep 2014 09:04:23 +0200 (1.5787s) */
+/* compiled by scssphp v0.1.1 on Thu, 04 Sep 2014 09:20:25 +0200 (1.5049s) */
 
 .alert {
   /* display: none; */ }
@@ -288,6 +288,9 @@ body.logged-in.admin .header {
     display: none; } }
 
 @media (max-width: 991px) {
+  body.logged-in.admin #main table {
+    margin-left: -13px; }
+
   body.login .flash {
     margin-top: 20px; }
 
