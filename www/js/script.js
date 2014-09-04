@@ -63,6 +63,10 @@
     })
   }
   
+  var addActiveClassesForAdmin = function() {
+    $('body.logged-in.admin .menu .admin').addClass('active');
+  };
+  
   var addFlashAnimations = function() {
     $('.alert').each(function(){
       var $this = $(this);
@@ -73,6 +77,28 @@
       })
     });
   };
+  
+  var addTinyMCE = function() {
+    tinymce.init({
+      selector: "textarea",
+      language_url: "/libs/tinymce-sv-se/sv_SE.js",
+      language : 'sv_SE',   
+      plugins: [
+        "code"
+      ],
+      toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+    });
+  }
+  
+  var addWarningsWhenDeleting = function() {
+    if($('body.logged-in.admin').length > 0) {
+      $('.btn.delete').bind('click', function(e) {
+        if(!confirm('Är du säker på att du vill ta bort objektet?')) {
+          e.preventDefault();
+        }
+      });
+    }
+  }
  
   /**/
   $().ready(function(){
@@ -87,7 +113,10 @@
      $("[rel=tooltip]").tooltip();
     }
     addActiveClassesToLinks();
+    addActiveClassesForAdmin();
     addFlashAnimations();
+    addTinyMCE();
+    addWarningsWhenDeleting();
   });
   
 })(jQuery, Filosofspexet);

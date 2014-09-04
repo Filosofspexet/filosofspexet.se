@@ -2,8 +2,11 @@
 
 require_once(dirname(dirname(__FILE__)).'/init.php');
 
+use Cocur\Slugify\Slugify;
+
 R::debug(true);
 
+$slugify = new Slugify();
 $faker = Faker\Factory::create();
 
 echo "Clearing database.\n";
@@ -19,7 +22,7 @@ $names = array(
   'spex.list',
   'spex.create',
   'spex.edit',
-  'spex.delete'
+  'spex.delete',
   'users.list',
   'users.create',
   'users.edit',
@@ -51,7 +54,7 @@ $names = array(
   'contacts.list',
   'contacts.create',
   'contacts.edit',
-  'contacts.delete'
+  'contacts.delete',
   'images.list',
   'images.create',
   'images.edit',
@@ -64,7 +67,6 @@ $names = array(
   'gyckel.create',
   'gyckel.edit',
   'gyckel.delete'
-  images
 );
 $action_ids = array();
 foreach($names as $name) {
@@ -73,12 +75,34 @@ foreach($names as $name) {
   $action_ids[] = R::store($action);
 }
 
+echo "Creating roles\n";
+$role = R::dispense('role');
+$role->name = 'Superadmin';
+$role->sharedActionList = R::loadAll('action', $action_ids);
+R::store($role);
+
+echo "Creating users.\n";
+// Users -------------------
+$user = R::dispense('user');
+$dynamic_salt = generatePassword(40);
+$user->username = 'test';
+$user->email = 'patrik.weibull@gmail.com';
+$user->salt = $dynamic_salt;
+$user->hash = md5(sprintf('%s%s%s', Config::get('static.salt'), 'test', $dynamic_salt));
+$user->sharedRoleList = array($role);
+R::store($user);
+
 // Pages -------------------
 
 echo "Creating pages.\n";
 // Create start page
 $page = R::dispense('page');
+$page->user = $user;
 $page->slug = 'start';
+$page->timesupdated = 1;
+$page->created = time();
+$page->updated = time();
+$page->sitemappriority = 1;
 $page->title = 'Filosofspexet';
 $page->template = 'start.view.php';
 $page->leadtext = 'Varmt välkommen till Filosofiska Lätta Knästående SpexarGardet (i kortform Filosofspexet)!';
@@ -88,6 +112,7 @@ R::store($page);
 
 // Create gückel page// Create start page
 $page = R::dispense('page');
+$page->user = $user;
 $page->slug = 'gyckel';
 $page->title = 'Gyckel';
 $page->template = 'pages.view.php';
@@ -121,6 +146,7 @@ R::store($page);
 
 // Create cookies page
 $page = R::dispense('page');
+$page->user = $user;
 $page->slug = 'cookies';
 $page->title = 'Cookies';
 $page->template = 'pages.view.php';
@@ -134,6 +160,7 @@ R::store($page);
 
 // Create musik page
 $page = R::dispense('page');
+$page->user = $user;
 $page->slug = 'musik';
 $page->title = 'Musik';
 $page->template = 'pages.view.php';
@@ -197,6 +224,7 @@ R::store($page);
 
 // Create verksamhet page
 $page = R::dispense('page');
+$page->user = $user;
 $page->slug = 'verksamhet';
 $page->title = 'Vaddå spex?';
 $page->template = 'pages.view.php';
@@ -211,6 +239,7 @@ R::store($page);
 
 // Create historia page
 $page = R::dispense('page');
+$page->user = $user;
 $page->slug = 'historia';
 $page->title = 'Filosofspexets historia i sammandrag';
 $page->template = 'pages.view.php';
@@ -289,6 +318,7 @@ R::store($page);
 
 // Create 404 page
 $page = R::dispense('page');
+$page->user = $user;
 $page->slug = '404';
 $page->title = '404 - Sidan kunde ej hittas';
 $page->leadtext = 'Det var väl synd.';
@@ -297,17 +327,21 @@ R::store($page);
 
 // Create login page
 $page = R::dispense('page');
+$page->user = $user;
 $page->slug = 'login';
 R::store($page);
 
-echo "Creating users.\n";
-// Users -------------------
-$user = R::dispense('user');
-$dynamic_salt = generatePassword(40);
-$user->username = 'test';
-$user->email = 'patrik.weibull@gmail.com';
-$user->salt = $dynamic_salt;
-$user->hash = md5(sprintf('%s%s%s', Config::get('static.salt'), 'test', $dynamic_salt));
-$user->sharedActionList = R::loadAll('action', $action_ids);
-R::store($user);
+echo "Creating news.\n";
+
+for($i = 0; $i < 10; $i++) {
+  $news = R::dispense('news');
+  $news->headline = $faker->sentence;
+  $news->slug = $slugify->slugify($news->headline);
+  $news->bodytext = $faker->paragraph;
+  $t = $faker->unixTime;
+  $news->created = $t;
+  $news->changed = $t;
+  $news->user = $user;
+  R::store($news);
+}
 

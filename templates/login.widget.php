@@ -1,5 +1,8 @@
 <div class="panel panel-primary">
-  <div class="panel-heading">Inloggning</div>
+  <div class="panel-heading">
+    <i class="fa fa-arrow-right"></i>
+    Inloggning
+  </div>
   <div class="panel-body">
     <?php if(!$user) : ?>
       <?php echo $this->render('login.widget.form.php'); ?>

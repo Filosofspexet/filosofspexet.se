@@ -4,6 +4,11 @@ class Asset {
 
   private static $css_files  = array();
   private static $js_files   = array();
+  
+  public static function clear() {
+    self::$css_files = array();
+    self::$js_files = array();
+  }
 
   public static function css($file)  {
     if(file_exists(PUBLIC_DIR . '/' . $file)) {

@@ -11,6 +11,7 @@ abstract class Controller extends Singleton {
   protected $menu;
   protected $slider_images;
   protected $widgets;
+  protected $actions;
   
   protected final function throw404() {
     $this->slider_images  = array();
@@ -20,6 +21,7 @@ abstract class Controller extends Singleton {
     if($page == null) {
       throw new Exception(__('Sidan kunde inte hittas.'));
     }
+    $this->addStandardAssets();
     $this->render('404.php', $page->export());
   }
   
@@ -31,7 +33,8 @@ abstract class Controller extends Singleton {
       'css_classes'   => $this->css_classes,
       'menu'          => $this->menu,
       'slider_images' => $this->slider_images,
-      'widgets'       => $this->widgets
+      'widgets'       => $this->widgets,
+      'actions'       => $this->actions
     );
     
     if($status != null) {
@@ -42,8 +45,22 @@ abstract class Controller extends Singleton {
     
   }
   
+  protected function paginate($type, $sortable_columns, $items_per_page) {
+    $current_page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+    $orderby = isset($_GET['orderby']) && in_array($_GET['orderby'], $sortable_columns) ? $_GET['orderby'] : 'id';
+    $sortdir = isset($_GET['sortdir']) && in_array($_GET['sortdir'], array('asc','desc')) ? $_GET['sortdir'] : 'ASC';
+    $items = R::findAll($type, '1=1 ORDER BY ? ? LIMIT ?, ?', array(
+      $orderby, 
+      $sortdir, 
+      ($current_page-1) * $items_per_page, 
+      $items_per_page
+    ));
+    $num_pages = ceil(R::count('page') / $items_per_page) ;
+    return compact('items', 'current_page', 'num_pages', 'sortby', 'sortdir');
+  }
+  
   private function getFacebookFeeds() {
-    return Cache::get('facebook_posts_on_frontpage', function() {
+    $cached = Cache::get('facebook_posts_on_frontpage', function() {
       $facebook = new Facebook(array(
         'appId'  => Config::get('facebook.app.id'),
         'secret' => Config::get('facebook.app.secret'),
@@ -52,6 +69,11 @@ abstract class Controller extends Singleton {
       $feeds = $facebook->api('filosofspexet/posts?fields=story,message,picture,link,icon&limit=5&locale=sv_SE');
       return $feeds['data'];
     });
+    if($cached) {
+      return $cached;
+    } else {
+      return array();
+    }
   }
   
   protected function __construct() {
@@ -80,6 +102,7 @@ abstract class Controller extends Singleton {
       $this->user = R::load('user', Session::get('user_id'));
       moveKeyFirstInArray('login', $this->widgets);
       $this->css_classes[] = 'logged-in';
+      $this->actions = $this->user->getActions();
     } else {
       $this->css_classes[] = 'not-logged-in';
     }
@@ -147,7 +170,21 @@ abstract class Controller extends Singleton {
 	  $this->s->run();
   }
   
+  public final function setAdmin($status) {
+    if($status) {
+      if(!in_array('admin', $this->css_classes)) {
+        $this->css_classes[] = 'admin';
+      }
+      $this->addAdminAssets();
+    } else {
+      $this->css_classes = array_diff($this->css_classes, array('admin'));
+      $this->addStandardAssets();
+    }
+    
+  }
+  
   protected final function addStandardAssets() {
+    Asset::clear();
     Asset::css('libs/normalize-css/normalize.css');
     Asset::css('libs/bootstrap/css/bootstrap.min.css');
     Asset::css('libs/bootstrap/css/bootstrap-theme.min.css');
@@ -164,6 +201,7 @@ abstract class Controller extends Singleton {
   }
   
   protected final function addAdminAssets() {
+    Asset::clear();
     Asset::css('libs/normalize-css/normalize.css');
     Asset::css('libs/bootstrap/css/bootstrap.min.css');
     Asset::css('libs/bootstrap/css/bootstrap-theme.min.css');

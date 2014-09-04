@@ -12,8 +12,8 @@
         <i class="fa fa-list-alt"></i>
         <?php echo __('Lista alla sidor'); ?>
       </a>
-      <h1><?php echo __('Ny sida'); ?></h1>
-      <form method="post" action="<?php echo Uri::create('/sidor/skapa'); ?>">
+      <h1><?php echo __('Ändra sida'); ?></h1>
+      <form method="post" action="<?php echo Uri::create(sprintf('/sidor/andra/%d', $id)); ?>">
         <?php echo $this->render('pages.form.php'); ?>
       </form>
     </div>  

@@ -3,9 +3,9 @@
 class PagesController extends Controller {
 
   protected function setupRoutes() {
-  
+
     // View start page
-    $this->s->get('/', function() {     
+    $this->s->get('/', function() {
       $this->addStandardAssets();
       $page = R::findOne('page', 'slug = ?', array('start'));
       if($page == null) {
@@ -13,12 +13,17 @@ class PagesController extends Controller {
       } else {
         $this->css_classes[] = 'start';
         $this->slider_images = $page->ownSliderimageList;
-        $this->render('start.view.php', $page->export());
+        $this->seo->canonical_url = Uri::create('/');
+        $news = R::findAll('news', '1=1 ORDER BY created DESC LIMIT 5');
+        $this->render('start.view.php', array_merge(array('news' => $news), $page->export()));
       }
 	  });
-	  
+
 	  // View other page
-	  $this->s->get('/:slug', function($slug) {    
+	  $this->s->get('/:slug', function($slug) {
+      if($slug == 'start') {
+        $this->s->redirect(Uri::create('/'));
+      }
       $this->addStandardAssets();
       $page = R::findOne('page', 'slug = ?', array($slug));
       if($page == null) {
@@ -36,59 +41,78 @@ class PagesController extends Controller {
         $template = $page->template ? basename($page->template) : 'pages.view.php';
         $this->render(basename($template), $page->export());
       }
-	  });  
+	  });
 
-    $this->s->group('/pages', function() {
-		  
-      $this->addAdminAssets();      
-            
-      $this->s->get('/create', function() {
+    $this->s->group('/sidor', function() {
+
+      $this->s->get('/', function() {
+        $this->requireAction('pages.list', '/', __('Du har inte rätt att lista sidor.'));
+        $this->setAdmin(true);     
+        $pagination = $this->paginate('page', array('id','slug','template','priority','user','created','changed'), 2);   
+        $this->render('pages.list.php', $pagination);
+      });
+
+      $this->s->get('/skapa', function() {
         $this->requireAction('pages.create', '/', __('Du har inte rätt att skapa sidor.'));
+        $this->setAdmin(true);
         $this->render('pages.create.php');
       });
-      
-      $this->s->post('/create', function() {
+
+      $this->s->post('/skapa', function() {
         $this->requireAction('pages.create', '/', __('Du har inte rätt att skapa sidor.'));
+        $this->setAdmin(true);
         $page = R::dispense('page');
         $page->import($_POST);
+        $page->user = $this->user;
         R::store($page);
-        $this->s->flash(__('Sidan har skapats.'));		
+        $this->s->flash('success', __('Sidan har skapats.'));
         $this->render('pages.edit.php', $page->export());
       });
-        
-      $this->s->get('/edit/:id', function($id) {
+
+      $this->s->get('/andra/:id', function($id) {
         $this->requireAction('pages.edit', '/', __('Du har inte rätt att editera sidor.'));
-        $this->render('pages.edit.php', $page->export());
-      });
-      
-      $this->s->post('/edit/:id', function($id) {
-        $this->requireAction('pages.edit', '/', __('Du har inte rätt att editera sidor.'));
-        $page = R::dispense('page');
-        $page->import($_POST);
-        R::store($page);
-        $this->s->flash(__('Sidan har sparats.'));		
-        $this->render('pages.edit.php', $page->export());
-      });
-      
-      $this->s->get('/delete/:id', function($id) {
-        $this->requireAction('pages.delete', '/', __('Du har inte rätt att ta bort sidor.'));
+        $this->setAdmin(true);
         $page = R::load('page', $id);
-        if($page == null) {
-          $this->s->flash(__('Sidan du försöker ta bort finns inte.'));		  
+        if(!$page->id) {
+          $this->s->flash('danger', __('Sidan du försöker ändra finns inte!'));
+          $this->s->redirect('/sidor/');
+        }
+        $this->render('pages.edit.php', $page->export());
+      });
+
+      $this->s->post('/andra/:id', function($id) {
+        $this->requireAction('pages.edit', '/', __('Du har inte rätt att editera sidor.'));
+        $this->setAdmin(true);
+        $page = R::dispense('page');
+        $page->id = $id;
+        $page->import($_POST);  
+        $page->user = $this->user;        
+        R::store($page);
+        $this->s->flash('success', __('Sidan har sparats.'));
+        $this->render('pages.edit.php', $page->export());
+      });
+
+      $this->s->get('/tabort/:id', function($id) {
+        $this->requireAction('pages.delete', '/', __('Du har inte rätt att ta bort sidor.'));
+        $this->setAdmin(true);
+        $page = R::load('page', $id);
+        if(!$page->id) {
+          $this->s->flash('danger', __('Sidan du försöker ta bort finns inte.'));
         } else {
-          $this->s->flash(__('Sidan har tagits bort.'));		
+          R::trash($page);
+          $this->s->flash('success', __('Sidan har tagits bort.'));
         }
         if($this->user != null) {
-          $this->s->redirect(Uri::create('/pages'));
+          $this->s->redirect(Uri::create('/sidor/'));
         } else {
           $this->s->redirect(Uri::create('/'));
-        }     
+        }
       });
-	   
+
     });
-    
-	
+
+
   }
 
-  
+
 }

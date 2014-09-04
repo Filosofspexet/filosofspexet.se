@@ -48,7 +48,14 @@
         },
         "require": {
           "robloach/component-installer": "*"
+        },
+        "extra": {
+        "component": {
+          "files": [
+            "sv_SE.js"
+          ]
         }
+      }
       }
 	  },
 	  {
@@ -181,7 +188,9 @@
 		"doctrine/inflector": "1.0",
 		"fzaninotto/faker": "1.4.0",
 		"mobiledetect/mobiledetectlib": "2.8.4",
-    "components/font-awesome": "v4.2.0"
+    "components/font-awesome": "v4.2.0",
+    "cocur/slugify": "0.10.1",
+    "vanilla/htmlawed": "1.2.0"
   },
 	"autoload": {
 	    "files": [

@@ -28,3 +28,76 @@ function moveKeyFirstInArray($key, &$arr) {
   unset($arr[$key]);
   $arr = $tmp + $arr;
 }
+
+function paginator($format_string, $current_page, $num_pages) {
+  $pages = '';
+  $get_variables = array();
+  if(isset($_GET['orderby'])) {
+    $get_variables['orderby'] = $_GET['orderby'];
+  }
+  if(isset($_GET['sortdir'])) {
+    $get_variables['sortdir'] = $_GET['sortdir'];
+  }
+  for($i = 1; $i <= $num_pages; $i++) {
+    if($current_page == $i) {
+      $additional_class = ' active';
+    } else {
+      $additional_class = '';
+    }
+    $pages .= sprintf("  <li><a class=\"btn btn-default%s\" href=\"%s\">%d</a></li>\n", $additional_class, Uri::create(sprintf($format_string, $i), $get_variables), $i); 
+  }
+  return sprintf("<div class=\"paginator\"><ul>\n%s</ul></div>", $pages);
+}
+
+function tableHeader($url, $columns) {
+  $result = '';
+  $get_variables = array();
+  if(isset($_GET['page'])) {
+    $get_variables['page'] = intval($_GET['page']);
+  } else {
+    $get_variables['page'] = 1;
+  }
+  if(isset($_GET['orderby'])) {
+    $get_variables['orderby'] = $_GET['orderby'];
+  } else {
+    $get_variables['orderby'] = 'id';
+  }
+  if(isset($_GET['sortdir']) && $_GET['sortdir'] == 'desc') {
+    $get_variables['sortdir'] = 'asc';
+  } else {
+    $get_variables['sortdir'] = 'desc';
+  }
+  foreach($columns as $key => $val) { 
+    $get_variables['orderby'] = $key;  
+    $fa = '';
+    if(isset($_GET['sortdir'])) {
+      if(isset($_GET['orderby']) && $_GET['orderby'] == $key) {
+        if($get_variables['sortdir'] == 'asc') {
+          $fa = '<i class="fa fa-arrow-down"></i> ';
+        } else {
+          $fa = '<i class="fa fa-arrow-up"></i> ';
+        }
+      }
+    }
+    $result .= sprintf("<th><a class=\"\" href=\"%s\">%s%s</a></th>\n", Uri::create($url, $get_variables), $fa, $val);
+  }
+  return $result;
+}
+
+function any_in_array(array $keys, &$arr) {
+  foreach($keys as $key) {
+    if(in_array($key, $arr)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function all_in_array(array $keys, &$arr) {
+  foreach($keys as $key) {
+    if(!in_array($key, $arr)) {
+      return false;
+    }
+  }
+  return true;
+}

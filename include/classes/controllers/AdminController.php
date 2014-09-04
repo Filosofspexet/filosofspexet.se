@@ -9,9 +9,11 @@ class AdminController extends Controller {
       $this->addAdminAssets();
     
       $this->s->get('/', function() {    
-             
+        
         $this->requireLogin();
-        $this->render('admin.php');
+        $this->css_classes[] = 'admin';
+        $actions = $this->user->getActions();
+        $this->render('admin.php', compact('actions'));
       });
        
     });

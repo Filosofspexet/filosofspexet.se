@@ -52,14 +52,14 @@ var Filosofspexet = {
             url = uri;
           }
         }
-        if (get_variables.length > 0) {
+        if (get_variables && get_variables.length > 0) {
           var separator = url.indexOf('?') === -1 ? '?' : '&';
           for(key in get_variables) {
             url += separator + key + '=' + get_variables[key];
             separator = '&';
           }
         }
-        return $url;
+        return url;
       }
     };
   })()

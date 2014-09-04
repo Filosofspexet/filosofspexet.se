@@ -40,7 +40,7 @@
       <li><a href="<?php echo Uri::create('/gyckel'); ?>">Gückel</a></li>        
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="<?php echo Uri::create('/internt'); ?>">Internt</a></li>
+      <li class="admin"><a href="<?php echo Uri::create('/internt'); ?>">Internt</a></li>
     </ul>
     </nav>
   </div>
