@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * mock.php - Prepares database with content
+ */
+
 require_once(dirname(dirname(__FILE__)).'/init.php');
 
 use Cocur\Slugify\Slugify;
@@ -149,7 +153,7 @@ tillställningen.
 <p>Vår repertoar består av sketcher, körsånger, solosånger m.m. Om ni hör
 av er tillräcklig långt i förväg kan vi om ni vill även skriva sketcher
 eller sånger just för er.
-<p>Kontakta vår <a href="gucklemaestra@filosofspexet.se">gücklemaestra</a>
+<p>Kontakta vår <a href="mailto:gucklemaestra@filosofspexet.se">gücklemaestra</a>
 om du är intresserad av att boka oss, eller bara vill ha mer information.</p>
 <p>Här är några exempel på tillfällen då vi uppträtt den senaste 
 tiden:</p>

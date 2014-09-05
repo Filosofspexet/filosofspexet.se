@@ -29,10 +29,6 @@ abstract class Controller extends Singleton {
   
   protected final function render($template, array $data = array(), $status = null) {
   
-    if(!file_exists(TEMPLATES_DIR . '/' . $template) && $template != '404.php') {
-      #$this->throw404();
-    } 
-  
     $standard = array(
       'user'          => $this->user,
       'seo'           => $this->seo,
@@ -50,17 +46,15 @@ abstract class Controller extends Singleton {
     } else {
       $this->s->render($template, array_merge($standard, $data));
     }
-    
-    die();
-    
+     
   }
   
   protected function paginate($type, $sortable_columns, $items_per_page) {
     $current_page = isset($_GET['page']) ? intval($_GET['page']) : 1;
-    $orderby = isset($_GET['orderby']) && in_array($_GET['orderby'], $sortable_columns) ? $_GET['orderby'] : 'id';
-    $sortdir = isset($_GET['sortdir']) && in_array($_GET['sortdir'], array('asc','desc')) ? $_GET['sortdir'] : 'ASC';
-    $items = R::findAll($type, sprintf('1=1 ORDER BY `%s` %s LIMIT %d, %d', escape($orderby), $sortdir, ($current_page-1) * $items_per_page, $items_per_page));
-    $num_pages = ceil(R::count('page') / $items_per_page) ;
+    $orderby      = isset($_GET['orderby']) && in_array($_GET['orderby'], $sortable_columns) ? $_GET['orderby'] : 'id';
+    $sortdir      = isset($_GET['sortdir']) && in_array($_GET['sortdir'], array('asc','desc')) ? $_GET['sortdir'] : 'ASC';
+    $items        = R::findAll($type, sprintf('1=1 ORDER BY `%s` %s LIMIT %d, %d', escape($orderby), $sortdir, ($current_page-1) * $items_per_page, $items_per_page));
+    $num_pages    = ceil(R::count('page') / $items_per_page) ;
     return compact('items', 'current_page', 'num_pages', 'sortby', 'sortdir');
   }
   
@@ -86,6 +80,8 @@ abstract class Controller extends Singleton {
     $this->s = new Slim();
     $this->user = null;
 
+    /* Add controller type to body class. 
+    For example, if controller is "PagesController", the class added will be "pages".*/
     $this->css_classes = array(
       strtolower(substr(get_class($this), 0, -strlen('Controller')))
     );
@@ -112,6 +108,7 @@ abstract class Controller extends Singleton {
       'login' => array()
     );   
 
+    // Check login state
     if(Session::get('user_id')) {
       $this->user = R::load('user', Session::get('user_id'));
       moveKeyFirstInArray('login', $this->widgets);
@@ -145,7 +142,7 @@ abstract class Controller extends Singleton {
   protected final function requireLogin($flash_override = null, $redirect_override = null) {
     if($this->user == null) {
       $redirect = $redirect_override ? $redirect_override : Uri::create($_SERVER['PATH_INFO']);
-      $flash = $flash_override ? $flash_override : __('Du måste logga in för att se innehållet.');
+      $flash    = $flash_override ? $flash_override : __('Du måste logga in för att se innehållet.');
       $this->s->flash('danger', $flash);
       $this->s->redirect(Uri::create('/users/login', array('redirectUrl' => urlencode($redirect))));
     }

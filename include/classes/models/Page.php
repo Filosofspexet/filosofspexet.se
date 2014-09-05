@@ -25,6 +25,7 @@ class Page extends RedBean_SimpleModel {
     if(!$this->bean->template) {
       $this->bean->template = 'pages.view.php';
     }
+    
     $this->bean->template = basename($this->bean->template);
     if(!file_exists(TEMPLATES_DIR . '/' . $this->bean->template)) {
       throw new Exception(__('Mallen finns inte. Kunde inte sparas.'));

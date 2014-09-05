@@ -41,7 +41,7 @@
               </div>                   
             </div> 
             <div class="col-md-6 col-sm-6 col-xs-6 spex-image-container">
-              <img class="spex-image" src="<?php echo Uri::createFile('/img/spex/' . $spex->image); ?>">
+              <img class="spex-image" src="<?php echo Uri::createFile('/img/spex/' . $spex->image); ?>" alt="Affisch för <?php echo $spex->title; ?>">
               <?php if($spex->posterauthor) : ?>
                 <div class="poster-text"">
                   Affisch av <?php echo $spex->posterauthor; ?>
@@ -51,7 +51,7 @@
           </div>
           <div class="row spex-alternative-image-container">
             <div class="col-md-12">
-              <img class="spex-image" src="<?php echo Uri::createFile('/img/spex/' . $spex->image); ?>">
+              <img class="spex-image" src="<?php echo Uri::createFile('/img/spex/' . $spex->image); ?>" alt="Affisch för <?php echo $spex->title; ?>">
               <?php if($spex->posterauthor) : ?>
                 <div class="poster-text"">
                   Affisch av <?php echo $spex->posterauthor; ?>
