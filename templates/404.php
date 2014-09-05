@@ -9,7 +9,10 @@
 <div class="container" id="main">
   <div class="row">
     <div class="col-md-12 page-main">
-      <h1><?php echo $title; ?></h1>
+      <h1>   
+        <?php echo $title; ?>
+        <i class="fa fa-frown-o"></i>
+      </h1>
       <div class="lead">
          <?php echo $leadtext; ?>
       </div>

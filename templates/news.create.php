@@ -8,13 +8,13 @@
   <div class="row">
     <div class="col-md-12 page-main">
       <?php echo $this->render('admin.menu.php'); ?> 
-      <a class="btn btn-primary" href="<?php echo Uri::create('/sidor/admin'); ?>">
+      <a class="btn btn-primary" href="<?php echo Uri::create('/nyheter/admin'); ?>">
         <i class="fa fa-list-alt"></i>
-        <?php echo __('Lista alla sidor'); ?>
+        <?php echo __('Lista alla nyheter'); ?>
       </a>
-      <h1><?php echo __('Ändra sida'); ?></h1>
-      <form method="post" action="<?php echo Uri::create(sprintf('/sidor/andra/%d', $page->id)); ?>">
-        <?php echo $this->render('pages.form.php'); ?>
+      <h1><?php echo __('Ny nyhet'); ?></h1>
+      <form method="post" action="<?php echo Uri::create('/nyheter/skapa'); ?>">
+        <?php echo $this->render('news.form.php'); ?>
       </form>
     </div>  
   </div>

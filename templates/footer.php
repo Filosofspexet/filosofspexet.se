@@ -44,7 +44,7 @@
           <div class="col-md-12 quick-links">
             <ul>
               <li>
-                <a href="<?php echo Uri::create('/spex'); ?>"><?php echo __('Årets spex'); ?></a>
+                <a href="<?php echo Uri::create(sprintf('/spex/%s',$current_spex)); ?>"><?php echo __('Årets spex'); ?></a>
               </li>
             </ul>
           </div>

@@ -1,6 +1,6 @@
 <?php
 
-class PagesController extends Controller {
+class SpexController extends Controller {
 
   protected function setupRoutes() {
   
@@ -56,7 +56,13 @@ class PagesController extends Controller {
         $this->setAdmin(true);
         $spex = R::dispense('spex');
         $spex->id = $id;
-        $spex->import($_POST);  
+        
+        // If updating without uploading
+        if(isset($_POST['image']) && $_POST['image'] == '') {
+          unset($_POST['image']);
+        }
+        
+        $spex->import($_POST);
         $spex->user = $this->user;        
         try {
           R::store($spex);
@@ -89,9 +95,15 @@ class PagesController extends Controller {
         $this->addStandardAssets();
         $spex = R::findOne('spex', 'slug = ?', array($slug));
         if(!$spex->id) {
-          $this->s->flash('danger', __('Spexet finns inte'));
-          $this->s->redirect(Uri::create('/spex/'));
+          $this->throw404();
         }
+        $this->seo->title = sprintf('%s - %s - Filosofspexet', $spex->title, $spex->theme);
+        $this->css_classes[] = $slug;
+        $this->breadcrumbs = array (
+          'Hem' => Uri::create('/'),
+          'Spex'  => Uri::create('/spex/'),
+          $spex->title   => null
+        );
         $this->render('spex.view.php', compact('spex'));
       });
   

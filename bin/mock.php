@@ -62,11 +62,7 @@ $names = array(
   'music.list',
   'music.create',
   'music.edit',
-  'music.delete',
-  'gyckel.list',
-  'gyckel.create',
-  'gyckel.edit',
-  'gyckel.delete'
+  'music.delete'
 );
 $action_ids = array();
 foreach($names as $name) {
@@ -226,9 +222,9 @@ R::store($page);
 $page = R::dispense('page');
 $page->user     = $user;
 $page->slug     = 'verksamhet';
-$page->title    = 'Vaddå spex?';
+$page->title    = 'Verksamhet';
 $page->template = 'pages.view.php';
-$page->leadtext = 'Spex är ett svenskt, akademiskt, parodierande teaterstycke med anakronismer och "röd tråd", skapat av amatörer för att roa och oftast framfört bara under en mycket kort tid. Denna definition är på inga sätt allomfattande; vill du veta vad ett spex är, gå och se ett!';
+$page->leadtext = 'Vaddå spex? Spex är ett svenskt, akademiskt, parodierande teaterstycke med anakronismer och "röd tråd", skapat av amatörer för att roa och oftast framfört bara under en mycket kort tid. Denna definition är på inga sätt allomfattande; vill du veta vad ett spex är, gå och se ett!';
 $page->bodytext = '<p>Filosofiska L&auml;tta Kn&auml;st&aring;ende SpexarGardet (i kortform Filosofspexet) &auml;r en k&aring;rf&ouml;rening under <a href="http://www.gota.gu.se" title="G&ouml;ta studentk&aring;r">G&ouml;ta studentk&aring;r</a> som utan h&auml;nsyn till &ouml;vriga k&aring;rf&ouml;reningar blandar teater, dans, s&aring;ng, musik, fester, komik, och kalabalik. Vi tr&auml;ffas varje tisdag fr&aring;n cirkus klockan 18 och fram&aring;t i
   spexrummet i k&auml;llaren p&aring; Studenternas Hus.</p>
 <p> Filosofspexets namn kan vara missledande; vi har ingenting med &auml;mnet filosofi att g&ouml;ra. Namnet kommer av att Filosofspexet var en k&aring;rf&ouml;rening under Filosofiska Fakulteternas Studentk&aring;r, en av de tre studentk&aring;rer som under 2010 <a href="http://www.gota.gu.se/karen/historia/" title="G&ouml;ta studentk&aring;rs historia">slogs samman</a> f&ouml;r att bilda G&ouml;ta studentk&aring;r. G&ouml;ta studentk&aring;r representerar samtliga studenter vid G&ouml;teborgs universitet inom humanistiska, naturvetenskapliga, samh&auml;llsvetenskapliga och utbildningsvetenskapliga fakulteten, IT-fakulteten samt studenter vid Utbildnings- och forskningsn&auml;mnden f&ouml;r l&auml;rarutbildning, och alla dessa &auml;r naturligtvis v&auml;lkomna som medlemmar i f&ouml;reningen.</p>
@@ -383,19 +379,21 @@ $draegforestallning->start        = strtotime('2014-03-01 18:00');
 $draegforestallning->end          = strtotime('2014-03-01 20:30');
 
 echo "Creating spex.\n";
-$spex                 = R::dispense('spex');
-$spex->created        = time();
-$spex->changed        = time();
-$spex->slug           = $slugify->slugify('Kejsarens Elixir');
-$spex->user           = $user;
-$spex->visible        = true;
-$spex->title          = 'Kejsarens Elixir';
-$spex->alttitle       = 'Med Sven Hedin öfver land till Mugholistan';
-$spex->theme          = 'Ett spex om kärlek, kol och kameler';
-$spex->ticketprice    = '100';
-$spex->discountprice  = '70';
-$spex->image          = 'kejsarens.jpg';
-$spex->posterauthor   = 'Hampus Lybeck';
-$spex->teaser         = 'Sven Hedin och hans vän Gustaf Adolf, kronprins av Sverige måste genomsöka mystiska ruiner i Taklamakan efter receptet på kejsar Shi Huangdis livselixir, innan den walesiska exploatörskan Diana Jones spränger allt i luften för att öppna världens största kolgruva. Föga anar man vad som lurar där ute mellan Tianshans och Kunluns snötäckta toppar. Vad är det för förbannelse som det pratas om?';
-$spex->ownEventList   = array($urpremier,$galapremier,$foreningsforestallning,$spexforestallning1,$spexforestallning2,$draegforestallning);
+$spex                   = R::dispense('spex');
+$spex->created          = time();
+$spex->changed          = time();
+$spex->slug             = $slugify->slugify('Kejsarens Elixir');
+$spex->user             = $user;
+$spex->visible          = true;
+$spex->title            = 'Kejsarens Elixir';
+$spex->alttitle         = 'Med Sven Hedin öfver land till Mugholistan';
+$spex->theme            = 'Ett spex om kärlek, kol och kameler';
+$spex->ticketprice      = '100';
+$spex->discountprice    = '70';
+$spex->image            = 'kejsarens.jpg';
+$spex->year             = 2014;
+$spex->posterauthor     = 'Hampus Lybeck';
+$spex->reservationopen  = false;
+$spex->teaser           = 'Sven Hedin och hans vän Gustaf Adolf, kronprins av Sverige måste genomsöka mystiska ruiner i Taklamakan efter receptet på kejsar Shi Huangdis livselixir, innan den walesiska exploatörskan Diana Jones spränger allt i luften för att öppna världens största kolgruva. Föga anar man vad som lurar där ute mellan Tianshans och Kunluns snötäckta toppar. Vad är det för förbannelse som det pratas om?';
+$spex->ownEventList     = array($urpremier,$galapremier,$foreningsforestallning,$spexforestallning1,$spexforestallning2,$draegforestallning);
 R::store($spex);

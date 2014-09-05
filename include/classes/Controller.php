@@ -12,6 +12,8 @@ abstract class Controller extends Singleton {
   protected $slider_images;
   protected $widgets;
   protected $actions;
+  protected $current_spex;
+  protected $breadcrumbs;
   
   protected final function throw404() {
     $this->slider_images  = array();
@@ -27,6 +29,10 @@ abstract class Controller extends Singleton {
   
   protected final function render($template, array $data = array(), $status = null) {
   
+    if(!file_exists(TEMPLATES_DIR . '/' . $template) && $template != '404.php') {
+      #$this->throw404();
+    } 
+  
     $standard = array(
       'user'          => $this->user,
       'seo'           => $this->seo,
@@ -34,7 +40,9 @@ abstract class Controller extends Singleton {
       'menu'          => $this->menu,
       'slider_images' => $this->slider_images,
       'widgets'       => $this->widgets,
-      'actions'       => $this->actions
+      'actions'       => $this->actions,
+      'current_spex'  => $this->current_spex,
+      'breadcrumbs'   => $this->breadcrumbs
     );
     
     if($status != null) {
@@ -42,6 +50,8 @@ abstract class Controller extends Singleton {
     } else {
       $this->s->render($template, array_merge($standard, $data));
     }
+    
+    die();
     
   }
   
@@ -75,16 +85,25 @@ abstract class Controller extends Singleton {
       
     $this->s = new Slim();
     $this->user = null;
-    
+
     $this->css_classes = array(
       strtolower(substr(get_class($this), 0, -strlen('Controller')))
     );
+    
+    $this->breadcrumbs = array();
     
     // Will eventually contain the actual menu-data
     $this->menu           = array('temp');
     
     // Will eventually contain the actual slider_image data
     $this->slider_images  = array('temp');
+    
+    $this->current_spex = R::getCell('SELECT spex.slug 
+                                      FROM spex 
+                                      LEFT JOIN event ON event.spex_id = spex.id 
+                                      WHERE spex.visible = 1
+                                      ORDER BY event.start DESC, spex.year DESC 
+                                      LIMIT 1');
        
     $this->widgets        = array(
       'facebook-page' => array(
@@ -182,12 +201,14 @@ abstract class Controller extends Singleton {
     Asset::clear();
     Asset::css('libs/bootstrap/css/bootstrap.min.css');
     Asset::css('libs/bootstrap/css/bootstrap-theme.min.css');
+    Asset::css('libs/jasnybootstrap/dist/css/jasny-bootstrap.min.css');
     Asset::css('libs/font-awesome/css/font-awesome.min.css');
     Asset::css('libs/bootstrap-social/bootstrap-social.css');
     Asset::css('libs/bxslider-4/jquery.bxslider.css');
     Asset::scss('style.scss');
     Asset::js('libs/jquery/jquery.min.js');
     Asset::js('libs/bootstrap/js/bootstrap.min.js');
+    Asset::js('libs/jasnybootstrap/dist/js/jasny-bootstrap.min.js');
     Asset::js('libs/bxslider-4/jquery.bxslider.min.js');
     Asset::js('libs/tinymce/js/tinymce/tinymce.min.js');
     Asset::js('js/Filosofspexet.js');
@@ -198,12 +219,14 @@ abstract class Controller extends Singleton {
     Asset::clear();
     Asset::css('libs/bootstrap/css/bootstrap.min.css');
     Asset::css('libs/bootstrap/css/bootstrap-theme.min.css');
+    Asset::css('libs/jasnybootstrap/dist/css/jasny-bootstrap.min.css');
     Asset::css('libs/font-awesome/css/font-awesome.min.css');
     Asset::css('libs/bootstrap-social/bootstrap-social.css');
     Asset::css('libs/bxslider-4/jquery.bxslider.css');
     Asset::scss('style.scss');
     Asset::js('libs/jquery/jquery.min.js');
     Asset::js('libs/bootstrap/js/bootstrap.min.js');
+    Asset::js('libs/jasnybootstrap/dist/js/jasny-bootstrap.min.js');
     Asset::js('libs/bxslider-4/jquery.bxslider.min.js');
     Asset::js('libs/tinymce/js/tinymce/tinymce.min.js');
     Asset::js('js/Filosofspexet.js');

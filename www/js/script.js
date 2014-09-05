@@ -74,7 +74,7 @@
       $this.slideDown('slow', function() {
         setTimeout(function(){
           $this.slideUp('slow');
-        }, 10000);
+        }, 9000);
       })
     });
   };

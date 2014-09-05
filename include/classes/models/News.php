@@ -2,7 +2,7 @@
 
 use Cocur\Slugify\Slugify;
 
-class Spex extends RedBean_SimpleModel {
+class News extends RedBean_SimpleModel {
 
   public function open() {}
   
@@ -13,20 +13,9 @@ class Spex extends RedBean_SimpleModel {
     // Slugify
     $slugify = new Slugify();
     if(!$this->bean->slug) {
-      $this->bean->slug = $this->bean->title;
+      $this->bean->slug = $this->bean->headline;
     }
     $this->bean->slug = $slugify->slugify($this->bean->slug);
-    
-    // Sanitize TinyMCE
-    $this->bean->teaser = Htmlawed::filter($this->bean->teaser);  
-    
-    if(!isset($this->bean->visible)) {
-      $this->bean->visible = false;
-    }
-    
-    if(!isset($this->bean->reservationopen)) {
-      $this->bean->reservationopen = false;
-    }
     
   }
   

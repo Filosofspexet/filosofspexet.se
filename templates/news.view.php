@@ -13,19 +13,19 @@
       <div class="row">
         <div class="col-md-12 page-main">
           <h1>
-          <?php echo $page->title; ?>
+          <?php echo $news->headline; ?>
           </h1>
-          <div class="lead">
-            <?php echo $page->leadtext; ?>
+          <div class="date">
+            Skrivet av <?php echo $news->user['username']; ?> den <?php echo date(Config::get('date.format', $news->created)); ?>
           </div>
           <div class="body-text">
-            <?php echo $page->bodytext; ?>
+            <?php echo $news->bodytext; ?>
             <div class="fb-like" data-href="<?php echo Uri::create(); ?>" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
           </div>
         </div>
       </div>        
     </div>
-    <div class="col-md-3 page-right">
+    <div class="col-md-3 news-right">
       <?php foreach($widgets as $widget => $data) : ?>
         <div class="widget <?php echo $widget; ?>">
           <?php echo $this->render(sprintf('%s.widget.php', $widget), $data); ?>

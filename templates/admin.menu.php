@@ -11,12 +11,18 @@
           </div>
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
+              <?php if(in_array('news.list', $actions)) :?>
+                <li><a href="<?php echo Uri::create('/nyheter/admin'); ?>"><?php echo __('Nyheter'); ?></a></li>
+              <?php endif; ?>      
               <?php if(in_array('pages.list', $actions)) :?>
                 <li><a href="<?php echo Uri::create('/sidor/admin'); ?>"><?php echo __('Sidor'); ?></a></li>
               <?php endif; ?>
               <?php if(in_array('spex.list', $actions)) :?>
                 <li><a href="<?php echo Uri::create('/spex/admin'); ?>"><?php echo __('Spex'); ?></a></li>
-              <?php endif; ?>        
+              <?php endif; ?>
+              <?php if(in_array('contacts.list', $actions)) :?>
+                <li><a href="<?php echo Uri::create('/kontakter/admin'); ?>"><?php echo __('Kontakter'); ?></a></li>
+              <?php endif; ?>                  
               <?php if(in_array('users.list', $actions)) :?>
                 <li><a href="<?php echo Uri::create('/anvandare/admin'); ?>"><?php echo __('Användare'); ?></a></li>
               <?php endif; ?>        
@@ -28,28 +34,19 @@
               <?php endif; ?>        
               <?php if(in_array('events.list', $actions)) :?>         
                 <li><a href="<?php echo Uri::create('/event/admin/'); ?>"><?php echo __('Event'); ?></a></li>
-              <?php endif; ?>        
-              <?php if(in_array('news.list', $actions)) :?>
-                <li><a href="<?php echo Uri::create('/nyheter/admin'); ?>"><?php echo __('Nyheter'); ?></a></li>
-              <?php endif; ?>        
+              <?php endif; ?>                     
               <?php if(in_array('actions.list', $actions)) :?>
                 <li><a href="<?php echo Uri::create('/atgarder/admin'); ?>"><?php echo __('Åtgärder'); ?></a></li>
               <?php endif; ?>        
               <?php if(in_array('tickets.list', $actions)) :?>
                 <li><a href="<?php echo Uri::create('/biljetter/admin'); ?>"><?php echo __('Biljetter'); ?></a></li>
-              <?php endif; ?>        
-              <?php if(in_array('contacts.list', $actions)) :?>
-                <li><a href="<?php echo Uri::create('/kontakter/admin'); ?>"><?php echo __('Kontakter'); ?></a></li>
-              <?php endif; ?>        
+              <?php endif; ?>                        
               <?php if(in_array('images.list', $actions)) :?>
                 <li><a href="<?php echo Uri::create('/biljetter/admin'); ?>"><?php echo __('Bilder'); ?></a></li>
               <?php endif; ?>        
               <?php if(in_array('music.list', $actions)) :?>
                 <li><a href="<?php echo Uri::create('/musik/admin/'); ?>"><?php echo __('Musik'); ?></a></li>
-              <?php endif; ?>        
-              <?php if(in_array('gyckel.list', $actions)) :?>
-                <li><a href="<?php echo Uri::create('/gyckel/admin/'); ?>"><?php echo __('Gyckel'); ?></a></li>
-              <?php endif; ?>                
+              <?php endif; ?>                      
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->

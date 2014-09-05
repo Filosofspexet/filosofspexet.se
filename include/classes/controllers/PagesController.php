@@ -37,8 +37,13 @@ class PagesController extends Controller {
           }
           $this->requireAllActions($action_names);
         }
+        $this->seo->title = sprintf('%s - Filosofspexet', $page->title);
         $this->slider_images = $page->ownSliderimageList;
         $template = $page->template ? basename($page->template) : 'pages.view.php';
+        $this->breadcrumbs = array (
+          'Hem' => Uri::create('/'),
+          $page->title   => null
+        );
         $this->render(basename($template), compact('page'));
       }
 	  });

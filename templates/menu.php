@@ -19,7 +19,7 @@
         <ul class="dropdown-menu" role="menu">
           <li><a href="<?php echo Uri::create('/nyheter'); ?>">Nyheter</a></li> 
           <li><a href="<?php echo Uri::create('/events'); ?>">Händelser</a></li> 
-          <li><a href="<?php echo Uri::create('/spex'); ?>">Årets spex</a></li> 
+          <li><a href="<?php echo Uri::create(sprintf('/spex/%s',$current_spex)); ?>">Årets spex</a></li> 
         </ul>
       </li>           
       <li class="dropdown">

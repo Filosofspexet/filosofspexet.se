@@ -3,6 +3,9 @@
 <?php if(sizeof($menu)) : ?>
   <?php echo $this->render('menu.php'); ?>
 <?php endif; ?>
+<?php if(sizeof($breadcrumbs) > 0) : ?>
+  <?php echo $this->render('breadcrumbs.php'); ?>
+<?php endif; ?>
 <?php echo $this->render('flash.status.php'); ?>
 <div class="container" id="main">
   <div class="row">  
@@ -39,11 +42,21 @@
             </div> 
             <div class="col-md-6 col-sm-6 col-xs-6 spex-image-container">
               <img class="spex-image" src="<?php echo Uri::createFile('/img/spex/' . $spex->image); ?>">
+              <?php if($spex->posterauthor) : ?>
+                <div class="poster-text"">
+                  Affisch av <?php echo $spex->posterauthor; ?>
+                </div>
+              <?php endif; ?>
             </div>            
           </div>
           <div class="row spex-alternative-image-container">
             <div class="col-md-12">
               <img class="spex-image" src="<?php echo Uri::createFile('/img/spex/' . $spex->image); ?>">
+              <?php if($spex->posterauthor) : ?>
+                <div class="poster-text"">
+                  Affisch av <?php echo $spex->posterauthor; ?>
+                </div>
+              <?php endif; ?>
             </div>
           </div>
           <div class="row">
@@ -62,7 +75,11 @@
             </div>
             <div class="panel-body">
               <ul class="list-group">
-                <li class="list-group-item">Produktionsår 2014</li>
+                <li class="list-group-item">Produktionsår: <strong><?php echo $spex->year; ?></strong></li>
+                <li class="list-group-item">Biljettpris: <strong><?php echo $spex->ticketprice; ?></strong>kr</li>
+                <?php if($spex->discountprice): ?>
+                  <li class="list-group-item">Biljettpris för medlemmar av en studentkår (oavsett kår): <strong><?php echo $spex->discountprice; ?></strong>kr</li>
+                <?php endif; ?>
               </ul>
             </div>
           </div>
