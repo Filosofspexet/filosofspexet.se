@@ -126,7 +126,7 @@ abstract class Controller extends Singleton {
       'title'         =>  __('Filosofspexet'),
       'keywords'      =>  array(),
       'description'   =>  __('Beskrivning av filosofspexet'),
-      'favicon'       =>  'favicon.ico',
+      'favicon'       =>  Uri::createFile('/favicon.ico'),
       'canonical_url' => null,
       'noindex'       => false
     );

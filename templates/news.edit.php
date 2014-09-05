@@ -12,6 +12,10 @@
         <i class="fa fa-list-alt"></i>
         <?php echo __('Lista alla nyheter'); ?>
       </a>
+      <a class="btn btn-primary" href="<?php echo Uri::create(sprintf('/nyheter/%s', $news->slug)); ?>">
+        <i class="fa fa-external-link"></i>
+        <?php echo __('Visa nyhet'); ?>
+      </a>
       <h1><?php echo __('Ändra nyhet'); ?></h1>
       <form method="post" action="<?php echo Uri::create(sprintf('/nyheter/andra/%d', $news->id)); ?>">
         <?php echo $this->render('news.form.php'); ?>

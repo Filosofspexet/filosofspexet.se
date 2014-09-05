@@ -8,7 +8,7 @@
   <div class="row">
     <div class="col-md-12 page-main">
       <?php echo $this->render('admin.menu.php'); ?> 
-      <a class="btn btn-primary" href="<?php echo Uri::create('sidor/skapa'); ?>">
+      <a class="btn btn-primary" href="<?php echo Uri::create('nyheter/skapa'); ?>">
         <i class="fa fa-plus"></i>
         <?php echo __('Ny nyhet'); ?>
       </a>

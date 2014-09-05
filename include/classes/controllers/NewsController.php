@@ -45,8 +45,8 @@ class NewsController extends Controller {
         $this->requireAction('news.edit', '/', __('Du har inte rätt att editera nyheter.'));
         $this->setAdmin(true);
         $news = R::load('news', $id);  
-        if(!$news->id) {
-          $this->s->flash('danger', __('Nyheten du försöker ändra finns inte!'));
+        if(!$news || !$news->id) {
+          $this->s->flash('danger', __('Nyheten du försöker ändra finns inte'));
           $this->s->redirect(Uri::create('/nyheter/'));
           die();
         }
@@ -89,7 +89,7 @@ class NewsController extends Controller {
         
       $this->s->get('/:slug', function($slug) {
         $news = R::findOne('news', 'slug = ?', array($slug));
-        if(!$news->id) {
+        if(!$news || !$news->id) {
           $this->throw404();
         }
         $this->css_classes[] = $slug;

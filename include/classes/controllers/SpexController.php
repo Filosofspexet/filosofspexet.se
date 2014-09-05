@@ -61,9 +61,11 @@ class SpexController extends Controller {
         if(isset($_POST['image']) && $_POST['image'] == '') {
           unset($_POST['image']);
         }
-        
+                
         $spex->import($_POST);
-        $spex->user = $this->user;        
+        $spex->visible          = isset($_POST['visible']);
+        $spex->reservationopen  = isset($_POST['reservationopen']);
+        $spex->user             = $this->user;        
         try {
           R::store($spex);
           $this->s->flash('success', __('Spexet har sparats.'));
@@ -93,8 +95,8 @@ class SpexController extends Controller {
     
       $this->s->get('/:slug', function($slug) {
         $this->addStandardAssets();
-        $spex = R::findOne('spex', 'slug = ?', array($slug));
-        if(!$spex->id) {
+        $spex = R::findOne('spex', 'slug = ? AND visible = ?', array($slug, true));
+        if(!$spex || !$spex->id) {
           $this->throw404();
         }
         $this->seo->title = sprintf('%s - %s - Filosofspexet', $spex->title, $spex->theme);

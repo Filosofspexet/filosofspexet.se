@@ -19,15 +19,7 @@ class Spex extends RedBean_SimpleModel {
     
     // Sanitize TinyMCE
     $this->bean->teaser = Htmlawed::filter($this->bean->teaser);  
-    
-    if(!isset($this->bean->visible)) {
-      $this->bean->visible = false;
-    }
-    
-    if(!isset($this->bean->reservationopen)) {
-      $this->bean->reservationopen = false;
-    }
-    
+     
   }
   
   public function after_update() {}

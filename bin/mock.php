@@ -4,6 +4,7 @@ require_once(dirname(dirname(__FILE__)).'/init.php');
 
 use Cocur\Slugify\Slugify;
 
+R::freeze(false);
 R::debug(true);
 
 $slugify  = new Slugify();
@@ -71,6 +72,11 @@ foreach($names as $name) {
   $action_ids[] = R::store($action);
 }
 
+// Special action
+$spexare = R::dispense('action');
+$spexare->name = 'spexare';
+R::store($spexare);
+
 echo "Creating roles\n";
 $role                   = R::dispense('role');
 $role->name             = 'Superadmin';
@@ -90,7 +96,30 @@ R::store($user);
 
 // Pages -------------------
 
+echo "Creating sliderimages";
+$sliderimage = R::dispense('sliderimage');
+$sliderimage->image = 'img/spex/kejsarens.jpg';
+$sliderimage->message = 'Test test test';
+$sliderimage->url = '/';
+
 echo "Creating pages.\n";
+
+// Create test page which requires 'spexare' action and has slider images
+$page                     = R::dispense('page');
+$page->ownSliderimageList = array($sliderimage);
+$page->sharedActionList   = array($spexare);
+$page->user               = $user;
+$page->slug               = 'test';
+$page->timesupdated       = 1;
+$page->created            = time();
+$page->changed            = time();
+$page->priority           = 1;
+$page->title              = 'test';
+$page->template           = 'pages.view.php';
+$page->leadtext           = 'test';
+$page->bodytext           = 'test';
+R::store($page);
+
 // Create start page
 $page               = R::dispense('page');
 $page->user         = $user;

@@ -45,7 +45,7 @@
      <div class="row">
        <div class="col-md-12">
         <label for="title">Bokning öppen</label>
-        <input type="checkbox" id="reservationopen" name="visible"<?php echo isset($spex->reservationopen) && $spex->reservationopen ? 'checked="checked"' : ''; ?> />
+        <input type="checkbox" id="reservationopen" name="reservationopen"<?php echo isset($spex->reservationopen) && $spex->reservationopen ? 'checked="checked"' : ''; ?> />
        </div>
      </div>        
    </div>

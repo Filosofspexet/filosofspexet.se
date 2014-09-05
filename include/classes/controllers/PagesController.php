@@ -26,7 +26,7 @@ class PagesController extends Controller {
       }
       $this->addStandardAssets();
       $page = R::findOne('page', 'slug = ?', array($slug));
-      if($page == null) {
+      if(!$page || !$page->id) {
         $this->throw404();
       } else {
         $this->css_classes[] = $slug;
@@ -35,7 +35,7 @@ class PagesController extends Controller {
           foreach($page->sharedActionList as $required_action) {
             $action_names[] = $required_action->name;
           }
-          $this->requireAllActions($action_names);
+          $this->requireAllActions($action_names, Uri::create('/'), __('Du har inte behörighet att se sidan.'));
         }
         $this->seo->title = sprintf('%s - Filosofspexet', $page->title);
         $this->slider_images = $page->ownSliderimageList;

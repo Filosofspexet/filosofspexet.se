@@ -1,4 +1,4 @@
-/* compiled by scssphp v0.1.1 on Fri, 05 Sep 2014 05:25:46 +0200 (1.6327s) */
+/* compiled by scssphp v0.1.1 on Fri, 05 Sep 2014 11:14:38 +0200 (1.6821s) */
 
 .alert {
   /* display: none; */ }
@@ -124,9 +124,13 @@ body {
     body #main a.btn.btn-primary {
       color: white;
       text-decoration: none; }
+      body #main a.btn.btn-primary i.fa {
+        color: white; }
     body #main a.btn.btn-danger {
       color: white;
       text-decoration: none; }
+      body #main a.btn.btn-danger i.fa {
+        color: white; }
     body #main .btn-social {
       color: white;
       text-decoration: none; }

@@ -74,7 +74,7 @@
       $this.slideDown('slow', function() {
         setTimeout(function(){
           $this.slideUp('slow');
-        }, 9000);
+        }, 8000);
       })
     });
   };
@@ -115,7 +115,7 @@
     }
     addActiveClassesToLinks();
     addActiveClassesForAdmin();
-    //addFlashAnimations();
+    addFlashAnimations();
     addTinyMCE();
     addWarningsWhenDeleting();
   });
