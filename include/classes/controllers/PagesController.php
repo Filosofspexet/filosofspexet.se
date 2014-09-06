@@ -22,7 +22,7 @@ class PagesController extends Controller {
 	  // View other page
 	  $this->s->get('/:slug', function($slug) {
       if($slug == 'start') {
-        $this->s->redirect(Uri::create('/'));
+        $this->s->redirect(Uri::create('/'), 301);
       }
       $this->addStandardAssets();
       $page = R::findOne('page', 'slug = ?', array($slug));
@@ -70,12 +70,14 @@ class PagesController extends Controller {
         $page->import($_POST);
         $page->user = $this->user;   
         try {
-          R::store($page);
+          $id = R::store($page);
+          $this->s->flash('success', __('Sidan har skapats.'));
+          $this->s->redirect(Uri::create(sprintf('/sidor/andra/%d', $id)));
         } catch(Exception $ex) {
           $this->s->flash('danger', __($ex->getMessage()));
           $this->s->redirect(Uri::create('/sidor/'));
         }
-        $this->s->flash('success', __('Sidan har skapats.'));
+        
         $this->render('pages.edit.php', compact('page'));
       });
 

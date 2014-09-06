@@ -17,7 +17,7 @@
         <?php echo __('Visa nyhet'); ?>
       </a>
       <h1><?php echo __('Ändra nyhet'); ?></h1>
-      <form method="post" action="<?php echo Uri::create(sprintf('/nyheter/andra/%d', $news->id)); ?>">
+      <form method="post" enctype="multipart/form-data" action="<?php echo Uri::create(sprintf('/nyheter/andra/%d', $news->id)); ?>">
         <?php echo $this->render('news.form.php'); ?>
       </form>
     </div>  

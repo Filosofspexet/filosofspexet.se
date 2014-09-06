@@ -13,7 +13,7 @@
         <?php echo __('Lista alla sidor'); ?>
       </a>
       <h1><?php echo __('Ny sida'); ?></h1>
-      <form method="post" action="<?php echo Uri::create('/sidor/skapa'); ?>">
+      <form method="post" enctype="multipart/form-data" action="<?php echo Uri::create('/sidor/skapa'); ?>">
         <?php echo $this->render('pages.form.php'); ?>
       </form>
     </div>  

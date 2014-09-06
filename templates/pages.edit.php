@@ -17,7 +17,7 @@
         <?php echo __('Visa sida'); ?>
       </a>
       <h1><?php echo __('Ändra sida'); ?></h1>
-      <form method="post" action="<?php echo Uri::create(sprintf('/sidor/andra/%d', $page->id)); ?>">
+      <form method="post" enctype="multipart/form-data" action="<?php echo Uri::create(sprintf('/sidor/andra/%d', $page->id)); ?>">
         <?php echo $this->render('pages.form.php'); ?>
       </form>
     </div>  

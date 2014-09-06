@@ -13,7 +13,7 @@
         <?php echo __('Lista alla nyheter'); ?>
       </a>
       <h1><?php echo __('Ny nyhet'); ?></h1>
-      <form method="post" action="<?php echo Uri::create('/nyheter/skapa'); ?>">
+      <form method="post" enctype="multipart/form-data" action="<?php echo Uri::create('/nyheter/skapa'); ?>">
         <?php echo $this->render('news.form.php'); ?>
       </form>
     </div>  

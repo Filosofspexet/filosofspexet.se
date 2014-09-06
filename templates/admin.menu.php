@@ -38,8 +38,8 @@
               <?php if(in_array('actions.list', $actions)) :?>
                 <li><a href="<?php echo Uri::create('/atgarder/admin'); ?>"><?php echo __('Åtgärder'); ?></a></li>
               <?php endif; ?>        
-              <?php if(in_array('tickets.list', $actions)) :?>
-                <li><a href="<?php echo Uri::create('/biljetter/admin'); ?>"><?php echo __('Biljetter'); ?></a></li>
+              <?php if(in_array('bookings.list', $actions)) :?>
+                <li><a href="<?php echo Uri::create('/bokningar/admin'); ?>"><?php echo __('Bokningar'); ?></a></li>
               <?php endif; ?>                        
               <?php if(in_array('images.list', $actions)) :?>
                 <li><a href="<?php echo Uri::create('/biljetter/admin'); ?>"><?php echo __('Bilder'); ?></a></li>

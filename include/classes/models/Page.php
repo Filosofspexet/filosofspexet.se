@@ -21,6 +21,12 @@ class Page extends RedBean_SimpleModel {
     $this->bean->leadtext = Htmlawed::filter($this->bean->leadtext);  
     $this->bean->bodytext = Htmlawed::filter($this->bean->bodytext);  
     
+    if(!isset($this->bean->id) || !$this->bean->id) {
+      $this->bean->created = time();
+    }
+    
+    $this->bean->changed = time();
+    
     // Sanitize template
     if(!$this->bean->template) {
       $this->bean->template = 'pages.view.php';

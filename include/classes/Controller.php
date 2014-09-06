@@ -1,6 +1,7 @@
 <?php
 
 use Slim\Slim;
+use Cocur\Slugify\Slugify;
 
 abstract class Controller extends Singleton {
 
@@ -47,6 +48,22 @@ abstract class Controller extends Singleton {
       $this->s->render($template, array_merge($standard, $data));
     }
      
+  }
+  
+  protected function handleUpload($var, $dir) {
+    if(isset($_FILES[$var])) {
+      $i          = 0;
+      $slugify    = new Slugify();
+      $filename   = $slugify->slugify(pathinfo($_FILES[$var]['name'], PATHINFO_FILENAME));
+      $extension  = pathinfo($_FILES[$var]['name'], PATHINFO_EXTENSION);
+      do {    
+        $destination = sprintf('%s/%s.%s', rtrim($dir, '/'), $filename.($i > 0 ? ('-'-$i) : ''), $extension);
+        $i++;
+      } while(file_exists($destination));
+      move_uploaded_file ($_FILES[$var]['tmp_name'], $destination);
+      return sprintf('%s.%s', $filename, $extension);
+    }
+    return null;
   }
   
   protected function paginate($type, $sortable_columns, $items_per_page) {

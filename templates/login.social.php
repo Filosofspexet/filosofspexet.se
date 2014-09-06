@@ -6,6 +6,3 @@
 <a class="btn btn-block btn-social btn-google-plus">
     <i class="fa fa-google-plus"></i> <?php echo __('Logga in med Google'); ?>
 </a>
-<a class="btn btn-block btn-social btn-instagram">
-  <i class="fa fa-instagram"></i> <?php echo __('Logga in med Instagram'); ?>
-</a>

@@ -13,7 +13,7 @@
         <?php echo __('Lista alla spex'); ?>
       </a>
       <h1><?php echo __('Nytt spex'); ?></h1>
-      <form method="post" action="<?php echo Uri::create('/spex/skapa'); ?>">
+      <form method="post" enctype="multipart/form-data" action="<?php echo Uri::create('/spex/skapa'); ?>">
         <?php echo $this->render('spex.form.php'); ?>
       </form>
     </div>  

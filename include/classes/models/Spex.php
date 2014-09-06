@@ -17,6 +17,12 @@ class Spex extends RedBean_SimpleModel {
     }
     $this->bean->slug = $slugify->slugify($this->bean->slug);
     
+    if(!isset($this->bean->id) || !$this->bean->id) {
+      $this->bean->created = time();
+    }
+    
+    $this->bean->changed = time();
+    
     // Sanitize TinyMCE
     $this->bean->teaser = Htmlawed::filter($this->bean->teaser);  
      
