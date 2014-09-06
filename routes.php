@@ -11,5 +11,6 @@ Route::setAll(array(
   'biljetter'     => 'tickets',
   'musik-admin'   => 'music',
   'gyckel-admin'  => 'gyckel',
-  'sidor'         => 'pages'
+  'sidor'         => 'pages',
+  'kontakter'     => 'contacts'
 ));

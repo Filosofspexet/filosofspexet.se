@@ -12,9 +12,13 @@
         <i class="fa fa-list-alt"></i>
         <?php echo __('Lista alla spex'); ?>
       </a>
-      <a class="btn btn-primary" href="<?php echo Uri::create(sprintf('/spex/%s', $spex->slug)); ?>">
+      <a class="btn btn-primary" href="<?php echo Uri::create(sprintf('/spex/%s', $spex->slug)); ?>" target="_blank">
         <i class="fa fa-external-link"></i>
         <?php echo __('Visa spex'); ?>
+      </a>
+      <a class="btn btn-primary" href="<?php echo Uri::create('/spex/skapa'); ?>">
+        <i class="fa fa-plus"></i>
+        <?php echo __('Nytt spex'); ?>
       </a>
       <h1><?php echo __('Ändra spex'); ?></h1>
       <form method="post" enctype="multipart/form-data" action="<?php echo Uri::create(sprintf('/spex/andra/%d', $spex->id)); ?>">

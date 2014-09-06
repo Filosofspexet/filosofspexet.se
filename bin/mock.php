@@ -67,7 +67,11 @@ $names = array(
   'music.list',
   'music.create',
   'music.edit',
-  'music.delete'
+  'music.delete',
+  'imageslides.list',
+  'imageslides.create',
+  'imageslides.edit',
+  'imageslides.delete'
 );
 $action_ids = array();
 foreach($names as $name) {
@@ -430,3 +434,18 @@ $spex->reservationopen  = false;
 $spex->teaser           = 'Sven Hedin och hans vän Gustaf Adolf, kronprins av Sverige måste genomsöka mystiska ruiner i Taklamakan efter receptet på kejsar Shi Huangdis livselixir, innan den walesiska exploatörskan Diana Jones spränger allt i luften för att öppna världens största kolgruva. Föga anar man vad som lurar där ute mellan Tianshans och Kunluns snötäckta toppar. Vad är det för förbannelse som det pratas om?';
 $spex->ownEventList     = array($urpremier,$galapremier,$foreningsforestallning,$spexforestallning1,$spexforestallning2,$draegforestallning);
 R::store($spex);
+
+
+
+echo "Creating contacts\n";
+for($i = 0; $i < 9; $i++) {
+  $contact                = R::dispense('contact');
+  $contact->name          = $faker->name;
+  $contact->slug          = $slugify->slugify($contact->name);
+  $contact->title         = 'Test';
+  $contact->description   = $faker->paragraph;
+  $contact->image         = 'test.jpg';
+  $contact->created       = time();
+  $contact->changed       = time();
+  R::store($contact);
+}

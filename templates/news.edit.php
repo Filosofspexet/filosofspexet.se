@@ -12,9 +12,13 @@
         <i class="fa fa-list-alt"></i>
         <?php echo __('Lista alla nyheter'); ?>
       </a>
-      <a class="btn btn-primary" href="<?php echo Uri::create(sprintf('/nyheter/%s', $news->slug)); ?>">
+      <a class="btn btn-primary" href="<?php echo Uri::create(sprintf('/nyheter/%s', $news->slug)); ?>" target="_blank">
         <i class="fa fa-external-link"></i>
         <?php echo __('Visa nyhet'); ?>
+      </a>
+      <a class="btn btn-primary" href="<?php echo Uri::create(sprintf('/nyheter/skapa', $news->slug)); ?>">
+        <i class="fa fa-plus"></i>
+        <?php echo __('Ny nyhet'); ?>
       </a>
       <h1><?php echo __('Ändra nyhet'); ?></h1>
       <form method="post" enctype="multipart/form-data" action="<?php echo Uri::create(sprintf('/nyheter/andra/%d', $news->id)); ?>">

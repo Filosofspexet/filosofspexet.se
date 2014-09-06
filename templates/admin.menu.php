@@ -22,7 +22,10 @@
               <?php endif; ?>
               <?php if(in_array('contacts.list', $actions)) :?>
                 <li><a href="<?php echo Uri::create('/kontakter/admin'); ?>"><?php echo __('Kontakter'); ?></a></li>
-              <?php endif; ?>                  
+              <?php endif; ?>    
+              <?php if(in_array('imageslides.list', $actions)) :?>
+                <li><a href="<?php echo Uri::create('/bildspel/admin'); ?>"><?php echo __('Bildspel'); ?></a></li>
+              <?php endif; ?>               
               <?php if(in_array('users.list', $actions)) :?>
                 <li><a href="<?php echo Uri::create('/anvandare/admin'); ?>"><?php echo __('Användare'); ?></a></li>
               <?php endif; ?>        

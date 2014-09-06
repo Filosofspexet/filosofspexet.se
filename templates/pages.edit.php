@@ -12,9 +12,13 @@
         <i class="fa fa-list-alt"></i>
         <?php echo __('Lista alla sidor'); ?>
       </a>
-      <a class="btn btn-primary" href="<?php echo Uri::create(sprintf('/%s', $page->slug)); ?>">
+      <a class="btn btn-primary" href="<?php echo Uri::create(sprintf('/%s', $page->slug)); ?>" target="_blank">
         <i class="fa fa-external-link"></i>
         <?php echo __('Visa sida'); ?>
+      </a>
+      <a class="btn btn-primary" href="<?php echo Uri::create('/sidor/skapa'); ?>" target="_blank">
+        <i class="fa fa-plus"></i>
+        <?php echo __('Ny sida'); ?>
       </a>
       <h1><?php echo __('Ändra sida'); ?></h1>
       <form method="post" enctype="multipart/form-data" action="<?php echo Uri::create(sprintf('/sidor/andra/%d', $page->id)); ?>">
